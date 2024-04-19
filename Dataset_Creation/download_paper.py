@@ -5,7 +5,7 @@ download_source=False
 
 n_paper= 10
 
-df= pd.read_csv(r'C:\Users\Blank\Desktop\detector\Dataset\arxiv-papers.csv') 
+df= pd.read_csv(r'Dataset_Creation\arxiv-papers.csv') 
 
 #The dowload is based on the id of the document
 for i in range(n_paper):
@@ -14,7 +14,7 @@ for i in range(n_paper):
 
     if article := next(search_result):
         print(f'Starting download of article: "{article.title}" ({paper_id})')
-        pdf_path = article.download_pdf(dirpath="original_paper")
+        pdf_path = article.download_pdf(dirpath="Dataset_Collection\original_paper")
         print(f"Download finished! Result saved at:\n{pdf_path}")
 
         if download_source:
