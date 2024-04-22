@@ -1,0 +1,5 @@
+,sentence,label,score
+0,Our online editor can help you improve word choice and writing style.,Machine,0.9963
+1,It can also detect grammar mistakes and plagiarism.,Machine,0.9985
+2,"To check word count, simply place your cursor into the text box above and start typing.",Machine,0.9903
+3,"You'll see the number of characters and words increase or decrease as you type, delete, and edit them.",Machine,0.9992
