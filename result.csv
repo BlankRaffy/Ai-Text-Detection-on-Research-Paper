@@ -1,5 +1,3 @@
 ,sentence,label,score
-0,Our online editor can help you improve word choice and writing style.,Machine,0.9963
-1,It can also detect grammar mistakes and plagiarism.,Machine,0.9985
-2,"To check word count, simply place your cursor into the text box above and start typing.",Machine,0.9903
-3,"You'll see the number of characters and words increase or decrease as you type, delete, and edit them.",Machine,0.9992
+0,We show that a determinant of Stirling cycle numbers counts unlabeled acyclic single-source automata.,Human,0.0131
+1,The proof involves a bijection from these automata to certain marked lattice paths and a sign-reversing involution to evaluate the deter-minant.,Human,0.0032
