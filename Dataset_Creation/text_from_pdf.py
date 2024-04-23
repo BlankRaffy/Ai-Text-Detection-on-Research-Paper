@@ -13,7 +13,7 @@ def save_text_to_file(text, output_file):
         file.write(text)
 
 # Example usage
-pdf_path = r"Adaptive RL with LLM-augmented reward functions.pdf"
+pdf_path = r"C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Dataset_Collection\original_paper\0704.0858v1.Lessons_Learned_from_the_deployment_of_a_high_interaction_honeypot.pdf"
 output_file = "output_test/extracted_text.txt"
 
 pdf_text = extract_text_from_pdf(pdf_path)
