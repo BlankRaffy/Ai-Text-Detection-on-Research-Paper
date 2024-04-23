@@ -1,22 +1,14 @@
 Lessons learned from the deployment of a high-interaction honeypot 
  
  
-E. Alata1, V. Nicomette1, M. Kaâniche1, M. Dacier2, M. Herrb1 
+E. Alata1, V. Nicomette1, M. Kaniche1, M. Dacier2, M. Herrb1 
 1LAAS-CNRS, University of Toulouse, 7 Avenue du Colonel Roche, 31077 Toulouse Cedex 4, France 
-2Eurécom, 2229 Route des Crêtes, BP 193, 06904 Sophia Antipolis Cedex, France 
+2Eurcom, 2229 Route des Crtes, BP 193, 06904 Sophia Antipolis Cedex, France 
 {alata, nicomette, kaaniche, herrb}@laas.fr; dacier@eurecom.fr 
  
  
-Abstract 
- 
-This paper presents an experimental study and the lessons 
-learned from the observation of the attackers when logged on a 
-compromised machine. The results are based on a six months 
-period during which a controlled experiment has been run with 
-a high interaction honeypot. We correlate our findings with 
-those obtained with a worldwide distributed system of low-
-interaction honeypots.  
- 
+Abstract
+This article outlines an experimental study and compares our findings with those obtained from a worldwide distributed system of low-interference honeypots over X period of time.
 1. Introduction 
  
 During the last decade, several initiatives have been 
@@ -25,10 +17,11 @@ malicious activities on the Internet, e.g., the Internet
 Motion Sensor project [1], CAIDA [2] and Dshield [3]. The 
 CADHo project [4] in which we are involved is 
 complementary to these initiatives and is aimed at: 
-• deploying a distributed platform of honeypots [5] that 
+ deploying a distributed platform of honeypots [5] that 
+
 gathers data suitable to analyze the attack processes 
 targeting a large number of machines on the Internet; 
-• validating the usefulness of this platform by carrying out 
+ validating the usefulness of this platform by carrying out 
 various analyses, based on the collected data, to 
 characterize the observed attacks and model their 
 impact on security. 
@@ -38,7 +31,7 @@ must be, at best an accidental error or, more likely, an
 attempt to attack the machine.  
 The first stage of the project focused on the 
 deployment of a data collection environment (called 
-Leurré.com [6]) based on low-interaction honeypots. As 
+Leurr.com [6]) based on low-interaction honeypots. As 
 of today, around 40 honeypot platforms have been 
 deployed at various sites from academia and industry in 
 almost 30 different countries over the five continents. 
@@ -103,7 +96,7 @@ vulnerability. A firewall blocks all connection attempts
 from the Internet, but those to port 22 (ssh). Also, any 
 connection from the virtual host to the outside is blocked 
 Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
-0-7695-2648-9/06 $20.00  © 2006
+0-7695-2648-9/06 $20.00   2006
 to avoid that intruders attack remote machines from the 
 honeypot. This does not prevent the intruder from 
 downloading code, using the ssh connection1. 
@@ -231,7 +224,7 @@ the first real intrusion (as explained in section 3.2, the
 first successful connection is very seldom a real intrusion 
 but rather an automatic script which tests passwords). 
 Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
-0-7695-2648-9/06 $20.00  © 2006
+0-7695-2648-9/06 $20.00   2006
 Table 2 summarizes these durations (UAi means User 
 Account i). 
  
@@ -318,7 +311,7 @@ these attacking machines try several hundreds, even
 several thousands of accounts in a very short time. 
 We have made then further analyses regarding the 
 machines that succeed in finding passwords, i.e., the 18 IP 
-addresses. By searching the leurré.com database 
+addresses. By searching the leurr.com database 
 containing information about the activities of these 
 addresses against the other low interaction honeypots we 
 found four important elements of information. First, we 
@@ -341,17 +334,17 @@ IPs are used to run a well known program. The detailed
 analysis of this specific tool is outside the scope of the 
 paper but, nevertheless, it is worth mentioning that the 
 activities linked to that tool, as observed in our 
-Leurré.com database, indicate that it is unlikely to be a 
+Leurr.com database, indicate that it is unlikely to be a 
 worm but rather an easy to use and widely spread tool. 
  
 3.2.2. Interactive attack: intrusion. The second 
 step of the attack consists in the real intrusion. We have 
 noted that, several days after the guessing of a weak 
                                                              
-2 We consider as “dictionary attack” any attack that tries more than 10 
+2 We consider as dictionary attack any attack that tries more than 10 
 different accounts and passwords. 
 Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
-0-7695-2648-9/06 $20.00  © 2006
+0-7695-2648-9/06 $20.00   2006
 password, an interactive ssh connection is executed on 
 our honeypot to issue several commands. We believe that, 
 in those situations, a real human being, as opposed to an 
@@ -415,10 +408,10 @@ accounts were used. Table 3 presents the number of
 intrusions per account, IP addresses and passwords used 
 for these intrusions. It is of course difficult to be sure that all the intrusions for a same account are initiated by the 
 same person. Nevertheless, in our case, we noted that: 
-• most of the time, after his first login, the attacker 
+ most of the time, after his first login, the attacker 
 changes the weak password into a strong which, from 
 there on, remains unchanged. 
-• when two different IP addresses access the same 
+ when two different IP addresses access the same 
 account (with the same password), they are very close 
 and belong to the same country or company.  
 These two remarks lead us to believe that there is in 
@@ -477,7 +470,7 @@ they have only launched a single command, like w, which
 is not long enough to highlight a copy and a paste. 
  
 Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
-0-7695-2648-9/06 $20.00  © 2006
+0-7695-2648-9/06 $20.00   2006
 3.3.2. Attacker activities. The first significant 
 remark is that all of the intruders change the password of 
 the hacked account. The second remark is that most of 
@@ -573,11 +566,11 @@ important one is relative to script kiddies. They are
 inexperienced hackers who use programs found on the 
 Internet without really understanding how they work. The 
 next category represents intruders who are more 
-dangerous. They are named “black hat”. They can make 
+dangerous. They are named black hat. They can make 
 serious damage on systems because they are expert in 
 security and they know how to exploit vulnerabilities on 
 various systems. 
-As already presented in §3.3.2. (use of wget and sftp), 
+As already presented in 3.3.2. (use of wget and sftp), 
 we have observed that intruders are not as clever as 
 expected. For example, for two hacked accounts, the 
 intruders don't seem to really understand the Unix file 
@@ -601,9 +594,9 @@ only accessible from the first honeypot. We have modified
 the /etc/motd file of the first honeypot (which is 
 automatically printed on the screen during the login 
 Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
-0-7695-2648-9/06 $20.00  © 2006
-process) and added the following message: “In order to 
-use the software XXX, please connect to A.B.C.D”. 
+0-7695-2648-9/06 $20.00   2006
+process) and added the following message: In order to 
+use the software XXX, please connect to A.B.C.D. 
 In spite of this message, only one intruder has tried to 
 connect to the second honeypot. We could expect that an 
 experienced hacker will try to use this information. In a 
@@ -671,7 +664,7 @@ attackers? This is something that we are in the process of
 assessing. 
 Acknowledgement. This work has been partially 
 supported by: 1) CADHo, a research action funded by the French 
-ACI “Securité & Informatique” (www.cadho.org), 2) the 
+ACI Securit & Informatique (www.cadho.org), 2) the 
 CRUTIAL IST-027513 project (crutial.cesiricerca.it), and 3) the 
 ReSIST IST- 026764  project (www.resist-noe.org). 
  
@@ -694,15 +687,15 @@ METRICS), Sept. 15, Milan, Italy, 2005.
 advantages of deploying a large scale distributed 
 honeypot platform. In Proc. of ECCE'05, E-Crime and 
 Computer Conference, Monaco, 2005. 
-[6] Home page of Leurré.com: http://www.leurre.org. 
-[7] Project Leurré.com. Publications web page: 
+[6] Home page of Leurr.com: http://www.leurre.org. 
+[7] Project Leurr.com. Publications web page: 
 http://www.leurrecom.org/paper.htm. 
 [8] M. Dacier, F. Pouget, H. Debar. Honeypots: practical 
 means to validate malicious fault assumptions. 10th IEEE 
 Pacific Rim Int. Symp., pp. 383--388, Tahiti, 2004. 
-[9] F. Pouget, M. Dacier, V. Hau Pham, “Understanding 
+[9] F. Pouget, M. Dacier, V. Hau Pham, Understanding 
 threats: a prerequisite to enhance survivability of 
-computing systems”, Int. Infrastructure Survivability 
+computing systems, Int. Infrastructure Survivability 
 Workshop IISW'04,  (25th IEEE Int. Real-Time Systems 
 Symp. (RTSS 04)), Lisboa, Portugal, 2004. 
 [10] E. Alata, V. Nicomette, M. Kaaniche, M. Dacier, M. Herrb, 
@@ -726,4 +719,4 @@ suspicious environments. In Systems, Man and
 Cybernetics (SMC) Information Assurance Workshop. 
 Proc. from the Sixth Annual IEEE, pages 29--36, 2005.
 Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
-0-7695-2648-9/06 $20.00  © 2006
+0-7695-2648-9/06 $20.00   2006

@@ -1,43 +1,31 @@
-from transformers import BartForConditionalGeneration, BartTokenizer
+import plagiated_function
 
-# Load BART model and tokenizer
-model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
-tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
+# Define the file paths
+input_file_path = 'output_test\cleaned_text.txt'
+output_file_path = 'output_test\cleaned_text_with_paraphrased_abstract.txt'
 
-# Load text file
-file_path = "output_test\cleaned_text.txt"
-with open(file_path, "r", encoding="utf-8") as file:
-    text = file.read()
+# Paraphrase the abstract in the input file and write the modified content to a new file
+#plagiated_function.paraphrase_abstract_in_file(input_file_path, output_file_path)
 
-# Find the starting index of the abstract
-abstract_start_index = text.find("Abstract")
+#print("The Abstract was correct modified and saved:", output_file_path)
 
-# Find the ending index of the abstract
-abstract_end_index = text.find("1 Introduction")
+with open(input_file_path,'r') as file:
+    content = file.readline()
 
-# Extract the abstract section
-abstract = text[abstract_start_index:abstract_end_index].strip()
+#generation of the first part of the introduction
+import torch
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-# Print abstract
-print("Abstract:")
-print(abstract)
-print()
+# Step 1: Read the first line of the file
+def read_first_line(filename):
+    with open(filename, 'r') as file:
+        first_line = file.readline().strip()
+    return first_line
 
-# Prompt for paraphrasing
-prompt = "paraphrase it: \n"
-
-# Combine prompt and abstract
-sequence = prompt + abstract
-
-# Tokenize input text
-inputs = tokenizer(sequence, return_tensors="pt", max_length=1024, truncation=True)
-
-# Generate paraphrased text
-paraphrased_ids = model.generate(**inputs)
-
-# Decode paraphrased text
-paraphrased_abstract = tokenizer.decode(paraphrased_ids[0], skip_special_tokens=True)
-
-# Print paraphrased abstract
-print("\nParaphrased Abstract:")
-print(paraphrased_abstract)
+# Step 2: Use a specified model to generate introduction
+from transformers import pipeline, set_seed
+generator = pipeline('text-generation', model='gpt2')
+set_seed(42)
+title='Lessons learned from the deployment of a high-interaction honeypot'
+output = generator(f"Please generate an introduction for a scientific article titled: {title},", max_length=150, num_return_sequences=1)
+print(output[0])

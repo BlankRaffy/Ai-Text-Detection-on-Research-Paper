@@ -1,896 +1,729 @@
-Posted on 12 Apr 2023  CC-BY 4.0  https://doi.org/10.36227/techrxiv.24708198.v1  e-Prints posted on TechRxiv are preliminary reports that are not peer reviewed. They should not b...Adaptive Reinforcement Learning with LLM-augmented Reward
-Functions
-Alex Place1
-1DB Labs
-December 7, 2023
-Abstract
-Learning in sequential decision making problems can be signicantly aected by the choice of reward function. Although crucial
-for learning success, reward function design remains a complex task, requiring expertise and not always aligned with human
-preferences. Large Language Models (LLMs) oer a promising avenue for reward design through textual prompts that leverage
-the prior knowledge and contextual reasoning of LLMs. Despite their potential, LLM responses lack guarantees and their rea-
-soning abilities are poorly understood. To mitigate potential LLM errors, we introduce an alternative approach: learning a new
-reward function utilizing LLM outputs as auxiliary rewards. This problem is tackled through a bi-level optimization framework,
-showcasing the methods prociency in both optimal reward acquisition and adaptive reward shaping. The proposed approach
-demonstrates robustness and eectiveness, oering a novel strategy for enhancing reinforcement learning outcomes. AAAAAA
-1Adaptive Reinforcement Learning with LLM-augmented Reward
-Functions
-Alex Place
-alplace@deltabluelabs.com
-USA
-ABSTRACT
-Learning in sequential decision making problems can be signifi-
-cantly affected by the choice of reward function. Although crucial
-for learning success, reward function design remains a complex
-task, requiring expertise and not always aligned with human pref-
-erences. Large Language Models (LLMs) offer a promising avenue
-for reward design through textual prompts that leverage the prior
-knowledge and contextual reasoning of LLMs. Despite their poten-
-tial, LLM responses lack guarantees and their reasoning abilities are
-poorly understood. To mitigate potential LLM errors, we introduce
-an alternative approach: learning a new reward function utilizing
-LLM outputs as auxiliary rewards. This problem is tackled through
-a bi-level optimization framework, showcasing the methods pro-
-ficiency in both optimal reward acquisition and adaptive reward
-shaping. The proposed approach demonstrates robustness and ef-
-fectiveness, offering a novel strategy for enhancing reinforcement
-learning outcomes.
-ACM Reference Format:
-Alex Place. 2023. Adaptive Reinforcement Learning with LLM-augmented
-Reward Functions. In Proceedings of the ACM Computing Surveys (ACS 23),
-January, 2023. ACM, New York, NY, USA, 10 pages. https://doi.org/10.1145/
-nnnnnnn.nnnnnnn
-1 INTRODUCTION
-The nature of the reward function is a critical determinant of
-the success of RL methods in solving a task. While specifying
-sparse rewards for tasks might be straightforward, the absence
-of a dense and instructive reward often presents challenges for RL
-algorithms[ 17,25]. On the other hand, rewards that offer frequent
-and effective feedback to track progress can significantly enhance
-the learning process [ 24,39,43], but designing such rewards is far
-from straightforward. Consequently, a substantial body of research
-has focused on reward-shaping and related methods [17, 25, 34 ?].
-The process of constructing reward functions is further com-
-pounded by the difficulty of providing helper rewards from agent
-trajectories or demonstrations, which typically requires domain
-expertise. Furthermore, translating human intuition into concrete
-rewards remains a formidable task, even with the utilization of
-reward-shaping methods. For instance, in many video-games, an
-agent must attentively monitor diverse resources such as health,
-Permission to make digital or hard copies of all or part of this work for personal or
-classroom use is granted without fee provided that copies are not made or distributed
-for profit or commercial advantage and that copies bear this notice and the full citation
-on the first page. Copyrights for components of this work owned by others than the
-author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
-republish, to post on servers or to redistribute to lists, requires prior specific permission
-and/or a fee. Request permissions from permissions@acm.org.
-ACS 23, January, 2023,
-2023 Copyright held by the owner/author(s). Publication rights licensed to ACM.
-ACM ISBN 978-x-xxxx-xxxx-x/YY/MM. . . $15.00
-https://doi.org/10.1145/nnnnnnn.nnnnnnnmana, and prioritize the development of skills and acquisition of
-inventory items [ 37]. This is further exacerbated by the fact that
-human intuition, often falls short in crafting rewards that guide
-an agents learning in a desirable fashion [ 3,18] and often leads to
-reward-hacking.
-In this context, incorporating background knowledge about tasks
-using Large Language Models (LLMs) emerges as a natural solu-
-tion. LLMs have demonstrated significant prior-knowledge based
-reasoning capabilities of human behavior, which allows users to
-articulate a handful of desired behaviors intuitively using natural
-language. LLMs can serve as a source of information to guide the
-reward design process. Finally, these models can also go beyond
-being mere passive information sources and suggest potentially
-valuable behaviors for specific tasks, via in-context learning.
-Nonetheless, embracing LLMs as proxy reward functions intro-
-duces its own set of challenges. While LLM outputs hold promise,
-they are not always guaranteed to be helpful for the given task
-and can even lead to counterproductive outcomes. Moreover, LLMs
-can show surprising biases and behaviours in different contexts.
-Finally, even if the LLMs reasoning is perfect, incorrect instruc-
-tion or state and task-description can lead to errors [ ? ?]. As such
-rewards derived from LLMs might result in suboptimal behavior
-[34?]. To address these complexities, there is a need to develop
-a methodology that harnesses the informative potential of LLM-
-derived rewards while ensuring policy invariance guarantees and
-maintaining safety and robustness in the face of potential errors
-from the LLMs.
-In order to tackle this challenge, we propose an optimal-reward
-learning problem that focuses on adapting an auxiliary reward
-signal to align it with the primary reward. The primary reward
-refers to the underlying true reward of the task. The auxiliary
-reward is provided by an LLM, and is distinct from the primary
-reward. The LLMs output is intended to be utilized as an additional
-signal provided to the agent to speed up learning. Our objective
-is to leverage the valuable guidance offered by the given reward
-function while disregarding any inaccuracies or unhelpful signals
-it may contain.
-This problem lends itself naturally to a bi-level optimization for-
-mulation. The inner level pertains to standard policy optimization
-with a parameterized auxiliary reward function, while the outer
-level revolves around optimizing primary returns. This outer-level
-solver refines the auxiliary reward function such that the optimal
-policy under the auxiliary reward maximizes the primary return.
-Solving this optimization problem is computationally challenging.
-We adopt the implicit gradients technique [ 23], which offers an
-efficient method to compute gradients for the outer-level optimizer.
-We first investigate our methods efficacy for both adaptive re-
-ward shaping and then demonstrate its utility in LLM-augmented
-reinforcement learning.ACS 23, January, 2023, Place et al.
-2 PRELIMINARIES
-We first describe the notations followed in the paper followed by a
-description of and . We also summarize the implicit gradient method
-which is used in this work for the outer optimization via gradient
-based methods.
-2.1 Reinforcement Learning with Learnt
-Rewards
-Notation. A Markov Decision Process (MDP) is specified by a
-tuple(S,A,,,).Sis the state space,Ais the set of actions,
-:SAS[ 0,1]are the transition probabilities, :SA
-[max,max]is the primary reward function,  [0,1]is the
-discount factor1. A policy:S(A), is a function that maps a
-stateto a probability distribution over the action space. At any
-given time step , the agent following policy executes the action
-when observing state , according to the distribution (). For
-brevity, the probability of taking action under()i.e.()()
-will be shortened to (,). The goal in this case is to optimize the
-cumulative discounted primary rewards obtained by the policy. If
-we denote by ,,be the state, action and reward at time ,
-then the objective is given by:
-(,)=E[
-=0(,)] (1)
-Here, we explicitly write as a function of , as we will use the
-same function with a different reward function as well.
-The policy gradient theorem [ 48] provides a way to obtain gra-
-dient estimates of the value (,)via sample runs on the MDP.
-The optimal parameter =argmax(,)can then be obtained
-using gradient based optimization using these estimated gradients.
-The policy gradient is given by:
-(,)=E
-=0log((,))
-=(,)(2)
-Auxiliary Rewards and Reward Shaping. In many applications,
-the objective (,)can be difficult to optimize due to lack of
-strong supervision [ 34]. A natural approach to help training is
-to augment the learning agent with an auxiliary reward function
-which incorporates domain knowledge. Typically, experts often
-design useful helper rewards which can be helpful for the agent by
-providing rewards for the agent to visit a certain state or perform
-an action sequence [ 35]. These helper rewards are added to or sub-
-stituted in place of the primary reward. To ensure, that the new
-reward function does not create behaviour different from the in-
-tended behaviour, Ng et al. [34] suggest a potential-based approach.
-Their key idea is that invariance can be maintained by a potential
-function based auxiliary reward viz. =()(), where
-:SRis a potential function. Some reward shaping proposals
-utilizing the idea of a potential function include potential-based
-advice (PBA) [ 52] and dynamic potential reward shaping (PBRS)
-[9].
-1Often there is an initial state distribution as well, but for our purpose we omit it2.2 Implicit Gradient Method
-Implicit gradient technique allows one to analytically obtain the
-gradient from the resultant of an optimization process directly. A
-particular instance of this technique relevant for the current work
-is that for a optimization problem of the form:
-=argmin
-Prim((),)
-such that
-()=argmin
-Aux(,)(3)
-one can find the total-gradient of as:
-(Prim((),))
-
-
-
-(Aux(,)) 
-
-(Aux(,))1(Prim((),)
-
-|                                                                               {z                                                                               }
-meta
-(4)
-Note that in Equation 4, the total gradient consists of two terms:
-i) is the direct partial derivative of Prim w.r.tand ii) the meta-
-gradient term labeled meta. This term characterizes the change in
-objectivePrim due to the fact that the optimal also is dependent
-on. The reason we call it a meta-gradient is in many meta-learning
-models (for eg. MAML), is equivalent to the initial parameters
-of the meta-model, which is updated to based on the sampled
-tasks ( analogous to optimizing Aux) after which is evaluated
-on a specific task.
-The above result is valuable as it only requires the value of the
-optimalto obtain the gradient wrt , and does not depend on how
-the inner optimization is conducted. In contrast, when the inner
-optimization is conducted via gradient descent, one can use the au-
-tomatic differentiation to backpropagate through the optimization
-(as is frequent in meta-learning applications). It can be proven that
-the two results are identical [ 23]; but when the required hessians
-multiplications can be done efficiently, then the implicit method is
-more scalable. Moreover if the inner optimization is not perfect then
-the backprop through optimization route is dependent on choice
-of optimization, number of steps and other choices. This makes
-further using implicit gradient technique attractive compared to
-choosing hyperparameters for the inner optimization process.
-3 DYNAMIC ADAPTATION OF LLM REWARD
-FUNCTIONS
-3.1 Using LLMs for Reward
-As mentioned earlier, designing useful auxiliary rewards can be
-challenging requiring human expertise and resources. As such, re-
-searchers are now trying to use LLMs for the purpose of designing
-rewards for RL agents [].The LLM can function as an in-context
-learner, a knowledge-base for queries, or an oracle suggesting ac-
-tions, goals, and sub-tasks. We describe a versatile framework for
-employing an LLM, with the specific intention of general applicabil-
-ity in all aforementioned models; as such, we refrain from delvingAdaptive Reinforcement Learning with LLM-augmented Reward Functions ACS 23, January, 2023,
-into the nuances of the exact prompt structure or prompt-tuning
-methods.
-Mathematically, the LLM operates as a function, denoted as
- :, where signifies a carefully selected alpha-
-bet. Operatively, the LLM takes as input a composite text com-
-prising distinct components. Foremost is the general prompt, a
-user-provided string forming part of the LLMs instructions. Subse-
-quently, a contextual string augments this input, equipping the LLM
-with additional information for reasoning. This contextual portion
-accommodates various elements, such as target state descriptions,
-task elucidations, or demonstrations. This part of the input can also
-contain examples and outputs for using the LLM as an in-context
-learner. The third component contains the current status of the
-agent, encompassing descriptions of the current state and actions.
-These descriptions are sourced either from a captioner model or
-by directly learning state-action embeddings. This section may
-also encompass information concerning recent state-action pairs.
-Lastly, the inquiry component prompts the LLM to generate an
-output string. These queries can range from specific action-related
-questions (Should you take action A?) to broader queries about
-sub-goals or sequences of actions (Should we attempt to reach the
-door?).
-Along with the LLM, we have a score function that takes both
-the LLMs output and input, yielding a numeric value within the
-interval [0, 1] that serves as the reward. This value can be obtained
-in different ways including the probability of specific tokens (yes
-or no) as indicated by LLM logits, or through a similarity score
-between LLMs output with particular state-action descriptions
-(either via embedding similarity or string similarity). This resulting
-numeric value is subsequently employed as the auxiliary reward,
-LLM. This additional reward function LLMis then included in the
-optimization objective for the agent (,+LLM)instead of the
-standard RL objective of (,).
-Formally we include a new reward function such that the
-objective to optimize is now (,+LLM).
-3.2 Learning Auxiliary Rewards
-When the reward function, denoted as , exhibits sparsity or lacks
-informative qualities, optimizing the objective function (,)be-
-comes challenging due to the absence of robust supervision [ 34]. To
-address this limitation, a natural approach is to introduce auxiliary
-rewards, denoted as LLM, resulting in an updated objective function
-to optimize: (,+LLM). However, the inclusion of such auxil-
-iary rewards can significantly impact the optimal solutions of the
-objective function and potentially cause the agent to learn a policy
-that deviates from the desired behavior [ 34]. While potential bases
-methods, can retain policy invariance, such methods have inherent
-limitations [ 25,51]. Furthermore designing rewards can demand
-substantial expertise in translating intuitive concepts into numeri-
-cal reward structures [ 21,43]. To circumvent these challenges, an
-alternative approach is the adoption of the intrinsic optimal rewards
-framework [ 42,44], which involves simultaneously learning a new
-reward function while optimizing a policy based on these rewards.
-By integrating reward learning and policy optimization, one can
-enhance the agents ability to discover the desired behavior more
-effectively [57].Building on this idea of learning intrinsic rewards, we want to
-change the auxiliary rewards LLMin such a way that learning a
-policyusing them, improves the primary the primary objective
-(,). If we parameterize the auxiliary rewards as , this can
-be written as the following bi-level objective:
-=argmax
-((),)s.t.()=argmax
-(,)
-Intuitivelyis learnt to improve via the rewards Bechtle et al.
-[4], Zheng et al. [57] solve this problem via alternate maximization
-ofand, whereis updated o improve (,), whileis updated
-to improve ((),). However their method unrolls the inner
-optimization only a few steps. We instead are going to use the
-implicit gradient method to directly obtain the "meta-gradients" of
-.
-Reward Shaping with Auxiliary Rewards. Often experts can de-
-sign useful helper rewards which can be helpful for the agent by
-providing rewards for the agent to visit a certain state or perform
-an action sequence [ 35]. Such helper rewards can be made available
-to. Similarly the primary rewards can also be used in . In fact,
-Hu et al. [19] explicitly consider learning state based weights of
-auxililary helper rewards; and Zheng et al. [57]optimize a combina-
-tion of intrinsic/auxiliary rewards and extrinsic/primary rewards.
-In this work we use the LLM specified auxiliary rewards LLMand
-give a generic form for and as:
-=((,)LLM(,)+(,))
-.
-Remark 1. Note that while we specify as a function of only ,;
-in principle it can also be dependent on the LLM output and/or its
-embeddings. The description above used as an additional reward 
-which the model can learn independent of LLM, but in practice we
-set it to 0.
-Objective regularization. An ideal reward function is not only
-dense and instantaneous, but may also need to guide the agent
-towards long term goals. However, if one uses high discounting
-factors, this can be challenging as the agent can be very myopic.
-Since, we use a bounded reward scenario, it is helpul to allow for
-adjusting the discount function (0,1). The latter allows our
-method to modify temporal distribution of auxiliary rewards as
-well. Putting it all together we can now specify the exact objective
-we use for learning auxiliary rewards.
-(,)=(,)+(,)(,)+(,)
-=argmax
-((),,)||2+(||2)
-s.t.()=argmax
-(,,)(5)
-whereandare hyperparameters and is the sigmoid function.
-3.3 Estimation of Implicit Gradient
-By Equation 4, the implicit gradient of is given by:
-(,)=2
-,(,))
-|        {z        }
-
-2
-,(,)
-|       {z       }
-
-1
-(,) (6)ACS 23, January, 2023, Place et al.
-where2
-,and2
-,refers to the second order derivatives.
-For deterministic computation (such as in supervised learning),
-all the partial derivatives in Equation equation 6 are exactly com-
-putable by automatic differentiation. However this is not so for
-the reinforcement learning case. As such we need to find efficient
-ways to compute these terms, ideally in the same way as the stan-
-dard policy gradient is computed. Notice that the first term in the
-above expression is just the partial gradient for with respect to
-policy parameters. As such this can be replaced by the usual policy
-gradient expression (Equation 2). Next one also observes that the
-same policy gradient terms also appears inside the second order
-derivatives. Hence if one can compute the partials of the the pol-
-icy gradient with respect to the parameters ,, one can use the
-corresponding expressions to compute the "meta-gradient".
-Directly evaluating the meta-gradient in Equation 6 requires
-computing the matrices corresponding to the second-order deriva-
-tives. As mentioned before, this is not straightforward in the RL
-setting. Secondly, even when these matrices are computable, it can
-be prohibitively expensive to compute the inverse Hessian. Research
-in numerical methods (Jorge Nocedal and Stephen Wright., Pearl-
-mutter) has led to various proposals for efficient inverse Hessian
-vector products (iHVP) including methods like conjugate gradient
-or Lanczos iteration. However, in our preliminary experiments with
-this idea, the cost of the Hessian-vector products is still very high.
-Furthermore as the Pearlmutter HVP trick uses gradient evaluations
-and the policy gradient is quite stochastic, the resulting iHVP oper-
-ation is of limited utility. As such we take another approach, using
-the power series expansion of the inverse matrix (also known as the
-von-Neumann approximation). For a matrix , with eigenvalues
-()( 0,1), the inverse is given by:
-1=
-=0()=+()+()2+..
-Using this series, one can compute 1via the Chhebyshev-
-Richardson iteration: 0=and+1=()+
-Let us assume that the Hessian is positive definite, with an
-operator norm bound ||||<, and let<1/be the condi-
-tioner step, then we use the Richardson iteration with following
-substitution, =,=Prim, which leads to the following
-iterative procedure which we run for steps.
-+1=()+Prim
-=+Prim
-=+Prim((Aux))
-+Prim+[Aux()Aux()]
-|                                 {z                                 }
-
-Note that the term above is just the gradient of the difference
-of expected return, at slightly perturbed policy and. As such
-unbiased estimate of this term can be obtained via standard policy
-gradient (Equation 2). At the end of this process, we have 
-1
-. To compute the meta-gradient we need to multiply this
-with, for which we use the Pearlmutter trick. Once again, we
-would need to evaluate the gradient of the return for which we will
-use the policy gradient equation.Algorithm 1 Algorithm for computing total gradient((),)
-
-Require: LLm rewards LLM,
-Conditioner ,
-No. of Iterations ,
-Parameter,
-
-=(Prim(,)
-at=
-00
-foriterations do
-Aux()Aux()
-+1++
-
-end for
-
-Aux(+)Aux()
-
-
-Return vector 
-Remark 2. Note that the gradients with respect to are to be
-computed from the optimized value of . As such an inefficiency
-arises from the need to rerun the new policy ()to compute the
-required gradients. One can improve the efficiency by reusing the data
-generated for estimating the inner optimization gradient (i.e using
-and do off-policy correction for estimation of the gradients at .
-A similar correction is used when doing policy gradient evaluation
-for the Hessian multiplications.
-4 EXPERIMENTS
-In this section, we present the results from our experiments. We
-conducted three groups of experiments. First we do exploratory
-experiments on a simple environment ( cartpole ) to explore how
-our model works in presence of beneficial, irrelevant and harmful
-auxiliary rewards. Next, we
-4.1 Exploratory Experiments
-In these experiments how and whether our method is robust to
-random and actively harmful helper rewards. For this we conduct
-experiments in the cartpole environment. For the harmful rewards
-case, we give the external reward of 0.1when the deviation angle
-of the pole becomes small. In the second experiment, we choose a
-random reward function with values in [1,1].
-The goal of the two tests is to show that our methods can identify
-the harmful shaping rewards and useless shaping rewards and
-downweigh or negate them. In Figure 1(a), we plot the performance
-of the different algorithms with the actively negative reward on
-both discrete as well as continuous cartpole. Similarly in Figure
-1(b), we plot the performance of the different algorithms with the
-random reward on both environments. Since it is meaningless to
-provide the result of a standard algorithm such as PPO with these
-rewards, we plot the methods which use these rewards as advice
-viz DPBA [17], BIPARS[19] and our method.
-The results illustrate distinct behaviors between the different
-shaping methods. DPBA struggles with random and detrimental
-rewards, which is expected given its goal of using helpful rewards.
-Both our proposed method and BIPARS exhibit adaptability to the
-mis-specified auxiliary rewards. In the first experiment, both ourAdaptive Reinforcement Learning with LLM-augmented Reward Functions ACS 23, January, 2023,
-20 40 60 80050100150200Continuous Cartpole
-Ours
-BIPARS
-DPBA
-20 40 60 80 100050100150200Discrete Cartpole
-Ours
-BIPARS
-DPBA
-(a) Experiment with harmful rewards
-20 40 60 8020406080100120140160Continuous Cartpole
-Ours
-BIPARS
-DPBA
-20 40 60 80406080100120140Discrete Cartpole
-Ours
-BIPARS
-DPBA
-(b) Experiment with random rewards
-Figure 1: Return curves for all methods on discrete ad continuous cartpole with a) Harmful rewards and b) Random rewards.
-The x-axis is time steps durin training. The y-axis is the moving window of average return.
-method and BIPARS effectively identify harmful rewards and trans-
-form them into advantageous ones. Additionally, they demonstrate
-the capability to discern learn even with random rewards. Notably,
-our approach showcases a marginal advantage over BIPARS, which
-can be attributed to the inherent strengths of implicit gradient
-methods when faced with imperfect inner optimization.
-4.2 Learning to Utilize LLM Rewards
-Description. We test our LLM based reward learning method
-in the Crafter environment, a 2D version of Minecraft [ 16]. Like
-Minecraft, Crafter is a procedurally generated and partially ob-
-servable world that enables collecting and creating a set of arti-
-facts organized along an achievement tree which lists all possible
-achievements and their respective prerequisites. The environment
-is a grid-world features top-down observation and discrete action
-space of size 17. The agents performance is measured in terms of
-its health and the number of achievements it is able to unlock in
-an episode [16]
-For our LLM, we employ GPT, and use the prompts and proce-
-dures suggested by Du et al. [12] for generating rewards. Specifi-
-cally, the LLM-generated text is used to form a set of potential goals
-which are used for reward determination. One major difference in
-the experimental setting is that while Du et al. [12] use the LLM in
-a pretraining procedure for generating intrinsic rewards. Instead,
-we use these rewards for LLMwhich forms a components of the
-auxiliary reward to optimize during the inner optimization.Result. Figure 2 offers a comparative analysis of our method,
-against ELLM [ 12], RND [ 5], APT [ 28] and standard PPO [ 40]. RND
-[5] and APT[ 28] are knowledge-based intrinsic motivation (IM)
-method that rewards the agent for novelty. ELLM [ 12] on the other
-hand is close to our motivation, and rewards the agent for achieving
-the goals suggested by the LLM. During policy learning, the IM
-rewards are combined with random exploration in order for the
-agent to solve the task. We instead provide an LLM based reward
-function into the auxiliary reward model, which updates itself
-over the episodes. As can be from the Figure, our method matches
-or outperforms all other algorithms, demonstrating its efficacy
-in utilizing the LLM generated signals. Note that while the APT
-and RND are primarily an intrinsic motivation (IM) methods, they
-are very helpful in achieving high scores in Crafter. Standard RL
-algorithms require significantly more time and often fail to unlock
-many achievements [ 16] in crafter environment. Thus while these
-methods are not necessarily the most optimal baselines, improving
-over these methods highlights the potential of our proposal.
-5 RELATED WORK
-Meta Learning. Meta-learning broadly refers to the idea of learn-
-ing to learn and has been for tasks like multi-task and structural
-transfer [ 15,33], adaptive learning [ 31,32] and other RL applica-
-tions [ 36,55]. A common aspect in all these applications is to joint
-learning and adaptation of the model. This allows the model to learn
-suitable parameters which improve further learning [ 13,22,49].
-As such the ideas in this work are closely related to meta-learning.
-As rewards are the RL analog of training objectives in supervisedACS 23, January, 2023, Place et al.
-0 5 10 15 20
-Env Steps0.00.20.40.60.81.0 Place Table
-ELLM
-PPO
-APT
-RND
-Ours
-0102030405060708090
-Env Steps0.00.20.40.60.81.0 Attack Cow
-ELLM
-PPO
-APT
-RND
-Ours
-0102030405060708090
-Env Steps0.00.20.40.60.81.0 Wood Sword
-ELLM
-PPO
-APT
-RND
-Ours
-0 20 40 60 80 100
-Env Steps0.00.20.40.60.81.0 Mine Stone
-ELLM
-PPO
-APT
-RND
-Ours
-Figure 2: Completion performance of various methods for different tasks in the Crafter environment. Each line shows the
-mean across 10 seeds with shaded area showing the standard deviations. The primary reward is the standard sparse reward.
-The x-axis is time steps durin training. The y-axis is the moving window of success rate.
-learning, learning a new reward function is similar to the idea of
-learning parameterized objectives (in our case ) explored in su-
-pervised learning [ 47]. Earlier works such as that of Huang et al.
-[20], Wu et al. [53] have attempted to learn training losses for su-
-pervised learning with neural networks; and our bi-level learning
-framework is the RL analog of their proposed framework.
-Implicit Gradients The method of implicit gradients [ 10,23]
-naturally occurs whenever one deals with hierarchical optimization.
-They provide an analytical technique for differentiable optimization
-[50], and so have been used for building such layers in neural-
-networks [ 1,2]. They have also been used for few-shot learning
-[26, 38] and automatic hyper-parameter optimization [29].
-Learning Rewards Recent advancements in reinforcement learn-
-ing research have embraced the fundamental meta-learning frame-
-work for acquiring knowledge about functions concerning trajec-
-tory returns [ 56], TD learning targets [ 55], and update rules [ 22,36].
-Additionally, meta-learning has also been employed by Bechtle et al.
-[4]to learn novel rewards for multi-task reinforcement learning
-applications. Drawing inspiration from the optimal reward frame-
-work [ 27,41,42,45], our work builds upon this foundation. The core
-framework of learning within a multi-level optimization paradigm
-explored in our study bears striking similarities to the approaches
-pursued by Zheng et al. [57] and Hu et al. [19]. In a similar vein
-to the literature on learnable losses [ 4,53], these works treat the
-inner and outer optimization steps as computations within a uni-
-fied graph, enabling the backpropagation of gradients through the
-truncated optimization process. However, it is important to note
-that these approaches suffer from an inadequate characterization of
-the model and optimizee parameters. Unlike in supervised learning,
-the gradients in this context are highly stochastic and necessitate
-extensive unrolling over numerous time steps to capture the true
-dynamics of the optimization process.
-Bilevel Optimization. Multi-stage optimization has a long-history
-in optimization and operations research, both for deterministic
-(Bertsimas & Caramanis, 2010) and stochastic objectives (Pflug &
-Pichler, 2014). In general, these problems exhibit NP-hardness if the
-objectives are general non-convex functions. Therefore, much work
-in this area restricts focus to classes of problems, such as affine
-(Bertsimas & Caramanis, 2010; Bertsimas et al., 2010). From both the
-mathematical optimization community (Bracken & McGill, 1973)
-and algorithmic game theory (Von Stackelberg, 2010), extensive
-interest has been given to specifically two-stage problems. A non-
-exhaustive list contains the following works (Ghadimi & Wang,
-2018b; Yang et al., 2021; Khanduri et al., 2021; Li et al., 2022; Ji &Liang, 2022; Huang et al., 2022). Predominately, one these works do
-not consider that either stage is a MDP, and therefore while some
-of the algorithmic strategies are potentially generalizable to the RL
-agent alignment problem, they are not directly comparable to the
-problem studied her
-Inverse RL and Behavioral Cloning. Implicitly contained in the RL
-with preferences framework is the assumption that humans should
-design a reward function to drive an agent towards the correct
-behavior through its policy optimization process. This question of
-reward design has also been studied through an alternative lens
-in which one provides demonstrations or trajectories, and seeks
-to fit a reward function to represent this information succinctly.
-This class of problems, broadly referred to as inverse RL (Ng et
-al., 2000), has a long history in experimentally driven RL research
- see (Arora & Doshi, 2021) for a survey. Rather than design a
-reward function as an intermediary between demonstrations and
-policy optimization, behavioral cloning directly seeks to mimic the
-behavior of demonstration information (Torabi et al., 2018; Wen et
-al., 2020). In doing so, it is able to sidestep some of the questions of
-whether a reward function can be well-posed for a given collection
-of trajectories
-Reward Shaping and Partially Correct rewards. Reward shaping
-is a common approach to handle partially correct rewards, by mod-
-ifying the provided partial reward function [ 30] Early research on
-reward shaping [ 11,39] primarily focused on the design of a shaping
-reward function. However, these approaches were essentially de-
-signed via trial-and-error required lot of expertise. Another crucial
-aspect in these endeavors was the potential impact of shaping re-
-wards on the optimal policy. Building upon this, Ng et al. [34] made
-significant contributions by demonstrating that potential-based re-
-ward shaping preserves policy optimality. An innovative approach
-known as dynamic potential-based advice (DPBA), introduced by
-Harutyunyan et al. [17], offers a direct means of incorporating
-external auxiliary rewards by transforming them into potentials.
-Research has shown the effectiveness of potential-based reward
-shaping (PBRS) in numerous applications [ 9,14?]. Works such as
-that of Laud & DeJong [25], Wiewiora [51], have outlined theoreti-
-cal limitations of these potential-based shaping techniques. Other
-approaches to automate reward shaping such as population-based
-method [ 21] and automatic reward shaping [ 7,19] have also been
-developed.
-Other works have used the key ideas of reward shaping for multi-
-agent reward shaping [ 8,46], belief shaping [ ?], ethics shaping [ 54],
-and meta learning rewards [ 57,58]. Similar to this work, JaderbergAdaptive Reinforcement Learning with LLM-augmented Reward Functions ACS 23, January, 2023,
-et al. [21] propose a population based optimization process for
-learning intrinsic rewards and achieve spectacular performance on
-Quake III.
-REFERENCES
-[1]Akshay Agrawal, Brandon Amos, Shane Barratt, Stephen Boyd, Steven Dia-
-mond, and Zico Kolter. Differentiable convex optimization layers. arXiv preprint
-arXiv:1910.12430 , 2019.
-[2]Brandon Amos and Zico Kolter. Optnet: Differentiable optimization as a layer in
-neural networks. In International Conference on Machine Learning , 2017.
-[3]John Asmuth, Michael L Littman, and Robert Zinkov. Potential-based shaping in
-model-based reinforcement learning. In AAAI , pp. 604609, 2008.
-[4]Sarah Bechtle, Yevgen Chebotar, Artem Molchanov, Ludovic Righetti, Franziska
-Meier, and Gaurav S Sukhatme. Meta-learning via learned loss. 2019.
-[5]Yuri Burda, Harrison Edwards, Amos Storkey, and Oleg Klimov. Exploration by
-random network distillation. arXiv preprint arXiv:1810.12894 , 2018.
-[6]Bruce Christianson. Automatic hessians by reverse accumulation. IMA Journal
-of Numerical Analysis , 1992.
-[7]Rati Devidze, Goran Radanovic, Parameswaran Kamalaruban, and Adish Singla.
-Explicable reward design for reinforcement learning agents. Advances in Neural
-Information Processing Systems , 34:2011820131, 2021.
-[8]Sam Devlin and Daniel Kudenko. Theoretical considerations of potential-based
-reward shaping for multi-agent systems. In Proceedings of the 10th International
-Conference on Autonomous Agents and Multiagent Systems (AAMAS11) , pp. 225
-232, 2011.
-[9]Sam Michael Devlin and Daniel Kudenko. Dynamic potential-based reward
-shaping. In Proceedings of the 11th International Conference on Autonomous
-Agents and Multiagent Systems (AAMAS12) , pp. 433440, 2012.
-[10] Asen L Dontchev and R Tyrrell Rockafellar. Implicit functions and solution
-mappings , volume 543. Springer, 2009.
-[11] Marco Dorigo and Marco Colombetti. Robot shaping: Developing autonomous
-agents through learning. Artificial intelligence , 71(2):321370, 1994.
-[12] Yuqing Du, Olivia Watkins, Zihan Wang, Cdric Colas, Trevor Darrell, Pieter
-Abbeel, Abhishek Gupta, and Jacob Andreas. Guiding pretraining in reinforce-
-ment learning with large language models. arXiv preprint arXiv:2302.06692 , 2023.
-[13] Luca Franceschi, Michele Donini, Paolo Frasconi, and Massimiliano Pontil. For-
-ward and reverse gradient-based hyperparameter optimization. In Proceedings of
-the 34th International Conference on Machine Learning-Volume 70 , pp. 11651173.
-JMLR. org, 2017.
-[14] Marek Grzes and Daniel Kudenko. Learning potential for reward shaping in
-reinforcement learning with tile coding. In Proceedings of the AAMAS 2008
-Workshop on Adaptive and Learning Agents and Multi-Agent Systems (ALAMAS-
-ALAg 2008) , pp. 1723, 2008.
-[15] Abhishek Gupta, Russell Mendonca, YuXuan Liu, Pieter Abbeel, and Sergey
-Levine. Meta-reinforcement learning of structured exploration strategies. In
-Advances in Neural Information Processing Systems , pp. 53025311, 2018.
-[16] Danijar Hafner. Benchmarking the spectrum of agent capabilities. arXiv preprint
-arXiv:2109.06780 , 2021.
-[17] Anna Harutyunyan, Sam Devlin, Peter Vrancx, and Ann Nowe. Expressing
-arbitrary reward functions as potential-based advice. In Proceedings of the 29th
-AAAI Conference on Artificial Intelligence (AAAI15) , pp. 26522658, 2015.
-[18] Mark K Ho, Fiery Cushman, Michael L Littman, and Joseph L Austerweil. People
-teach with rewards and punishments as communication, not reinforcements.
-Journal of Experimental Psychology: General , 148(3):520, 2019.
-[19] Yujing Hu, Weixun Wang, Hangtian Jia, Yixiang Wang, Yingfeng Chen, Jianye
-Hao, Feng Wu, and Changjie Fan. Learning to utilize shaping rewards: A new
-approach of reward shaping. Advances in Neural Information Processing Systems ,
-2020.
-[20] Chen Huang, Shuangfei Zhai, Walter Talbott, Miguel Bautista Martin, Shih-Yu
-Sun, Carlos Guestrin, and Josh Susskind. Addressing the loss-metric mismatch
-with adaptive loss alignment. In International Conference on Machine Learning .
-PMLR, 2019.
-[21] Max Jaderberg et al. Human-level performance in multiplayer games with
-population-based rl. 2019.
-[22] Louis Kirsch, Sjoerd van Steenkiste, and Jrgen Schmidhuber. Improving gener-
-alization in meta reinforcement learning using learned objectives. arXiv preprint
-arXiv:1910.04098 , 2019.
-[23] Steven George Krantz and Harold R Parks. The implicit function theorem: history,
-theory, and applications . Springer Science & Business Media, 2002.
-[24] Guillaume Lample and Devendra Singh Chaplot. Playing fps games with deep
-reinforcement learning. In Proceedings of the 31st AAAI Conference on Artificial
-Intelligence (AAAI17) , pp. 21402146, 2017.
-[25] Adam Laud and Gerald DeJong. The influence of reward on the speed of reinforce-
-ment learning: An analysis of shaping. In Proceedings of the 20th International
-Conference on Machine Learning (ICML03) , pp. 440447, 2003.[26] Kwonjoon Lee, Subhransu Maji, Avinash Ravichandran, and Stefano Soatto. Meta-
-learning with differentiable convex optimization. In Proceedings of the IEEE/CVF
-Conference on Computer Vision and Pattern Recognition , pp. 1065710665, 2019.
-[27] Richard L Lewis, Satinder Singh, and Andrew G Barto. Where do rewards come
-from? In Proceedings of the International Symposium on AI-Inspired Biology , pp.
-26012606, 2010.
-[28] Hao Liu and Pieter Abbeel. Behavior from the void: Unsupervised active pre-
-training. Advances in Neural Information Processing Systems , 34:1845918473,
-2021.
-[29] Jonathan Lorraine, Paul Vicol, and David Duvenaud. Optimizing millions of hy-
-perparameters by implicit differentiation. In International Conference on Artificial
-Intelligence and Statistics , pp. 15401552. PMLR, 2020.
-[30] Ofir Marom and Benjamin Rosman. Belief reward shaping in reinforcement
-learning. In Proceedings of the AAAI conference on artificial intelligence , volume 32,
-2018.
-[31] Franziska Meier, Daniel Kappler, and Stefan Schaal. Online learning of a mem-
-ory for learning rates. In 2018 IEEE International Conference on Robotics and
-Automation (ICRA) , pp. 24252432. IEEE, 2018.
-[32] Russell Mendonca, Abhishek Gupta, Rosen Kralev, Pieter Abbeel, Sergey Levine,
-and Chelsea Finn. Guided meta-policy search. arXiv preprint arXiv:1904.00956 ,
-2019.
-[33] Luke Metz, Niru Maheswaranathan, Brian Cheung, and Jascha Sohl-Dickstein.
-Learning unsupervised learning rules. In International Conference on Learning
-Representations , 2019. URL https://openreview.net/forum?id=HkNDsiC9KQ.
-[34] Andrew Y Ng, Daishi Harada, and Stuart Russell. Policy invariance under reward
-transformations: Theory and application to reward shaping. In Icml, 1999.
-[35] Scott Niekum, Andrew G Barto, and Lee Spector. Genetic programming for
-reward function search. IEEE Transactions on Autonomous Mental Development ,
-2010.
-[36] Junhyuk Oh, Matteo Hessel, Wojciech M Czarnecki, Zhongwen Xu, Hado van
-Hasselt, Satinder Singh, and David Silver. Discovering reinforcement learning
-algorithms. arXiv preprint arXiv:2007.08794 , 2020.
-[37] OpenAI. Openai five. https://blog.openai.com/openai-five/, 2018.
-[38] Arvind Rajesvaran, Chelea Finn, Sham Kakade, and Sergey Levin. Meta-learning
-with implicit gradients. 2019.
-[39] Jette Randlv and Preben Alstrm. Learning to drive a bicycle using reinforcement
-learning and shaping. In Proceedings of the 15th International Conference on
-Machine Learning (ICML98) , pp. 463471, 1998.
-[40] John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
-Proximal policy optimization algorithms. arXiv:1707.06347 , 2017.
-[41] Satinder Singh, Richard L Lewis, Andrew G Barto, and Jonathan Sorg. Intrin-
-sically motivated reinforcement learning: An evolutionary perspective. IEEE
-Transactions on Autonomous Mental Development , 2(2):7082, 2010.
-[42] Satinder P. Singh, Andrew G. Barto, and Nuttapong Chentanez. Intrinsically
-motivated reinforcement learning. In Advances in Neural Information Processing
-Systems 17 (NIPS04) , pp. 12811288, 2004.
-[43] Shihong Song, Jiayi Weng, Hang Su, Dong Yan, Haosheng Zou, and Jun Zhu.
-Playing fps games with environment-aware hierarchical reinforcement learning.
-InProceedings of the 28th International Joint Conference on Artificial Intelligence
-(AAAI19) , pp. 34753482, 2019.
-[44] Jonathan Sorg, Richard L Lewis, and Satinder Singh. Reward design via online
-gradient ascent. Advances in Neural Information Processing Systems , 2010.
-[45] Jonathan Sorg, Satinder Singh, and Richard L Lewis. Optimal rewards versus
-leaf-evaluation heuristics in planning agents. In Twenty-Fifth AAAI Conference
-on Artificial Intelligence , 2011.
-[46] Fan-Yun Sun, Yen-Yu Chang, Yueh-Hua Wu, and Shou-De Lin. Designing non-
-greedy reinforcement learning agents with diminishing reward shaping. In
-Proceedings of the 2018 AAAI/ACM Conference on AI, Ethics, and Society (AIES
-2018) , pp. 297302, 2018.
-[47] Flood Sung, Li Zhang, Tao Xiang, Timothy Hospedales, and Yongxin Yang. Learn-
-ing to learn: Meta-critic networks for sample efficient learning. arXiv preprint
-arXiv:1706.09529 , 2017.
-[48] Richard S Sutton, David A McAllester, Satinder P Singh, and Yishay Mansour.
-Policy gradient methods for reinforcement learning with function approximation.
-InAdvances in Neurips , 2000.
-[49] Sebastian Thrun and Lorien Pratt. Learning to learn . Springer Science & Business
-Media, 2012.
-[50] Marin Vlastelica, Anselm Paulus, Vt Musil, Georg Martius, and Michal Rolnek.
-Differentiation of blackbox combinatorial solvers. arXiv:1912.02175 , 2019.
-[51] Eric Wiewiora. Potential-based shaping and q-value initialization are equivalent.
-J. Artif. Intell. Res. , 19:205208, 2003.
-[52] Eric Wiewiora, Garrison W Cottrell, and Charles Elkan. Principled methods for
-advising reinforcement learning agents. In Proceedings of the 20th International
-Conference on Machine Learning (ICML03) , pp. 792799, 2003.
-[53] Lijun Wu, Fei Tian, Yingce Xia, Yang Fan, Tao Qin, Jianhuang Lai, and Tie-Yan
-Liu. Learning to teach with dynamic loss functions. arXiv:1810.12081 , 2018.
-[54] Yueh-Hua Wu and Shou-De Lin. A low-cost ethics shaping approach for designing
-reinforcement learning agents. In Proceedings of the 32nd AAAI Conference onACS 23, January, 2023, Place et al.
-Artificial Intelligence (AAAI18) , pp. 16871694, 2018.
-[55] Zhongen Xu, Hado Hasselt, Matteo Hessel, Junyuk Oh, Satinder Singh, and David
-Silver. Metagradient reinforcement learning with objective discovered online,
-2020.
-[56] Zhongwen Xu, Hado van Hasselt, and David Silver. Meta-gradient reinforcement
-learning. arXiv preprint arXiv:1805.09801 , 2018.
-[57] Zeyu Zheng, Junhyuk Oh, and Satinder Singh. On learning intrinsic rewards for
-policy gradient methods, 2018.
-[58] Haosheng Zou, Tongzheng Ren, Dong Yan, Hang Su, and Jun Zhu. Reward
-shaping via meta-learning. arXiv preprint , arXiv:1901.09330, 2019.Adaptive Reinforcement Learning with LLM-augmented Reward Functions ACS 23, January, 2023,
-A IMPLICIT GRADIENT
-Consider the following bi-level objective
-=argmin
-Prim((),)s.t.()=argmin
-Aux(,) (7)
-Here we have explicitly added the dependence of due to the opimization process on . One approach to find the optimal is to find
-the partial derivative of L((()),val)with respect to the , and use gradient descent based optimization. The corresponding partial
-derivative is given by
-
-Prim((),)=
-(Prim((),))|
-|                        {z                        }
-
-
-|{z}
-+
-Prim((),) (8)
-Considering that the inner optimization is finished we have direct access to ()and the first term in the previous equation can be
-computed directly. The second term is a more challenging to compute.
-Implicit gradient method computes this gradient via differentiation of the optimality criteria of the inner optimization. The optimality
-criteria states that the gradient of the inner loss at the optima ()is zero i.e.
-Aux(,)=0
-(Aux(,))=0 (9)
-By differentiating this with respect to one gets:
-
-
-Aux(,)=0
-
-(Aux(,))+
-
-(Aux(,))
-=0 (10)
-
-=
-
-(Aux(,))1
-
-(Aux(,))
-(11)
-Putting this back in Equation 8 we get
-
-Prim((),)=(Prim((),)
-
-
-(Aux(,))1
-
-(Aux(,))
-+(Prim((),))
-(12)
-Remark 3. Notice that in Equation 12, the inverse of second order derivative i.e. a Hessian needs to be computed which can be expensive. In
-practice, approximations via Conjugate Gradient, Shermon-Morrison Identity, diagonalized Hessian or von-Neumann Expansion could be used.
-For our structure prediction experiments we used the von-Neumann approximation while for reinforcement learning we used the diagonal Hessian.
-A.1 Approximation for inverse Hessian
-von Neumann Approximation. The von Neumann series for inverse of matrix is given by:
-1=
-=0()1
-=0()
-This is convergent for matrices with singular values less than 1. An approximation is obtained by truncating the series. While it is invalid
-for general matrices, this approximation has been shown useful when used in the context of gradient based methods [ 29]. Note that the
-first order approximation is linear in and along with automatic differentiation methods allows easy and efficient multiplication with any
-vector by the Hessian-vector product method [ 6]. To compute the Hessian-vector product (HVP) with the vector , one simply changes
-the parameters by (for some small ) and computes the gradient. The difference between the two gradient when scaled equals the HVP.
-Furthermore this also holds when multiplying with the cross-Hessian , the same trick can be used once again. For further details refer
-to Christianson [6]
-Diagonal Approximation. We use the following diagonal approximation for the matrix =()and.
-=ED
-=0((,)((,)
-
-(,)
-
-whereis the Hadamard product. Similarly is approximated as ()where:
-=ED
-=0((,)
-
-(,)
-ACS 23, January, 2023, Place et al.
-B REWARD LEARNING
-Algorithm 2 Implicit Gradient for Reward Learning
-Require: Training DataDinit, Execution Window 
-DD init
-Sample,randomly
-=0
-
-while TRUE do
-
-whilenot converged do
-Sample trajectories B from D
-Compute policy gradient via Equation 2
-
-end while
-
-D2={}
-forT iterations do
-Generate trajectory by executing 
-D2D 2{}
-end for
-DD 2D
-Compute meta gradient from Equation 6
-
-ifconverged and converged break
-end while
+Lessons learned from the deployment of a high-interaction honeypot 
+ 
+ 
+E. Alata1, V. Nicomette1, M. Kaniche1, M. Dacier2, M. Herrb1 
+1LAAS-CNRS, University of Toulouse, 7 Avenue du Colonel Roche, 31077 Toulouse Cedex 4, France 
+2Eurcom, 2229 Route des Crtes, BP 193, 06904 Sophia Antipolis Cedex, France 
+{alata, nicomette, kaaniche, herrb}@laas.fr; dacier@eurecom.fr 
+ 
+ 
+Abstract 
+ 
+This paper presents an experimental study and the lessons 
+learned from the observation of the attackers when logged on a 
+compromised machine. The results are based on a six months 
+period during which a controlled experiment has been run with 
+a high interaction honeypot. We correlate our findings with 
+those obtained with a worldwide distributed system of low-
+interaction honeypots.  
+ 
+1. Introduction 
+ 
+During the last decade, several initiatives have been 
+developed to monitor and collect real world data about 
+malicious activities on the Internet, e.g., the Internet 
+Motion Sensor project [1], CAIDA [2] and Dshield [3]. The 
+CADHo project [4] in which we are involved is 
+complementary to these initiatives and is aimed at: 
+ deploying a distributed platform of honeypots [5] that 
+gathers data suitable to analyze the attack processes 
+targeting a large number of machines on the Internet; 
+ validating the usefulness of this platform by carrying out 
+various analyses, based on the collected data, to 
+characterize the observed attacks and model their 
+impact on security. 
+A honeypot is a machine connected to a network but 
+that no one is supposed to use. If a connection occurs, it 
+must be, at best an accidental error or, more likely, an 
+attempt to attack the machine.  
+The first stage of the project focused on the 
+deployment of a data collection environment (called 
+Leurr.com [6]) based on low-interaction honeypots. As 
+of today, around 40 honeypot platforms have been 
+deployed at various sites from academia and industry in 
+almost 30 different countries over the five continents. 
+Several analyses and interesting conclusions have been 
+derived based on the collected data as detailed e.g., in 
+[4,5,7-9]. Nevertheless, with such honeypots, hackers can 
+only scan ports and send requests to fake servers without 
+ever succeeding in taking control over them. The second 
+stage of our project is aimed at setting up and deploying 
+high-interaction honeypots to allow us to analyze and 
+model the behavior of malicious attackers once they have 
+managed to compromise and get access to a new host, 
+under strict control and monitoring. We are mainly 
+interested in observing the progress of real attack 
+processes and the activities carried out by the attackers in 
+a controlled environment. In this paper, we describe the lessons learned from the 
+development and deployment of such a honeypot. The 
+main contributions are threefold. First, we do confirm the 
+findings discussed in [9] showing that different sets of 
+compromised machines are used to carry out the various 
+stages of planned attacks. Second, we do outline the fact 
+that, despite this apparent sophistication, the actors 
+behind those actions do not seem to be extremely skillful, 
+to say the least. Last, the geographical location of the 
+machines involved in the last step of the attacks and the 
+link with some phishing activities shed a geopolitical and 
+socio-economical light on the results of our analysis. 
+The paper is organized as follows. Section 2 presents 
+the architecture of our high-interaction honeypot and the 
+design rationales for our solution. The lessons learned 
+from the attacks observed over a period of almost 4.5 
+months are discussed in Section 3. Finally, Section 4 
+concludes and discusses future work. An extended version 
+of this paper detailing the context of this work and the 
+related state-of-the art is available in [10]. 
+ 
+2. Architecture of our honeypot 
+ 
+In our implementation, we decided to use VMware [11] 
+and to install virtual operating system upon it. Compared 
+to solutions based on physical machines, virtual 
+honeypots provide a cost effective and flexible solution 
+that is well suited for running experiments to observe 
+attacks.  
+The objective of our experiment is to analyze the 
+behavior of the attackers who succeed in breaking into a 
+machine. The vulnerability that they exploit is not as 
+crucial as the activity they carry out once they have broken 
+into the host. That's why we chose to use a simple 
+vulnerability: weak passwords for ssh user accounts. Our 
+honeypot is not particularly hardened for two reasons. 
+First, we are interested in analyzing the behavior of the 
+attackers even when they exploit a buffer overflow and 
+become root. So, if we use some kernel patch such as Pax 
+[12], our system will be more secure but it will be 
+impossible to observe some behavior. Secondly, if the 
+system is too hardened, the intruders may suspect 
+something abnormal and then give up. 
+In our setup, only ssh connections to the virtual host 
+are authorized so that the attacker can exploit this 
+vulnerability. A firewall blocks all connection attempts 
+from the Internet, but those to port 22 (ssh). Also, any 
+connection from the virtual host to the outside is blocked 
+Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
+0-7695-2648-9/06 $20.00   2006
+to avoid that intruders attack remote machines from the 
+honeypot. This does not prevent the intruder from 
+downloading code, using the ssh connection1. 
+Our honeypot is a standard Gnu/Linux installation, 
+with kernel 2.6, with the usual binary tools. No additional 
+software was installed except the http apache server. 
+This kernel was modified as explained in the next 
+subsection. The real host executing VMware uses the 
+same Gnu/Linux distribution and is isolated from outside. 
+In order to log what the intruders do on the honeypot, 
+we modified some drivers functions (tty_read and 
+tty_write), as well as the exec system call in the Linux 
+kernel. The modifications of tty_read and tty_write 
+enable us to intercept the activity on all the terminals of 
+the system. The modification of the exec system call 
+enables us to record the system calls used by the intruder.  
+These functions are modified in such a way that the 
+captured information is logged directly into a buffer of the 
+kernel memory of the honeypot itself. 
+Moreover, in order to record all the logins and 
+passwords tried by the attackers to break into the 
+honeypot we added a new system call into the kernel of 
+the virtual operating system and we modified the source 
+code of the ssh server so that it uses this new system call. 
+The logins and passwords are logged in the kernel 
+memory, in the same buffer as the information related to 
+the commands used by the attackers. 
+The activities of the intruder logged by the honeypot 
+are preprocessed and then stored into an SQL database. 
+The raw data are automatically processed to extract 
+relevant information for further analyses, mainly: i) the IP 
+address of the attacking machine, ii) the login and the 
+password tested, iii) the date of the connection, iv) the 
+terminal associated (tty) to each connection, and v) each 
+command used by the attacker. 
+ 
+3. Experimental results 
+ 
+This section presents the results of our experiments. 
+First, we give global statistics in order to give an overview 
+of the activities observed on the honeypot, then we 
+characterize the various intrusion processes. Finally, we 
+analyze in detail the behavior of the attackers once they 
+break into the honeypot. In this paper, an intrusion 
+corresponds to the activities carried out by an intruder 
+who has succeeded to break into the system. 
+ 
+3.1. Global statistics 
+ 
+The high-interaction honeypot has been deployed on 
+the Internet and has been running for 131 days during 
+which 480 IP addresses have tried to contact its ssh port.  
+It is worth comparing this value to the amount of hits 
+observed against port 22, considering all the other low-
+interaction honeypot platforms we have deployed in the 
+rest of the world (40 platforms). In the average, each 
+platform has received hits on port 22 from around 
+approximately 100 different IPs during the same period of 
+time. Only four platforms have been contacted by more 
+                                                             
+1 We have sometimes authorized http connections for a short time, by 
+checking that the attackers were not trying to attack other remote hosts. than 300 different IP addresses on that port and only one 
+was hit by more visitors than our high interaction 
+honeypot. Even better, the low-interaction platform 
+maintained in the same subnet as the high-interaction 
+honeypot experimented only 298 visits, i.e. less than two 
+thirds of what the high-interaction did see. This very 
+simple and first observation confirms the fact already 
+described in [9] that some attacks are driven by the fact 
+that attackers know in advance, thanks to scans done by 
+other machines, where potentially vulnerable services are 
+running. The existence of such a service on a machine will 
+trigger more attacks against it. This is what we observe 
+here: the low interaction machines do not have the ssh 
+service open, as opposed to the high interaction one, and, 
+therefore get less attacked than the one where some target 
+has been identified. 
+The number of ssh connection attempts to the 
+honeypot we have recorded is 248717 (we do not consider 
+here the scans on the ssh port). This represents about 
+1900 connection attempts a day. Among these 248717 
+connection attempts, only 344 were successful. Table 1 
+represents the user accounts that were mostly tried (the 
+top ten) as well as the number of different passwords that 
+have been tested by the attackers. It is noteworthy that 
+many user accounts corresponding to usual first names 
+have also regularly been tested on our honeypot. The total 
+number of accounts tested is 41530. 
+ 
+Account Number of 
+connection 
+attempts Percentage of 
+connection 
+attempts Number of 
+passwords 
+tested  
+root 34251 13.77% 12027 
+admin 4007 1.61% 1425 
+test 3109 1.25% 561 
+user 1247 0.50% 267 
+guest 1128 0.45% 201 
+info 886 0.36% 203 
+mysql 870 0.35% 211 
+oracle 857 0.34% 226 
+postgres 834 0.33% 194 
+webmaster 728 0.29% 170 
+Table 1: ssh connection attempts and number of 
+passwords tested 
+Before the real beginning of the experiment 
+(approximately one and a half month), we had deployed a 
+machine with a ssh server correctly configured, offering 
+no weak account and password. We have taken advantage 
+of this observation period to determine which accounts 
+were mostly tried by automated scripts. Using this 
+acquired knowledge, we have created 17 user accounts and 
+we have started looking for successful intrusions. Some of 
+the created accounts were among the most attacked ones 
+and others not. As we already explained in the paper, we 
+have deliberately created user accounts with weak 
+passwords (except for the root account). Then, we have 
+measured the time between the creation of the account 
+and the first successful connection to this account, then 
+the duration between the first successful connection and 
+the first real intrusion (as explained in section 3.2, the 
+first successful connection is very seldom a real intrusion 
+but rather an automatic script which tests passwords). 
+Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
+0-7695-2648-9/06 $20.00   2006
+Table 2 summarizes these durations (UAi means User 
+Account i). 
+ 
+User 
+Account Duration between 
+creation and first 
+successful connection Duration between first 
+successful connection 
+and first intrusion 
+UA1 1 day 4 days 
+UA2 Half a day 4 minutes 
+UA3 15 days 1 day 
+UA4 5 days 10 days 
+UA5 5 days null 
+UA6 1 day 4 days 
+UA7 5 days 8 days 
+UA8 1 day 9 days 
+UA9 1 day 12 days 
+UA10 3 days 2 minutes 
+UA11 7 days 4 days 
+UA12 1 day 8 days 
+UA13 5 days 17 days 
+UA14 5 days 13 days 
+UA15 9 days 7 days 
+UA16 1 day 14 days 
+UA17 1 day 12 days 
+Table 2: History of breaking accounts 
+ 
+The second column indicates that there is usually a gap 
+of several days between the time when a weak password is 
+found and the time when someone logs into the system 
+with this password to issue some commands on the now 
+compromised host. This is a somehow a surprising fact 
+and is described with some more details here below. The 
+particular case of the UA5 account is explained as follows: 
+an intruder succeeded in breaking the UA4 account. This 
+intruder looked at the contents of the /etc/passwd file in 
+order to see the list of user accounts for this machine. He 
+immediately decided to try to break the UA5 account and 
+he was successful. Thus, for this account, the first 
+successful connection is also the first intrusion. 
+ 
+3.2. Intrusion process 
+ 
+In the section, we present the conclusions of our 
+analyses regarding the process to exploit the weak 
+password vulnerability of our honeypot. The observed 
+attack activities can be grouped into three main 
+categories: 1) dictionary attacks, 2) interactive intrusions, 
+3) other activities such as scanning, etc. 
+ 
+Figure 3: Classification of observed IP addresses 
+As illustrated in figure 3, among the 480 IP addresses 
+that were seen on the honeypot, 197 performed dictionary 
+attacks and 35 performed real intrusions on the honeypot 
+(see below for details). The 248 IP addresses left were 
+used for scanning activity or activity that we did not clearly identified. Among the 197 IP addresses that made 
+dictionary attacks, 18 succeeded in finding passwords. 
+The others (179) did not find the passwords either because 
+their dictionary did not include the accounts we created or 
+because the corresponding weak password had already 
+been changed by a previous intruder. We have also 
+represented in Figure 3 the corresponding number of IP 
+addresses that were also seen on the low-interaction 
+honeypot deployed in the context of the project in the 
+same network (between brackets). Whereas most of the IP 
+addresses seen on the high interaction honeypot are also 
+observed on the low interaction honeypot, none of the 35 
+IPs used to really log into our machine to launch 
+commands have ever been observed on any of the low 
+interaction honeypots that we do control in the whole 
+world! This striking result is discussed hereafter. 
+ 
+3.2.1. Dictionary attack. The preliminary step of 
+the intrusion consists in dictionary attacks2. In general, it 
+takes only a couple of days for newly created accounts to 
+be compromised. As shown in Figure 3, these attacks have 
+been launched from 197 IP addresses. By analysing more 
+precisely the duration between the different ssh 
+connection attempts from the same attacking machine, we 
+can say that these dictionary attacks are executed by 
+automatic scripts. As a matter of fact, we have noted that 
+these attacking machines try several hundreds, even 
+several thousands of accounts in a very short time. 
+We have made then further analyses regarding the 
+machines that succeed in finding passwords, i.e., the 18 IP 
+addresses. By searching the leurr.com database 
+containing information about the activities of these 
+addresses against the other low interaction honeypots we 
+found four important elements of information. First, we 
+note that none of our low interaction honeypot has an ssh 
+server running, none of them replies to requests sent to 
+port 22. These machines are thus scanning machines 
+without any prior knowledge on their open ports. Second, 
+we found evidences that these IPs were scanning in a 
+simple sequential way all addresses to be found in a block 
+of addresses. Moreover, the comparison of the 
+fingerprints left on our low interaction honeypots 
+highlights the fact that these machines are running tools 
+behaving the same way, not to say the same tool. Third, 
+these machines are only interested in port 22, they have 
+never been seen connecting to other ports. Fourth, there is 
+no apparent correlation as far as their geographical 
+location is concerned: they are located all over the world. 
+In other words, it comes from this analysis that these 
+IPs are used to run a well known program. The detailed 
+analysis of this specific tool is outside the scope of the 
+paper but, nevertheless, it is worth mentioning that the 
+activities linked to that tool, as observed in our 
+Leurr.com database, indicate that it is unlikely to be a 
+worm but rather an easy to use and widely spread tool. 
+ 
+3.2.2. Interactive attack: intrusion. The second 
+step of the attack consists in the real intrusion. We have 
+noted that, several days after the guessing of a weak 
+                                                             
+2 We consider as dictionary attack any attack that tries more than 10 
+different accounts and passwords. 
+Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
+0-7695-2648-9/06 $20.00   2006
+password, an interactive ssh connection is executed on 
+our honeypot to issue several commands. We believe that, 
+in those situations, a real human being, as opposed to an 
+automated script, is connected to our machine. This is 
+explained and justified in Section 4.3. As shown in Figure 
+3, these intrusions come from 35 IP addresses never 
+observed on any of the low-interaction honeypots. 
+Whereas the geographic localisation of the machines 
+performing dictionary attacks is very blur, the machines 
+that are used by a human being for the interactive ssh 
+connection are, most of the time, clearly identified. We 
+have a precise idea of their country, geographic address, 
+the responsible of the corresponding domain. 
+Surprisingly, these machines, for half of them, come from 
+the same country, an European country not usually seen 
+as one of the most attacking ones as reported, for 
+instance, by the www.leurrecom.org web site. 
+We then made analyses in order to see if these IP 
+addresses had tried to connect to other ports of our 
+honeypot except for these interactive connections; and the 
+answer is no. Furthermore, the machines that make 
+interactive ssh connections on our honeypot do not make 
+any other kind of connections on this honeypot, i.e, no 
+scan or dictionary attack. Further analyses, using the data 
+collected from the low-interaction honeypots deployed in 
+the CADHo project, revealed that none of the 35 IP 
+addresses have ever been observed on any of our 
+platforms deployed in the word. This is interesting 
+because it shows that these machines are totally dedicated 
+to this kind of attack (they only targeted our high-
+interaction honeypot and only when they knew at least 
+one login and password on this machine). 
+We can conclude for these analyses that we face two 
+groups of attacking machines. The first group is composed 
+of machines that are specifically in charge of making 
+dictionary attacks. Then the results of these dictionary 
+attacks are published somewhere. Then, another group of 
+machines, which has no intersection with the first group, 
+comes to exploit the weak passwords discovered by the 
+first group. This second group of machines is, as far as we 
+can see, clearly geographically identified and commands 
+are executed by a human being. A similar two steps 
+process was already observed in the CADHo project when 
+analyzing the data collected from the low-interaction 
+honeypots (see [9] for more details). 
+ 
+3.3. Behavior of attackers 
+ 
+This section is dedicated to the analysis of the behavior 
+of the intruders. We first characterize the intruders, i.e. 
+we try to know if they are humans or programs. Then, we 
+present in more details the various actions they have 
+carried out on the honeypot. Finally, we try to figure out 
+what their skill level seems to be. 
+We concentrate the analyses on the last three months 
+of our experiment. During this period, some intruders 
+have visited our honeypot only once, others have visited it 
+several times, for a total of 38 ssh intrusions. These 
+intrusions were initiated from 16 IP addresses and 7 
+accounts were used. Table 3 presents the number of 
+intrusions per account, IP addresses and passwords used 
+for these intrusions. It is of course difficult to be sure that all the intrusions for a same account are initiated by the 
+same person. Nevertheless, in our case, we noted that: 
+ most of the time, after his first login, the attacker 
+changes the weak password into a strong which, from 
+there on, remains unchanged. 
+ when two different IP addresses access the same 
+account (with the same password), they are very close 
+and belong to the same country or company.  
+These two remarks lead us to believe that there is in 
+general only one person associated to the intrusions for a 
+particular account. 
+ 
+Account Number of 
+intrusions Number of 
+passwords Number of IP 
+addresses 
+UA2 1 1 1 
+UA4 13 2 2 
+UA5 1 1 1 
+UA8 1 1 1 
+UA10 9 2 2 
+UA13 6 1 5 
+UA16 5 1 3 
+UA17 2 1 1 
+Table 3: Number of intrusions per account 
+ 
+3.3.1. Type of the attackers: humans or 
+programs. Before analyzing what intruders do when 
+connected, we can try to identify who they are. They can 
+be of two different natures. Either they are humans, or 
+they are programs which reproduce simple behaviors. For 
+all intrusions but 12, intruders have made mistakes when 
+typing commands. Mistakes are identified when the 
+intruder uses the backspace to erase a previously entered 
+character. So, it is very likely that such activities are 
+carried out by a human, rather than programs. 
+When an intruder did not make any mistake, we 
+analyzed how the data were transmitted from the attacker 
+machine to the honeypot. We can note that, for ssh 
+communications, data transmission between the client 
+and the server is asynchronous. Most of the time, the ssh 
+client implementation uses the function select() to get 
+user input. So, when the user presses a key, this function 
+ends and the program sends the corresponding value to 
+the server. In the case of a copy and a paste into the 
+terminal running the client, the select() function also 
+ends, but the program sends all the values contained in 
+the buffer used for the paste into the server. We can 
+assume that, when tty_read() returns more than one 
+character, these values have been sent after a copy and a 
+paste. If all the activities during a connection are due to a 
+copy and a paste, we can strongly assume that it is due to 
+an automatic script. Otherwise, this is quite likely a 
+human being who uses shortcuts from time to time (such 
+as CTRL-V to paste commands into its ssh session). For 7 
+out of the last 12 activities without mistakes, intruders 
+have entered several commands on a character-by-
+character basis. This, once again, seems to indicate that a 
+human being is entering the commands. For the 5 others, 
+their activities are not significant enough to conclude: 
+they have only launched a single command, like w, which 
+is not long enough to highlight a copy and a paste. 
+ 
+Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
+0-7695-2648-9/06 $20.00   2006
+3.3.2. Attacker activities. The first significant 
+remark is that all of the intruders change the password of 
+the hacked account. The second remark is that most of 
+them start by downloading some files. In all cases, but 
+one, the attackers tried to download some malware to the 
+compromised machines. In a single case, the attacker has 
+first tried to download an innocuous, yet large, file to the 
+machine (the binary for a driver coming from a known 
+web site). This is probably a simple way to assess the 
+connectivity quality of the compromised host. 
+The command used by the intruders to download the 
+software is wget. To be more precise, 21 intrusions upon 
+38 include the wget command. These 21 intrusions 
+concern all the hacked accounts.  As mentioned in 
+section 2, outgoing http connections are forbidden by the 
+firewall. Nevertheless, the intruders still have the 
+possibility to download files through the ssh connection 
+using sftp command (instead of wget). Surprisingly, we 
+noted that only 30% of the intruders did use this ssh 
+connection. 70% of the attackers were unable to download 
+their malware due to the absence of http connectivity! 
+Three explanations can be envisaged at this stage. First, 
+they follow some simplistic cookbook and do not even 
+known the other methods at their disposal to upload a file. 
+Second, the machines where the malware resides do not 
+support sftp. Third, the lack of http connectivity made 
+the attacker suspicious and he decided to leave our 
+system. Surprisingly, the first explanation seems to be the 
+right one in our case as we noticed that the attackers leave 
+after an unsuccessful wget and come back a few hours or 
+days later, trying the same command again as if they were 
+hoping it to work at that time. Some of them have been 
+seen trying this several times. It can be concluded that:  
+i) they are apparently unable to understand why the 
+command fails, ii) they are not afraid to come back to the 
+machine despite the lack of http connectivity,  
+iii) applying such brute force attack reveals that they are 
+not aware of any other method to upload the file. 
+Once the attackers manage to download their malware 
+using sftp, they try to install it (by decompressing or 
+extracting files for example). 75% of the intrusions that 
+installed software did not install it on the hacked account 
+but rather on standard directories such as /tmp, /var/tmp 
+or /dev/shm (which are directories with write access for 
+everybody). This makes the hacker activity more difficult 
+to identify because these directories are regularly used by 
+the operating system itself and shared by all the users. 
+Additionally, we have identified four main activities of 
+the intruders. The first one is launching ssh scans on 
+other networks but these scans have never tested local 
+machines. Their idea is to use the targeted machine to 
+scan other networks, so that it is more difficult for the 
+administrator of the targeted network to localize them. 
+The program used by most intruders, which is easy to find 
+on the Internet, is pscan.c. 
+The second type of activity consists in launching irc 
+clients, e.g., emech [13] and psyBNC. Names of binary files 
+have regularly been changed by intruders, probably in 
+order to hide them. For example, the binary files of emech 
+have been changed to crond or inetd, which are well 
+known Unix binary file names and processes. The third type of activity is trying to become root. 
+Surprisingly, such attempts have been observed for 3 
+intrusions only. Two rootkits were used. The first one 
+exploits two vulnerabilities: a vulnerability which 
+concerns the Linux kernel memory management code of 
+the mremap system call [14] and a vulnerability which 
+concerns the internal kernel function used to manage 
+process's memory heap [15]. This exploit could not 
+succeed because the kernel version of our honeypot does 
+not correspond to the version of the exploit. The intruder 
+should have realized this because he checked the version 
+of the kernel of the honeypot (uname -a). However, he 
+launched this rootkit anyway and failed. The other rootkit 
+used by intruders exploits a vulnerability in the program 
+ld. Thanks to this exploit, three intruders became root 
+but the buffer overflow succeeded only partially. Even if 
+they apparently became root, they could not launch all 
+desired programs (removing files for example caused 
+access control errors). 
+The last activity observed in the honeypot is related to 
+phishing activities. It is difficult to make precise 
+conclusions because only one intruder has attempted to 
+launch such an attack. He downloaded a forged email and 
+tried to send it through the local smtp agent. But, as far as 
+we could understand, it looked like a preliminary step of 
+the attack because the list of recipient emails was very 
+short. It seems that is was just a preliminary test before 
+the real deployment of the attack. 
+ 
+3.3.3. Attackers skill. Intruders can roughly 
+speaking be classified into two main categories. The most 
+important one is relative to script kiddies. They are 
+inexperienced hackers who use programs found on the 
+Internet without really understanding how they work. The 
+next category represents intruders who are more 
+dangerous. They are named black hat. They can make 
+serious damage on systems because they are expert in 
+security and they know how to exploit vulnerabilities on 
+various systems. 
+As already presented in 3.3.2. (use of wget and sftp), 
+we have observed that intruders are not as clever as 
+expected. For example, for two hacked accounts, the 
+intruders don't seem to really understand the Unix file 
+access rights (it's very obvious for example when they try 
+to erase some files whereas they don't have the required 
+privileges). For these two same accounts, the intruders 
+also try to kill the processes of other users. Many 
+intruders do not try to delete the file containing the 
+history of their commands or do not try to deactivate this 
+history function (this file depends on the login shell used, 
+it is .bash_history for example for the bash). Among the 
+38 intrusions, only 14 were cleaned by the intruders (11 
+have deactivated the history function and 3 have deleted 
+the.bash_history file). This means that 24 intrusions left 
+behind them a perfectly readable summary of their 
+activity within the honeypot. 
+The IP address of the honeypot is private and we have 
+started another honeypot on this network. This second 
+honeypot is not directly accessible from the outside, it is 
+only accessible from the first honeypot. We have modified 
+the /etc/motd file of the first honeypot (which is 
+automatically printed on the screen during the login 
+Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
+0-7695-2648-9/06 $20.00   2006
+process) and added the following message: In order to 
+use the software XXX, please connect to A.B.C.D. 
+In spite of this message, only one intruder has tried to 
+connect to the second honeypot. We could expect that an 
+experienced hacker will try to use this information. In a 
+more general way, we have very seldom seen an intruder 
+looking for other active machines on the same network. 
+One important thing to note is relative to 
+fingerprinting activity. No intruder has tried to check the 
+presence of VMware software. For three hacked accounts, 
+the intruders have read the contents of the file 
+/proc/cpuinfo but that's all. None of the methods 
+discussed on Internet was tested to identify the presence 
+of VMware software [16,17]. This probably means that the 
+intruders are not experienced hackers. 
+ 
+4. Conclusion 
+ 
+In this paper, we have presented the results of an 
+experiment carried out over a period of 6 months during 
+which we have observed the various steps that lead an 
+attacker to successfully break into a vulnerable machine 
+and his behavior once he has managed to take control 
+over the machine. 
+The findings are somehow consistent with the informal 
+know how shared by security experts. The contributions of 
+the paper reside in performing an experiment and 
+rigorous analyses that confirm some of these informal 
+assumptions. Also, the precise analysis of the observed 
+attacks reveals several interesting facts. First of all, the 
+complementarity between high and low interaction 
+honeypots is highlighted as some explanations can be 
+found by combining information coming from both set 
+ups. Second, it appears that most of the observed attacks 
+against port 22 were only partially automated and carried 
+out by script kiddies. This is very different from what can 
+be observed against other ports, such as 445, 139 and 
+others, where worms have been designed to completely 
+carry out the tasks required for the infection and 
+propagation. Last, honeypot fingerprinting does not seem 
+to be a high priority for attackers as none of them has 
+tried the known techniques to check if they were under 
+observation. It is also worth mentioning a couple of 
+important missing observations. First, we did not observe 
+scanners detecting the presence of the open ssh port and 
+providing this information to other machines in charge of 
+running the dictionary attack. This is different from 
+previous observations reported in [9]. Second, as most of 
+the attacks follow very simple and repetitive patterns, we 
+did not observe anything that could be used to derive 
+sophisticated scenarios of attacks that could be analyzed 
+by intrusion detection correlation engine. Of course, at 
+this stage it is too early to derive definite conclusions from 
+this observation. 
+Therefore, it would be interesting to keep doing this 
+experiment over a longer period of time to see if things do 
+change, for instance if a more efficient automation takes 
+place. We would have to solve the problem of weak 
+passwords being replaced by strong ones though, in order 
+to see more people succeeding in breaking into the 
+system. Also, it would be worth running the same 
+experiment by opening another vulnerability into the system and verifying if the identified steps remain the 
+same, if the types of attackers are similar. Could it be, at 
+the contrary, that some ports are preferably chosen by 
+script kiddies while others are reserved to some more elite 
+attackers? This is something that we are in the process of 
+assessing. 
+Acknowledgement. This work has been partially 
+supported by: 1) CADHo, a research action funded by the French 
+ACI Securit & Informatique (www.cadho.org), 2) the 
+CRUTIAL IST-027513 project (crutial.cesiricerca.it), and 3) the 
+ReSIST IST- 026764  project (www.resist-noe.org). 
+ 
+5. References 
+[1] M. Bailey, E. Cooke, F. Jahanian, J. Nazario, The Internet 
+motion sensor - a distributed blackhole monitoring 
+system. Network and Distributed Systems Security Symp. 
+(NDSS 2005), San Diego, USA, 2005. 
+[2] CAIDA Project. Home Page of the CAIDA Project, 
+http://www.caida.org. 
+[3] http://www.dshield.org. Home page of the DShield.org 
+Distributed Intrusion Detection System.  
+[4] E. Alata, M. Dacier, Y. Deswarte, M. Kaaniche, K. 
+Kortchinsky, V. Nicomette, V. Hau Pham, and F. Pouget, 
+Collection and analysis of attack data based on honeypots 
+deployed on the Internet. QOP 2005, 1st Workshop on 
+Quality of Protection (co-located with ESORICS and 
+METRICS), Sept. 15, Milan, Italy, 2005. 
+[5] F. Pouget, M. Dacier, V. Hau Pham. Leurre.com: on the 
+advantages of deploying a large scale distributed 
+honeypot platform. In Proc. of ECCE'05, E-Crime and 
+Computer Conference, Monaco, 2005. 
+[6] Home page of Leurr.com: http://www.leurre.org. 
+[7] Project Leurr.com. Publications web page: 
+http://www.leurrecom.org/paper.htm. 
+[8] M. Dacier, F. Pouget, H. Debar. Honeypots: practical 
+means to validate malicious fault assumptions. 10th IEEE 
+Pacific Rim Int. Symp., pp. 383--388, Tahiti, 2004. 
+[9] F. Pouget, M. Dacier, V. Hau Pham, Understanding 
+threats: a prerequisite to enhance survivability of 
+computing systems, Int. Infrastructure Survivability 
+Workshop IISW'04,  (25th IEEE Int. Real-Time Systems 
+Symp. (RTSS 04)), Lisboa, Portugal, 2004. 
+[10] E. Alata, V. Nicomette, M. Kaaniche, M. Dacier, M. Herrb, 
+Lessons learned from the deployment of a high-
+interaction honeypot: Extended version. LAAS Report, 
+July 2006.  
+[11] Inc. VMware. Available on: http://www.vmware.com 
+[12] The PaX Team. Available on: http://pax.grsecurity.net.  
+[13] EnergyMech team. Energymech. Available on: 
+http://www.energymech.net. 
+[14] US-CERT. Linux kernel mremap(2) system call does not 
+properly check return value from do_munmap() function. 
+Available on: http://www.kb.cert.org/vuls/id/981222.  
+[15] US-CERT. Linux kernel do_brk() function contains 
+integer overflow. http://www.kb.cert.org/vuls/id/981222. 
+[16] J. Corey, Advanced honeypot identification and 
+exploitation. Phrack, N 63, Available on: 
+http://www.phrack.org/fakes/p63/p63-0x09.txt.  
+[17] T. Holz and F. Raynal, Detecting honeypots and other 
+suspicious environments. In Systems, Man and 
+Cybernetics (SMC) Information Assurance Workshop. 
+Proc. from the Sixth Annual IEEE, pages 29--36, 2005.
+Proceedings of the Sixth European Dependable Computing Conference (EDCC'06)
+0-7695-2648-9/06 $20.00   2006
