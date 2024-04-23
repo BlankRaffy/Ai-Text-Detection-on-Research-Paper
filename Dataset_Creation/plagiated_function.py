@@ -70,4 +70,34 @@ def paraphrase_abstract_in_file(input_file_path, output_file_path):
         file.writelines(content)
 
 
+def change_introduction(input_file_path):
+    # Read text from the input file
+    with open(input_file_path, 'r') as file:
+        content = file.readlines()
+    
+    # Find the indices of lines containing '1. Introduction' and 'in this paper'
+    introduction_start_index = -1
+    introduction_end_index = -1
+    for i, line in enumerate(content):
+        if line.strip().lower().startswith("1. introduction"):
+            introduction_start_index = i
+        elif "in this paper" in line.lower():
+            introduction_end_index = i
+            break
+
+    
+    # If both start and end indices are found, extract the introduction
+    if introduction_start_index != -1 and introduction_end_index != -1:
+        introduction_lines = content[introduction_start_index:introduction_end_index]
+        # Join all lines
+        introduction = ''.join(introduction_lines)
+        
+        # Extract words from the line containing 'in this paper' before the phrase
+        words_before_phrase = line.split(".")[0].strip()+'.'
+        introduction = introduction + words_before_phrase
+        print(introduction)
+        
+        # Prepend the words to the introduction
+        
+        #print(introduction)
 

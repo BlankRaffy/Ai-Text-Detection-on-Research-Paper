@@ -9,6 +9,10 @@ output_file_path = 'output_test\cleaned_text_with_paraphrased_abstract.txt'
 
 #print("The Abstract was correct modified and saved:", output_file_path)
 
+from transformers import pipeline, set_seed
+generator = pipeline('text-generation', model='gpt2')
+set_seed(42)
+
 with open(input_file_path,'r') as file:
     content = file.readline()
 
@@ -16,16 +20,15 @@ with open(input_file_path,'r') as file:
 import torch
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-# Step 1: Read the first line of the file
 def read_first_line(filename):
     with open(filename, 'r') as file:
         first_line = file.readline().strip()
     return first_line
 
-# Step 2: Use a specified model to generate introduction
-from transformers import pipeline, set_seed
-generator = pipeline('text-generation', model='gpt2')
-set_seed(42)
-title='Lessons learned from the deployment of a high-interaction honeypot'
-output = generator(f"Please generate an introduction for a scientific article titled: {title},", max_length=150, num_return_sequences=1)
-print(output[0])
+# get the introdcution
+title= read_first_line(input_file_path)
+output = generator(f"Please generate an introduction for a scientific article titled: {title},", max_length=300, num_return_sequences=1)
+
+#get the introduction
+plagiated_function.change_introduction(input_file_path)
+
