@@ -1,29 +1,33 @@
+import plagiated_function
+
+# Define the file paths
+input_file_path = 'output_test\cleaned_text.txt'
+output_file_path = 'output_test\cleaned_text_with_paraphrased_abstract.txt'
+
+# Paraphrase the abstract in the input file and write the modified content to a new file
+#plagiated_function.paraphrase_abstract_in_file(input_file_path, output_file_path)
+
+#print("The Abstract was correct modified and saved:", output_file_path)
+
+from transformers import pipeline, set_seed
+generator = pipeline('text-generation', model='gpt2')
+set_seed(42)
+
+with open(input_file_path,'r') as file:
+    content = file.readline()
+
+#generation of the first part of the introduction
 import torch
-from transformers import BartForConditionalGeneration, BartTokenizer
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-input_sentence = """This paper presents an experimental study and the lessons 
-learned from the observation of the attackers when logged on a 
-compromised machine. The results are based on a six months 
-period during which a controlled experiment has been run with 
-a high interaction honeypot. We correlate our findings with 
-those obtained with a worldwide distributed system of low-
-interaction honeypots. """
+def read_first_line(filename):
+    with open(filename, 'r') as file:
+        first_line = file.readline().strip()
+    return first_line
 
-model = BartForConditionalGeneration.from_pretrained('eugenesiow/bart-paraphrase')
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = model.to(device)
-tokenizer = BartTokenizer.from_pretrained('eugenesiow/bart-paraphrase')
+# get the introdcution
+title= read_first_line(input_file_path)
+output = generator(f"Please generate an introduction for a scientific article titled: {title},", max_length=300, num_return_sequences=1)
 
-# Set max_length parameter for generation
-max_length = 300  # You can adjust this value as needed
-
-# Tokenize input sentence
-batch = tokenizer(input_sentence, return_tensors='pt')
-
-# Generate paraphrased text with specified max_length
-generated_ids = model.generate(batch['input_ids'], max_length=max_length)
-
-# Decode generated paraphrased text
-generated_sentence = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
-
-print(generated_sentence[0])
+#get the introduction
+plagiated_function.change_introduction(input_file_path)

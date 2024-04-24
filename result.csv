@@ -1,5 +1,3 @@
 ,sentence,label,score
-0,Our online editor can help you improve word choice and writing style.,Machine,0.9963
-1,It can also detect grammar mistakes and plagiarism.,Machine,0.9985
-2,"To check word count, simply place your cursor into the text box above and start typing.",Machine,0.9903
-3,"You'll see the number of characters and words increase or decrease as you type, delete, and edit them.",Machine,0.9992
+0,"Lessons learned from the deployment of a high-interaction honeypot, but what does it really mean?\n\nI wanted to bring my experience with deployment of a high-interaction honeypot to bear on deployment of a very high-interaction honeypot.",Human,0.0099
+1,"I don't think the idea is necessarily to help the recipient, as such it could be useful, but it's important to note that high-interaction honeypots are probably the safest, and are very inexpensive to use.\n\nWhat does the deployment of an e-petroleum-capable honeypot look like?\n\nThe deployment of a high-interaction honeypot resembles that of a low-interaction honeypot",Human,0.0224
