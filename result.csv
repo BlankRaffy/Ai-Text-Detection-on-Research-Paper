@@ -1,3 +1,7 @@
 ,sentence,label,score
-0,"Lessons learned from the deployment of a high-interaction honeypot, but what does it really mean?\n\nI wanted to bring my experience with deployment of a high-interaction honeypot to bear on deployment of a very high-interaction honeypot.",Human,0.0099
-1,"I don't think the idea is necessarily to help the recipient, as such it could be useful, but it's important to note that high-interaction honeypots are probably the safest, and are very inexpensive to use.\n\nWhat does the deployment of an e-petroleum-capable honeypot look like?\n\nThe deployment of a high-interaction honeypot resembles that of a low-interaction honeypot",Human,0.0224
+0,The honeypot is the most common example of an interaction honeypot.,Machine,0.7956
+1,"The honeypot is a network of high-interaction systems, such as home routers, that are used to communicate effectively with each other.",Machine,0.9495
+2,"The honeypot's purpose is to give a high-level overview of the network and its capabilities in order to give the system a general framework to learn from.In order to generate a honeypot, you need to have a high-level overview of the network's capabilities.",Machine,0.9809
+3,You need to know the basic commands of the server or the client (i.e.,Machine,0.5578
+4,"what each of them does), the protocols that they use, what commands they use, and the information they use to communicate.",Machine,0.8924
+5,The honeypot needs to be able to give you an overview of the network's configuration and its capabilities.,Machine,0.9978

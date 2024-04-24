@@ -4,30 +4,37 @@ import plagiated_function
 input_file_path = 'output_test\cleaned_text.txt'
 output_file_path = 'output_test\cleaned_text_with_paraphrased_abstract.txt'
 
+"""
 # Paraphrase the abstract in the input file and write the modified content to a new file
-#plagiated_function.paraphrase_abstract_in_file(input_file_path, output_file_path)
+plagiated_function.paraphrase_abstract_in_file(input_file_path, output_file_path)
 
-#print("The Abstract was correct modified and saved:", output_file_path)
+print("The Abstract was correct modified and saved:", output_file_path)
 
-from transformers import pipeline, set_seed
-generator = pipeline('text-generation', model='gpt2')
-set_seed(42)
 
-with open(input_file_path,'r') as file:
-    content = file.readline()
+"""
 
-#generation of the first part of the introduction
-import torch
-from transformers import T5Tokenizer, T5ForConditionalGeneration
+'''
+from transformers import pipeline
 
-def read_first_line(filename):
-    with open(filename, 'r') as file:
-        first_line = file.readline().strip()
-    return first_line
+from transformers import pipeline
 
-# get the introdcution
-title= read_first_line(input_file_path)
-output = generator(f"Please generate an introduction for a scientific article titled: {title},", max_length=300, num_return_sequences=1)
+def get_title(file_path):
+    with open(file_path,'r') as file:
+     title = file.readline()
+    
+    return title
 
-#get the introduction
+def generate_introduction(title):
+    generator = pipeline("text-generation", model="gpt2-medium", tokenizer="gpt2-medium")
+    input_text = f"Generate an introduction based on the title: '{title}'.\n\nIntroduction:"
+    generated_text = generator(input_text, max_length=200, temperature=0.7, num_return_sequences=1, do_sample=True, early_stopping=True)[0]['generated_text']
+    return generated_text
+
+# Example usage:
+title = get_title(input_file_path)
+intro = generate_introduction(title)
+print(intro)
+'''
+
 plagiated_function.change_introduction(input_file_path)
+
