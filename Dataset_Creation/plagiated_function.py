@@ -91,7 +91,7 @@ def change_intro(tree):
             introduction_first = generate_introduction(title_element.text)
         
         if section_type is not None and section_type.text == 'INTRO':
-            if passage.find('.//text').text.lower != 'introduction':
+            if passage.find('.//text').text != 'Introduction':
                 print(passage.find('.//text').text+'\n\n')
 
 
