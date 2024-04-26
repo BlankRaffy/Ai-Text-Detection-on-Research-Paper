@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 import os
 
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import copy
 
 device = "cuda" 
 
@@ -38,19 +39,34 @@ def paraphrase(
     return res[0]
 
 
-def change_abstract (file_path):
-    tree = ET.parse(file_path)
+def change_abstract(tree):
+    
     root = tree.getroot()
     
+    # Trova tutti gli elementi 'passage' nell'albero XML 
     passages = root.findall('.//passage')
+    
+    # Itera su ciascun elemento 'passage'
     for passage in passages:
-        text = passage.find(".//infon[@key='section_type']")
-        if(text.text=='ABSTRACT'):
-            abstract = passage.find('.//text').text
-            paraphrased_abstract = paraphrase(abstract)
-            print('il testo originale \n',abstract)
-            print('il testo falso \n', paraphrased_abstract)       
-    #return tree
+        # Trova l'elemento 'infon' con attributo 'section_type' uguale a 'ABSTRACT'
+        section_type = passage.find(".//infon[@key='section_type']")
+        
+        if section_type is not None and section_type.text == 'ABSTRACT':
+            # Trova l'elemento 'text' all'interno del 'passage' (abstract)
+            abstract_element = passage.find('.//text')
+            
+            if abstract_element is not None:
+                
+                abstract_text = abstract_element.text
+                paraphrased_abstract = paraphrase(abstract_text)
+                abstract_element.text = paraphrased_abstract
+                print(abstract_element.text +"\n\n")
+    
+    # Restituisci l'albero XML copiato e modificato
+    return tree
+
+def change_intro(tree):
+    print('TO BE IMPLEMENTED')
 
 def save_tree(file_path,tree):
     file_name_no_ext= os.path.splitext(os.path.basename(file_path))[0]
