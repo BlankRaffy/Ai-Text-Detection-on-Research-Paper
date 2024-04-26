@@ -44,10 +44,8 @@ def generate_introduction(title):
 # TEST THE MODEL ON THE GENERATION PART, COMPARE WITH T5-BASE
     generator = pipeline("text-generation", model="gpt2-medium", tokenizer="gpt2-medium") 
     input_text = f"Generate an introduction for a medical reseach titeled: '{title}'.\n\nIntroduction:"  #test to get the best prompt
-    generated_text = generator(input_text, max_length=200, temperature=0.7, num_return_sequences=1, do_sample=True, early_stopping=True)[0]['generated_text']
+    generated_text = generator(input_text, max_length=200, temperature=0.6, num_return_sequences=1, do_sample=True, early_stopping=True)[0]['generated_text']
     return generated_text
-
-
 
 def change_abstract(tree):
     
@@ -86,12 +84,16 @@ def change_intro(tree):
         # Trova l'elemento 'infon' con attributo 'section_type' uguale a 'ABSTRACT'
         section_type = passage.find(".//infon[@key='section_type']")
         
+        '''
         if section_type is not None and section_type.text == 'TITLE':
             # Trova l'elemento 'text' all'interno del 'passage' (abstract)
             title_element = passage.find('.//text')
-            text = generate_introduction(title_element.text)
-            print(text)
-            
+            introduction_first = generate_introduction(title_element.text)
+        '''
+        if section_type is not None and section_type.text =='INTRO':
+            type_temp = passage.find(".//infon[@key='type']")
+            print(len(type_temp))
+
 
 def save_tree(file_path,tree):
     file_name_no_ext= os.path.splitext(os.path.basename(file_path))[0]
