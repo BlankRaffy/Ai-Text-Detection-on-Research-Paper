@@ -1,4 +1,9 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import xml.etree.ElementTree as ET
+import os
+
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM #import neeeded for paraphrase
+from transformers import pipeline
+import copy
 
 device = "cuda" 
 
@@ -35,69 +40,61 @@ def paraphrase(
     return res[0]
 
 
-#the function find and rephrase the abstract
-def paraphrase_abstract_in_file(input_file_path, output_file_path):
-    # Read text from the input file
-    with open(input_file_path, 'r') as file:
-        content = file.readlines()
-    
-    # Find the indices of lines containing 'Abstract' and '1. Introduction'
-    abstract_start_index = -1
-    introduction_index = -1
-    for i, line in enumerate(content):
-        if line.strip().lower().startswith("abstract"):
-            abstract_start_index = i
-        elif line.strip().lower().startswith("1 introduction") or line.strip().lower().startswith("1. introduction"):
-            introduction_index = i
-            break
-    
-    # If 'Abstract' and '1. Introduction' are found, paraphrase the abstract
-    if abstract_start_index != -1 and introduction_index != -1:
-        abstract = ''.join(content[abstract_start_index:introduction_index])
-        paraphrased_abstract = paraphrase(abstract)
-        paraphrased_abstract_lines = paraphrased_abstract.split('\n')
-        # Insert the paraphrased abstract into the content
-        content[abstract_start_index] = f"Abstract\n{paraphrased_abstract_lines[0]}\n"
-        content[abstract_start_index+1:introduction_index] = paraphrased_abstract_lines[1:]
-        # Add a blank line after the end of the abstract
-        content.insert(introduction_index, '\n')
-    else:
-        print("Error: 'Abstract' or '1. Introduction' not found in the input file.")
-        return
-    
-    # Write the modified content to the output file
-    with open(output_file_path, 'w') as file:
-        file.writelines(content)
+def generate_introduction(title):
+# TEST THE MODEL ON THE GENERATION PART, COMPARE WITH T5-BASE
+    generator = pipeline("text-generation", model="gpt2-medium", tokenizer="gpt2-medium") 
+    input_text = f"Generate an introduction for a medical reseach titeled: '{title}'.\n\nIntroduction:"  #test to get the best prompt
+    generated_text = generator(input_text, max_length=200, temperature=0.7, num_return_sequences=1, do_sample=True, early_stopping=True)[0]['generated_text']
+    return generated_text
 
 
-def change_introduction(input_file_path):
-    # Read text from the input file
-    with open(input_file_path, 'r') as file:
-        content = file.readlines()
-    
-    # Find the indices of lines containing '1. Introduction' and 'in this paper'
-    introduction_start_index = -1
-    introduction_end_index = -1
-    for i, line in enumerate(content):
-        if line.strip().lower().startswith("1. introduction"):
-            introduction_start_index = i
-        elif "in this paper" in line.lower():
-            introduction_end_index = i
-            break
 
+def change_abstract(tree):
     
-    # If both start and end indices are found, extract the introduction
-    if introduction_start_index != -1 and introduction_end_index != -1:
-        introduction_lines = content[introduction_start_index:introduction_end_index]
-        # Join all lines
-        introduction = ''.join(introduction_lines)
+    root = tree.getroot()
+    
+    # Trova tutti gli elementi 'passage' nell'albero XML 
+    passages = root.findall('.//passage')
+    
+    # Itera su ciascun elemento 'passage'
+    for passage in passages:
+        # Trova l'elemento 'infon' con attributo 'section_type' uguale a 'ABSTRACT'
+        section_type = passage.find(".//infon[@key='section_type']")
         
-        # Extract words from the line containing 'in this paper' before the phrase
-        words_before_phrase = line.split(".")[0].strip()+'.'
-        introduction = introduction + words_before_phrase
-        print(introduction)
-        
-        # Prepend the words to the introduction
-        
-        #print(introduction)
+        if section_type is not None and section_type.text == 'ABSTRACT':
+            # Trova l'elemento 'text' all'interno del 'passage' (abstract)
+            abstract_element = passage.find('.//text')
+            
+            if abstract_element is not None:
+                
+                abstract_text = abstract_element.text
+                paraphrased_abstract = paraphrase(abstract_text)
+                abstract_element.text = paraphrased_abstract
+                print(abstract_element.text +"\n\n")
+    
+    # Restituisci l'albero XML copiato e modificato
+    return tree
 
+def change_intro(tree):
+    root = tree.getroot()
+    
+    # Trova tutti gli elementi 'passage' nell'albero XML 
+    passages = root.findall('.//passage')
+    
+    # Itera su ciascun elemento 'passage'
+    for passage in passages:
+        # Trova l'elemento 'infon' con attributo 'section_type' uguale a 'ABSTRACT'
+        section_type = passage.find(".//infon[@key='section_type']")
+        
+        if section_type is not None and section_type.text == 'TITLE':
+            # Trova l'elemento 'text' all'interno del 'passage' (abstract)
+            title_element = passage.find('.//text')
+            text = generate_introduction(title_element.text)
+            print(text)
+            
+
+def save_tree(file_path,tree):
+    file_name_no_ext= os.path.splitext(os.path.basename(file_path))[0]
+
+    output_path = 'output_test/' + file_name_no_ext+'_plagiated.xml'
+    tree.write(output_path)
