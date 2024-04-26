@@ -84,15 +84,15 @@ def change_intro(tree):
         # Trova l'elemento 'infon' con attributo 'section_type' uguale a 'ABSTRACT'
         section_type = passage.find(".//infon[@key='section_type']")
         
-        '''
+        
         if section_type is not None and section_type.text == 'TITLE':
             # Trova l'elemento 'text' all'interno del 'passage' (abstract)
             title_element = passage.find('.//text')
             introduction_first = generate_introduction(title_element.text)
-        '''
-        if section_type is not None and section_type.text =='INTRO':
-            type_temp = passage.find(".//infon[@key='type']")
-            print(len(type_temp))
+        
+        if section_type is not None and section_type.text == 'INTRO':
+            if passage.find('.//text').text.lower != 'introduction':
+                print(passage.find('.//text').text+'\n\n')
 
 
 def save_tree(file_path,tree):
