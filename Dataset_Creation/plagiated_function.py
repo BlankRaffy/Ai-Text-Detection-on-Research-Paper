@@ -19,7 +19,7 @@ def paraphrase(
     diversity_penalty=10.0,
     no_repeat_ngram_size=2,
     temperature=0.7,
-    max_length=400  # Increase max_length to accommodate longer outputs
+    max_length=400 
 ):
     input_ids = tokenizer(
         f'rephrase: {sentence}',
