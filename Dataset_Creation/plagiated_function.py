@@ -46,6 +46,8 @@ def paraphrase(
     return res[0]
 
 
+# The following function can be adapatate to any type of file
+# Just need to access and overwrite the element
 def generate_introduction(title):
 # TEST THE MODEL ON THE GENERATION PART, COMPARE WITH T5-BASE
     generator = pipeline("text-generation", model="gpt2-medium", tokenizer="gpt2-medium") 
@@ -72,11 +74,9 @@ def change_abstract(tree):
             abstract_element = passage.find('.//text')
             
             if abstract_element is not None:
-                
-                abstract_text = abstract_element.text
-                paraphrased_abstract = paraphrase(abstract_text)
-                abstract_element.text = paraphrased_abstract
-                print(abstract_element.text +"\n\n")
+                abstract_text = passage.find('.//text').text
+                passage.find('.//text').text = paraphrase(abstract_text)
+                ##print(passage.find('.//text').text+"\n\n")
     
     # Restituisci l'albero XML copiato e modificato
     return tree
@@ -103,23 +103,45 @@ def change_intro(tree):
                 #Adding the generated introduction based on the title
                 if generated:
                     passage.find('.//text').text = introduction_first
-                    print(introduction_first)
+                    #print(introduction_first +'\n\n')
                     generated = False
                 #rephrase the other part of the introduction
                 else:
                     text_to_rephrase = passage.find('.//text').text
-                    print(f"TESTO DA RIFRASERE :\n\n {text_to_rephrase}")
-                    print(f"TESTO RIFRASATO: \n\n {paraphrase(text_to_rephrase)}")
-                    
+
+                    ##print(f"TESTO DA RIFRASERE :\n\n {text_to_rephrase}")
+                    ##print(f"TESTO RIFRASATO: \n\n {paraphrase(text_to_rephrase)}")
+                    passage.find('.//text').text = paraphrase(text_to_rephrase)
+                    #print(passage.find('.//text').text +'\n\n')
                 
             
 
     return tree
 
+def change_conclusion(tree):
+    root = tree.getroot()
+    generated = True #boolean to to modify the first element of the introduction
+    # Trova tutti gli elementi 'passage' nell'albero XML 
+    passages = root.findall('.//passage')
+    
+    # Itera su ciascun elemento 'passage'
+    for passage in passages:
+        # Trova l'elemento 'infon' con attributo 'section_type' uguale a 'CONCL'
+        section_type = passage.find(".//infon[@key='section_type']")
+        
+        if section_type is not None and section_type.text == 'CONCL':
+            if passage.find('.//text').text != 'Conclusion':
+                text_to_rephrase = passage.find('.//text').text
+                passage.find('.//text').text = paraphrase(text_to_rephrase)
+                #print(passage.find('.//text').text + '\n\n')
+    return tree
+
+
 
 
 def save_tree(file_path,tree):
     file_name_no_ext= os.path.splitext(os.path.basename(file_path))[0]
+    destination_folder = 'Dataset/plagiated_paper'+'/'
 
-    output_path = 'output_test/' + file_name_no_ext+'_plagiated.xml'
+    output_path = destination_folder+file_name_no_ext+'_plagiated.xml'
     tree.write(output_path)
