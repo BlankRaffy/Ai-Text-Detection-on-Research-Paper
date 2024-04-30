@@ -17,7 +17,7 @@ nltk.download('wordnet')
 path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extraction\PMC29044_plagiated.xml'
 tree = ET.parse(path)
 
-sentence = get_text.extract_intro(tree)
+sentence = get_text.extract_conclusion(tree)
 # Text preprocessing function
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()

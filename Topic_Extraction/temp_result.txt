@@ -8,3 +8,42 @@ plagiated introduction: central nervous system, central nervous system-associate
 
 original conclusion: varied clinical effects, produces varied clinical, isolated vasculitis, clinical effects, prolonged symptoms, primary isolated vasculitis
 plagiated conclusion: varying clinical manifestations, Vascular dysfunction, vascular system, tissue ischaemia, clinical manifestations, varying clinical
+
+
+
+Usando NMF (PMC29044 original e plagiated):
+
+original abstract: immune, vasculitis, gbs, cmv, formula, failure, exchanging, enriched, discharge, cytomegalovirus
+plagiated abstract: caused, immune, failure, enriched, developed, despite, cytomegalovirus, confined, complete, vasculitis
+
+original introduction: virus, vessels, vasculitis, cytomegalovirus, cns, zoster, distinctive, common, degenerative, disease
+plagiated introduction: gbs, history, cns, barrè, guillain, pain, progressive, characterized, central, case
+
+original conclusion: isolated, vasculitis, primary, secondary, neurological, cns, antibodies, vascular, dysfunction, cause
+plagiated conclusion: isolated, vasculitis, primary, secondary, neurological, cns, antibodies, vascular, dysfunction, cause
+
+
+
+Usando LSA (PMC29044 original e plagiated):
+
+original abstract: formula, coincided, acute, gb, vasculitis
+plagiated abstract: artery, acute, exchanging, achieved, caused
+
+original introduction: cns, vasculitis, vessel, cytomegalovirus, virus
+plagiated introduction: nervous, male, central, history, gb
+
+original conclusion: gb, neurological, cns, isolated, vasculitis
+plagiated conclusion: cause, antibody, secondary, vasculitis, isolated
+
+
+
+Usando LDA (PMC29044 original e plagiated):
+
+original abstract: vasculitis, gb, requiring, support, notwithstanding, plasma, rapid, recovery, rehabilitation, report
+plagiated abstract: caused, receiving, isolated, knowledge, left, plasma, gb, recovery, unusual, syndrome
+
+original introduction: virus, agent, cytomegalovirus, vessel, vasculitis, cns, report, pallidum, restricted, responsible
+plagiated introduction: gb, history, male, characterized, pain, syndrome, progressive, central, case, nervous
+
+original conclusion: cns, vasculitis, isolated, neurological, primary, gb, secondary, antibody, patient, occur
+plagiated conclusion: isolated, vasculitis, neurological, cns, primary, antibody, cause, secondary, dysfunction, typically

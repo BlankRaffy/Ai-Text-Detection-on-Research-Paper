@@ -49,28 +49,15 @@ def extract_keywords(topic_distribution):
     return keywords
 
 # Testiamo la funzione con un singolo testo di input
-path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extraction\PMC29044.xml'
+path='Topic_Extraction/PMC29044_plagiated.xml'
 tree = ET.parse(path)
 topic_list =[]
 
-input_text = get_text.extract_intro(tree)
+input_text = get_text.extract_conclusion(tree)
 raw_topic = extract_topics_from_text(input_text, num_topics=1)
 topic_list.append(extract_keywords(raw_topic))
 
-path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extraction\PMC29044_plagiated.xml'
-tree = ET.parse(path)
-topic_list1=[]
-
-input_text = get_text.extract_intro(tree)
-raw_topic = extract_topics_from_text(input_text, num_topics=1)
-topic_list1.append(extract_keywords(raw_topic))
-
-print(topic_list)
-print(topic_list1)
-
 for ele in topic_list[0]:
-    for ele1 in topic_list1[0]:
-        if ele == ele1:
-            print(f'TROVATI DUE ELEMENTI UGUALI: {ele},{ele1}')
+    print(ele)
 
 
