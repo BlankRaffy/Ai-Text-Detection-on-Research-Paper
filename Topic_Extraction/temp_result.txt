@@ -1,0 +1,10 @@
+Usando keyword extraction (PMC29044 original e plagiated):
+
+original abstract: auto-immune Guillain-Barrè syndrome, left sylvian artery, sustained by cytomegalovirus, Guillain-Barrè syndrome, authors report, report their knowledge
+plagiated abstract: left sylvian artery , auto-immune Guillain-Barrè syndrome, isolated vasculitis, sylvian artery, Guillain-Barrè syndrome, authors describe
+
+original introduction: Introduction Isolated vasculitis, central nervous system, uncommon clinicopathological entity, apparent systemic lesion, Introduction Isolated, Isolated vasculitis
+plagiated introduction: central nervous system, central nervous system-associated, progressive neurological disorder, central nervous, neurological disorder characterized, nervous system
+
+original conclusion: varied clinical effects, produces varied clinical, isolated vasculitis, clinical effects, prolonged symptoms, primary isolated vasculitis
+plagiated conclusion: varying clinical manifestations, Vascular dysfunction, vascular system, tissue ischaemia, clinical manifestations, varying clinical

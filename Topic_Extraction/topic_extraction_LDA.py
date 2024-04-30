@@ -53,7 +53,7 @@ path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extracti
 tree = ET.parse(path)
 topic_list =[]
 
-input_text = get_text.extract_conclusion(tree)
+input_text = get_text.extract_intro(tree)
 raw_topic = extract_topics_from_text(input_text, num_topics=1)
 topic_list.append(extract_keywords(raw_topic))
 
@@ -61,7 +61,7 @@ path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extracti
 tree = ET.parse(path)
 topic_list1=[]
 
-input_text = get_text.extract_conclusion(tree)
+input_text = get_text.extract_intro(tree)
 raw_topic = extract_topics_from_text(input_text, num_topics=1)
 topic_list1.append(extract_keywords(raw_topic))
 
