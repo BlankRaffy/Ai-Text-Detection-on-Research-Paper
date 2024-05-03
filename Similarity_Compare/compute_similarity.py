@@ -71,7 +71,7 @@ for i in tqdm.tqdm(range(len(df_original))):
             if similarity_score > max_similarity:
                 max_similarity=similarity_score
         intro_similarity.append(max_similarity)
-    if sum(intro_similarity)/len(intro_similarity) > 0.5:
+    if sum(intro_similarity)/len(intro_similarity) > 0.4:
         verdetto= verdetto+1
     #print('lo score della similarità per INTRODUCIOTN è:', sum(intro_similarity)/len(intro_similarity))
 
