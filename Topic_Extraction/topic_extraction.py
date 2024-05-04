@@ -15,7 +15,7 @@ import get_text
 import xml.etree.ElementTree as ET
 import re
 
-
+from sklearn.decomposition import TruncatedSVD
 
 # Assicurati di aver scaricato i dati necessari per NLTK
 nltk.download('punkt')
@@ -108,7 +108,6 @@ def NMF_extraction(file_path):
     
     return abstract,intro,conclusion
 
-
 def LDA_extraction(file_path):
     def preprocess_text(text):
     # Tokenizzazione del testo
@@ -165,3 +164,74 @@ def LDA_extraction(file_path):
     conclusion.append(extract_keywords(raw_topic))
 
     return abstarct[0][:6], intro[0][:6], conclusion[0][:6]
+
+def LSA_extraction(file_path):
+
+
+    def preprocess_text(text):
+        tokens = word_tokenize(text.lower())  # Tokenization and lowercasing
+        tokens = [token for token in tokens if token.isalpha()]  # Keep alphabetic words
+        tokens = [lemmatizer.lemmatize(token) for token in tokens if token not in stop_words]  # Lemmatization and remove stopwords
+        return ' '.join(tokens)
+
+    tree = ET.parse(file_path)
+    stop_words = set(stopwords.words('english'))
+    
+    lemmatizer = WordNetLemmatizer()
+    tfidf_vectorizer = TfidfVectorizer()
+    num_topics = 2
+    lsa_model = TruncatedSVD(n_components=num_topics)
+
+    abstract =[]
+    intro = []
+    conclusion = []
+
+
+    abstract_txt = get_text.extract_conclusion(tree)
+    intro_txt = get_text.extract_intro(tree)
+    conclusion_txt = get_text.extract_conclusion(tree)
+    
+
+# Preprocess the ABSTRACT
+    preprocessed_abstract = preprocess_text(abstract_txt)
+
+# Create TF-IDF matrix for the sentence
+    tfidf_abstract = tfidf_vectorizer.fit_transform([preprocessed_abstract])
+
+    lsa_abstract= lsa_model.fit_transform(tfidf_abstract)
+
+# Display the top terms associated with the extracted topic
+    terms = tfidf_vectorizer.get_feature_names_out()
+    top_terms_idx = lsa_model.components_[0].argsort()[-6:]  # Get indices of top 6 terms
+    abstract = [terms[idx] for idx in top_terms_idx]
+    #print(abstract)
+
+    # Preprocess the INTRO
+    preprocessed_intro= preprocess_text(intro_txt)
+
+# Create TF-IDF matrix for the sentence
+    tfidf_intro = tfidf_vectorizer.fit_transform([preprocessed_intro])
+
+    lsa_intro= lsa_model.fit_transform(tfidf_intro)
+
+# Display the top terms associated with the extracted topic
+    terms = tfidf_vectorizer.get_feature_names_out()
+    top_terms_idx = lsa_model.components_[0].argsort()[-6:]  # Get indices of top 6 terms
+    intro = [terms[idx] for idx in top_terms_idx]
+    #print(intro)
+
+    # Preprocess the CONCLUSION
+    preprocessed_conclusion= preprocess_text(conclusion_txt)
+
+# Create TF-IDF matrix for the sentence
+    tfidf_conclusion = tfidf_vectorizer.fit_transform([preprocessed_conclusion])
+
+    lsa_conclusion= lsa_model.fit_transform(tfidf_conclusion)
+
+# Display the top terms associated with the extracted topic
+    terms = tfidf_vectorizer.get_feature_names_out()
+    top_terms_idx = lsa_model.components_[0].argsort()[-6:]  # Get indices of top 6 terms
+    conclusion = [terms[idx] for idx in top_terms_idx]
+    #print(conclusion)
+    
+    return abstract,intro,conclusion

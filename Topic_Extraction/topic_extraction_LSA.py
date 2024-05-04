@@ -14,7 +14,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
-path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extraction\PMC29044_plagiated.xml'
+path='Topic_Extraction/PMC13901_plagiated.xml'
 tree = ET.parse(path)
 
 sentence = get_text.extract_conclusion(tree)
@@ -43,8 +43,7 @@ lsa_topic_matrix = lsa_model.fit_transform(tfidf_matrix)
 
 # Display the top terms associated with the extracted topic
 terms = tfidf_vectorizer.get_feature_names_out()
-top_terms_idx = lsa_model.components_[0].argsort()[-5:]  # Get indices of top 5 terms
+top_terms_idx = lsa_model.components_[0].argsort()[-6:]  # Get indices of top 6 terms
 top_terms = [terms[idx] for idx in top_terms_idx]
 
-print("Top terms associated with the topic:")
-print(', '.join(top_terms))
+print(top_terms)
