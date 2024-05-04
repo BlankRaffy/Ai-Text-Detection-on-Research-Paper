@@ -3,7 +3,7 @@ from sklearn.decomposition import NMF
 import xml.etree.ElementTree as ET
 import get_text
 
-path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extraction\PMC29044.xml'
+path=r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\Topic_Extraction\PMC13901.xml'
 tree = ET.parse(path)
 
 sentence = get_text.extract_conclusion(tree)

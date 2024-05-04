@@ -14,21 +14,21 @@ def convert_to_list(string):
 
 
 # Carica il DataFrame dal file CSV, specificando la funzione di conversione per le colonne desiderate
-df_original = pd.read_csv('Topic_Extraction/topic/original_topic.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
-df_plagiated= pd.read_csv('Topic_Extraction/topic/plagiated_topic.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
+df_original = pd.read_csv('Topic_Extraction/topic/original_topic_nmf.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
+df_plagiated= pd.read_csv('Topic_Extraction/topic/plagiated_topic_nmf.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
 
 #original_abstact_tp = df_original['abstract'][1]
-plagiated_abstract_tp = df_plagiated['abstract'][1]
+plagiated_abstract_tp = df_plagiated['abstract'][0]
 #print(original_abstact_tp)
 #print(plagiated_abstract_tp)
 
 #original_intro_tp = df_original['introduction'][1]
-plagiated_intro_tp = df_plagiated['introduction'][1]
+plagiated_intro_tp = df_plagiated['introduction'][0]
 #print(original_intro_tp)
 #print(plagiated_intro_tp)
 
 #original_conclusion_tp = df_original['conclusion'][1]
-plagiated_conclusion_tp = df_plagiated['conclusion'][1]
+plagiated_conclusion_tp = df_plagiated['conclusion'][0]
 #print(original_conclusion_tp)
 #print(plagiated_conclusion_tp)
 columns = ['file','results']
@@ -58,7 +58,7 @@ for i in tqdm.tqdm(range(len(df_original))):
 
     if sum(abstract_similarity)/len(abstract_similarity) > 0.75:
         verdetto= verdetto+1
-    #print('lo score della similarità per ABSTRACT è:', sum(abstract_similarity)/len(abstract_similarity))
+    print('lo score della similarità per ABSTRACT è:', sum(abstract_similarity)/len(abstract_similarity))
 
 
     for kw in plagiated_intro_tp:
@@ -96,7 +96,7 @@ for i in tqdm.tqdm(range(len(df_original))):
     df_result = pd.concat([df_result, pd.DataFrame([new_row])], ignore_index=True)
 
 print(f'i risultati della similarità del file: {df_plagiated.iloc[1][0]} ')
-csv_file_path = 'Similarity_Compare/result_semantic_similarity.csv'
+csv_file_path = 'Similarity_Compare/result_semantic_similarity_nmf.csv'
 
 # Salva il DataFrame nel file CSV
 df_result.to_csv(csv_file_path, index=False)
