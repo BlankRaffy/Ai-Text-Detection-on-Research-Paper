@@ -18,17 +18,17 @@ df_original = pd.read_csv('Topic_Extraction/topic/original_topic.csv', converter
 df_plagiated= pd.read_csv('Topic_Extraction/topic/plagiated_topic.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
 
 #original_abstact_tp = df_original['abstract'][1]
-plagiated_abstract_tp = df_plagiated['abstract'][7]
+plagiated_abstract_tp = df_plagiated['abstract'][0]
 #print(original_abstact_tp)
 #print(plagiated_abstract_tp)
 
 #original_intro_tp = df_original['introduction'][1]
-plagiated_intro_tp = df_plagiated['introduction'][7]
+plagiated_intro_tp = df_plagiated['introduction'][0]
 #print(original_intro_tp)
 #print(plagiated_intro_tp)
 
 #original_conclusion_tp = df_original['conclusion'][1]
-plagiated_conclusion_tp = df_plagiated['conclusion'][7]
+plagiated_conclusion_tp = df_plagiated['conclusion'][0]
 #print(original_conclusion_tp)
 #print(plagiated_conclusion_tp)
 columns = ['file','results']
@@ -71,7 +71,7 @@ for i in tqdm.tqdm(range(len(df_original))):
             if similarity_score > max_similarity:
                 max_similarity=similarity_score
         intro_similarity.append(max_similarity)
-    if sum(intro_similarity)/len(intro_similarity) > 0.5:
+    if sum(intro_similarity)/len(intro_similarity) > 0.4:
         verdetto= verdetto+1
     #print('lo score della similarità per INTRODUCIOTN è:', sum(intro_similarity)/len(intro_similarity))
 
