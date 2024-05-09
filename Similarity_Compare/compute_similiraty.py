@@ -25,9 +25,8 @@ plagiated_conclusion_tp = df_plagiated['conclusion'][0]
 columns = ['input_file','compare_file','abstract_score','intro_score','conclusion_score','final_score']
 df_result = pd.DataFrame(columns= columns)
 
-#for i in tqdm.tqdm(range(len(df_original))):
 
-
+#compare a single file with all original one, TO IMPLEMENT ALL FILE COMPARISON
 for i in tqdm.tqdm(range(len(df_original))):
     original_abstact_tp = df_original['abstract'][i]
     original_intro_tp = df_original['introduction'][i]
