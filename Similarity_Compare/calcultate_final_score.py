@@ -1,12 +1,12 @@
 import csv
+import tqdm
 
-# Function to modify final_score based on custom criteria
 def computed_final_score(row):
     abstract_wg = 0.4
     intro_wg = 0.2
     conclusion_wg = 0.4
     
-    final_score = float(row['abstract_score'])*abstract_wg + float(row['intro_score'])*intro_wg + float(row['conclusion_score'])*conclusion_wg
+    final_score = float(row['abstract_score']) * abstract_wg + float(row['intro_score']) * intro_wg + float(row['conclusion_score']) * conclusion_wg
     return final_score
 
 # Input and output filenames
@@ -19,20 +19,15 @@ with open(input_filename, 'r', newline='') as input_file, open(output_filename, 
     fieldnames = reader.fieldnames
 
     # Append a new fieldname for the modified final_score
-    fieldnames.append('final_score')
-
     writer = csv.DictWriter(output_file, fieldnames=fieldnames)
     writer.writeheader()
 
     # Process each row in the input CSV file
-    for row in reader:
-        # Get the original final_score
-        original_final_score = row['final_score']
-
-        # Modify the final_score based on custom criteria
+    for row in tqdm.tqdm(reader):
+        # Compute the new final_score
         final_score = computed_final_score(row)
 
-        # Update the row with the modified final_score
+        # Update the row with the new final_score
         row['final_score'] = final_score
 
         # Write the updated row to the output CSV file
