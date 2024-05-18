@@ -26,4 +26,4 @@ for input_file, rows in top_5_rows_per_input_file.items():
 result_df = pd.DataFrame(result_rows)
 
 # Salva il risultato in un nuovo file CSV
-result_df.to_csv('Similarity_Compare/top_k_for_similarity/paper_similarity_rank.csv', index=False)
+result_df.to_csv('Similarity_Compare/top_k_for_similarity/paper_topic_similarity_rank.csv', index=False)

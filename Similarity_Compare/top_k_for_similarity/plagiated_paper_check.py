@@ -1,7 +1,7 @@
 import pandas as pd
 import tqdm
 
-data = pd.read_csv('Similarity_Compare/top_k_for_similarity/paper_similarity_rank.csv')
+data = pd.read_csv('Similarity_Compare/top_k_for_similarity/paper_topic_similarity_rank.csv')
 similar = []
 count = 0
 for i in tqdm.tqdm(range(len(data))):
