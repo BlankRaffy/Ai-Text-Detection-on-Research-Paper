@@ -7,20 +7,20 @@ data = pd.read_csv(r'C:\Users\Blank\Desktop\Ai-Text-Detection-on-Research-Paper\
 data_sorted = data.sort_values(by=['input_file', 'final_score'], ascending=[True, False])
 
 # Dizionario per tenere traccia delle prime 3 righe per ciascun input_file
-top_3_rows_per_input_file = {}
+top_5_rows_per_input_file = {}
 
 for index, row in data_sorted.iterrows():
     input_file = row['input_file']
-    if input_file not in top_3_rows_per_input_file:
-        top_3_rows_per_input_file[input_file] = []
+    if input_file not in top_5_rows_per_input_file:
+        top_5_rows_per_input_file[input_file] = []
 
     # Aggiungi la riga corrente al dizionario
-    top_3_rows_per_input_file[input_file].append(row)
+    top_5_rows_per_input_file[input_file].append(row)
 
-# Seleziona solo le prime 3 righe per ciascun input_file
+# Seleziona solo le prime 5 righe per ciascun input_file
 result_rows = []
-for input_file, rows in top_3_rows_per_input_file.items():
-    result_rows.extend(rows[:3])
+for input_file, rows in top_5_rows_per_input_file.items():
+    result_rows.extend(rows[:5])
 
 # Crea un nuovo DataFrame con le righe selezionate
 result_df = pd.DataFrame(result_rows)
