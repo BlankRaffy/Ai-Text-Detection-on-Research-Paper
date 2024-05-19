@@ -1,0 +1,5 @@
+,sentence,label,score
+0,"A general and promising approach to learning from gene expression data is the tree harvest procedure, which involves discovering the additive and interaction structure of clusters of genes in relation to an outcome measure.",Machine,0.5547
+1,"However, this method requires significant sample sizes, and as such, we anticipate experimenting with tree extracting on larger datasets.",Machine,0.9682
+2,"We decided to use a forward stepwise strategy involving the sum AND products of the average gene Expression of chosen cluster(s) to produce interpretable, biologically plausible models.",Human,0.0063
+3,Other models could be constructed from the combined gene-expression of other cluster model using methods like Tree-based methods or enhancing,Human,0.0425
