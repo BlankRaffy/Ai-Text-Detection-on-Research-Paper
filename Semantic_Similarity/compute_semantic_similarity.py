@@ -69,11 +69,11 @@ for i in tqdm.tqdm(range(len(top_k_list))):
     new_row = {'input_file':top_k_list[i]['input_file'],'compare_file': top_k_list[i]['compare_file'],
                     'abstract_semantic_score': abstract_semantic_score, 
                     'intro_semantic_score':intro_semantic_score,'conclusion_semantic_score':conclusion_semantic_score,
-                        'final_score': 0 }
+                        'final_semantic_score': 0 }
 
     df_result = pd.concat([df_result, pd.DataFrame([new_row])], ignore_index=True)
 
-csv_file_path = 'Semantic_Similarity/semantic_rank/semantic_rank_no_final_score.csv'
+csv_file_path = 'Semantic_Similarity/semantic_rank/semantic_no_final_score.csv'
 
 df_result.to_csv(csv_file_path, index=False)
 
