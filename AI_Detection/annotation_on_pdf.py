@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 
-def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=(2, 0, 0)):
+def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=(1, 0, 0)):
     # Open the input PDF file
     pdf_document = fitz.open(input_pdf)
     
@@ -19,6 +19,8 @@ def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=(2,
             for rect in rects:
                 highlight = page.add_highlight_annot(rect)
                 highlight.set_colors(colors=(1,0,0),fill=highlight_color)
+                highlight.set_colors(stroke=[1, 0.8, 0.8]) # light red color (r, g, b)
+                highlight.update()
     
     # Save the modified PDF to a new file
     pdf_document.save(output_pdf)
