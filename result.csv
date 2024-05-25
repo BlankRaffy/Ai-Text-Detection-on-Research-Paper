@@ -1,4 +1,0 @@
-,sentence,label,score
-0,"  Despite the lack of significant effects on TGF- local expression, we believe that tamoxifen or retinoids may be effective in preventing mammary tumorigenesis in rats.",Machine,0.9678
-1,"Although we cannot rule out other potential effects, such as latent latences activation, these findings confirm the molecular mechanism of chemoprevention as it does not involve increases in TNF-like activity (which is consistent with previous work that demonstrated blockade of TAF-ß) on breast cancer cells.",Human,0.0987
-2,"Given limited breast tissue available phenotypes, this suggests",Human,0.0078
