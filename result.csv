@@ -1,5 +1,4 @@
 ,sentence,label,score
-0,"The expression of BRCA1 and BCRA2 genes, which encode breast cancer susceptibility genes in humans, is accompanied by multiple complex cellular functions.",Machine,0.6866
-1,"However, there is significant evidence linking these genes to homologous recombination, transcriptional control, tissue proliferation, and the localization of their proteins to nucleus or cytoplasm.",Machine,0.7927
-2,"Nevertheless, it is uncertain whether these 2 genes are expressed in premeiotic germ cells or can still be expressed independently in mitotic spermatogonia.",Human,0.0363
-3,We present an immunohistochemical study of this gene expression pattern that leads patients.,Human,0.0258
+0,"  Despite the lack of significant effects on TGF- local expression, we believe that tamoxifen or retinoids may be effective in preventing mammary tumorigenesis in rats.",Machine,0.9678
+1,"Although we cannot rule out other potential effects, such as latent latences activation, these findings confirm the molecular mechanism of chemoprevention as it does not involve increases in TNF-like activity (which is consistent with previous work that demonstrated blockade of TAF-ß) on breast cancer cells.",Human,0.0987
+2,"Given limited breast tissue available phenotypes, this suggests",Human,0.0078

@@ -1,0 +1,68 @@
+plagiated_file,abstract_sentence,intro_sentence,conclusion_sentence
+PMC13901_plagiated.xml,"                                            sentence    label   score
+0  The expression of BRCA1 and BCRA2 genes, which...  Machine  0.6866
+1  However, there is significant evidence linking...  Machine  0.7927
+2  Nevertheless, it is uncertain whether these 2 ...    Human  0.0363
+3  We present an immunohistochemical study of thi...    Human  0.0258","                                            sentence    label   score
+0   Introduction The BRCA1 and BRCA2 BRCA1 and BR...  Machine  0.9431
+1  The BRCA1 and BRCA2 genes are found in both ov...  Machine  0.9469
+2  The BRCA1 and BRCA2 genes are located on chrom...  Machine  0.9247
+3  A mutation in BRCA1 or BRCA2 leads to the seve...    Human  0.3759
+4  The BRCA1 and BRCA2 genes are common mutations...  Machine  0.9010
+5  The BRCA1 and BRCA2 genes are highly expressed...  Machine  0.8431
+6  The BRCA1 and BRCA2 genes are most frequently ...    Human  0.4491
+7  Given these results, we immunochemically exami...    Human  0.0174","                                            sentence    label   score
+0    Lastly, we demonstrate with various antibodi...    Human  0.1988
+1  Britain1 is expressed during growth and differ...  Machine  0.7395"
+PMC13902_plagiated.xml,"                                            sentence    label   score
+0  We used a carcinogenic rat model of mammary tu...  Machine  0.8391
+1  The chemopreventive agents tested were tamoxif...    Human  0.0264","                                             sentence    label   score
+0    The authors of this study investigated the lo...  Machine  0.9954
+1   Discussion:\n\nThese data demonstrate that GHB...  Machine  0.7423
+2   A landmark trial showed that tamoxifen, a sele...  Machine  0.9782
+3   The search for agents with better risk-benefit...  Machine  0.9509
+4   Provocative mechanistic interactions have been...    Human  0.0087
+5   In contrast, the mammary gland's overexpressio...    Human  0.4330
+6   Interventions that upregulate TEF-I function e...  Machine  0.7180
+7   The current study utilized a rat mammary carci...    Human  0.0779
+8   Materials and techniques A standard protocol f...  Machine  0.7456
+9   The rats were fed dietary supplements, which i...    Human  0.2253
+10  Rats were given 10 mg tamoxifen/kg body weight...    Human  0.0041
+11  The antibodies against anti-TGF-1-induced pept...    Human  0.2069
+12  They were then assessed against mice and rats ...    Human  0.4682
+13                              What are the results?  Machine  0.5075
+14  The onset of NMU resulted in the detection of ...    Human  0.3294
+15                                               1a).  Machine  0.6598
+16  Tamoxifen, either alone or in combination with...  Machine  0.8613
+17  However, it was found that it significantly re...  Machine  0.8838
+18  At 15 weeks of age, untreated rats exhibited i...    Human  0.2407
+19  This suggests that TNF-ßßp is synthesized by e...    Human  0.1429
+20  Despite using chemopreventive agents alone or ...    Human  0.4217
+21                                                3).  Machine  0.9437
+22  The study set was chosen for its 6-week durati...    Human  0.0810
+23  We also examined the effects of tamoxifen on r...    Human  0.0588
+24  During 6 weeks of treatment, rats that receive...    Human  0.0777
+25  The debate revolves around the topic of educat...  Machine  0.9351
+26  Identifying surrogate biomarkers that can pred...  Machine  0.5363
+27  The most informative markers are those with mo...    Human  0.2982
+28  However; the current evidence in vivo studies ...    Human  0.0345
+29  The current studies on tamoxifen and retinoids...  Machine  0.8280
+30  The evidence suggests that TGF-s may promote t...  Machine  0.9134
+31  A recent study also found that loss of the typ...  Machine  0.9996
+32  Our study compared results with the NMU-induce...  Machine  0.9730
+33  The agent responsible for this produces highly...    Human  0.0046
+34  We found that the histology of the terminal en...    Human  0.0052
+35  Our research has revealed that tamoxifen or re...  Machine  0.9355
+36  While we cannot rule out subtle changes in TNF...    Human  0.4354
+37  Given the limited resources of breast tissue, ...    Human  0.1568
+38  Introduction A new definition of chemopreventi...    Human  0.1109
+39  The nuclear receptor superfamily members are c...  Machine  0.9545
+40  In a recent landmark trial, tamoxifen, an extr...  Machine  0.9533
+41  Another SE A search for agents with better ris...    Human  0.0075
+42  Tissue-Based surrogate end-point biomarkers ar...    Human  0.0496
+43  Early intervention could potentially delay or ...  Machine  0.9030
+44  Tumor suppressor activity may be a mechanism f...  Machine  0.6232
+45  Our study examined the impact of chemopreventi...    Human  0.2086","                                            sentence    label   score
+0    Despite the lack of significant effects on T...  Machine  0.9678
+1  Although we cannot rule out other potential ef...    Human  0.0987
+2  Given limited breast tissue available phenotyp...    Human  0.0078"
