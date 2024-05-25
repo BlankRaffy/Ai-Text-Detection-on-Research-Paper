@@ -8,9 +8,9 @@ df = pd.read_csv('AI_Detection/results/Ai_Detection_result.csv')
 def convert_to_dataframe(df_string):
     return pd.read_csv(io.StringIO(df_string.strip()), sep='\s{2,}', engine='python')
 
-abstract_df_string = df.loc[1, 'abstract_sentence']
+abstract_df_string = df.loc[0, 'abstract_sentence']
 abstract_df = convert_to_dataframe(abstract_df_string)
 
-print(abstract_df['label'])
+print(abstract_df['sentence'][0])
 
 
