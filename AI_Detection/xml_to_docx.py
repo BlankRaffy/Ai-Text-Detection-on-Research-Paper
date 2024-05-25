@@ -21,4 +21,4 @@ conclusion_text = get_text.extract_conclusion(tree)
 
 text = 'ABSTRACT \n'+ abstract_text + '\n\n\n'+'INTRODUCTION \n'+ intro_text + '\n\n\n'+ 'CONCLUSION \n'+ conclusion_text
 
-save_text_to_docx(text, 'PMC13901_plagiated.docx')
+save_text_to_docx(text, 'prova.docx')
