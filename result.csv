@@ -1,0 +1,5 @@
+,sentence,label,score
+0,"The expression of BRCA1 and BCRA2 genes, which encode breast cancer susceptibility genes in humans, is accompanied by multiple complex cellular functions.",Machine,0.6866
+1,"However, there is significant evidence linking these genes to homologous recombination, transcriptional control, tissue proliferation, and the localization of their proteins to nucleus or cytoplasm.",Machine,0.7927
+2,"Nevertheless, it is uncertain whether these 2 genes are expressed in premeiotic germ cells or can still be expressed independently in mitotic spermatogonia.",Human,0.0363
+3,We present an immunohistochemical study of this gene expression pattern that leads patients.,Human,0.0258
