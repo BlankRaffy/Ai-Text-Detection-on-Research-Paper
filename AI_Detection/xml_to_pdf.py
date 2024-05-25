@@ -1,45 +1,56 @@
-import fitz  # PyMuPDF
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from xml.etree import ElementTree as ET
+import get_text
 
-def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color):
-    """
-    Highlights sentences in a PDF document and adds the text from the sentence inside the highlighted rectangles.
+def create_pdf(filename):
+    # Create a canvas object
+    c = canvas.Canvas(filename, pagesize=letter)
 
-    Args:
-        input_pdf (str): Path to the original PDF file.
-        output_pdf (str): Path to save the highlighted PDF.
-        sentences_to_highlight (list): List of strings containing the sentences to be highlighted.
-        color (tuple): A tuple representing the RGB color for highlighting.
-    """
-    # Open the input PDF file
-    pdf_document = fitz.open(input_pdf)
-    
-    # Convert RGB values to the range [0, 1]
-    highlight_color = tuple(component / 255 for component in color)
-    
-    # Iterate through each page in the PDF
-    for page_number in range(len(pdf_document)):
-        page = pdf_document[page_number]
-        
-        # Initialize start_y for each page
-        # Search for sentences to highlight
-        for sentence in sentences_to_highlight:
-            rects = page.search_for(sentence)
-            # Highlight each occurrence of the sentence on the page
-            for rect in rects:
-                # Draw filled rectangle
-                page.draw_rect(rect, color=highlight_color)
+    # Set the font size
+    font_size = 12
 
-    # Save the modified PDF to a new file
-    pdf_document.save(output_pdf)
-    pdf_document.close()
+    # Set the maximum width for text
+    max_width = 400
 
-# Example usage:
-input_pdf = "example.pdf"
-output_pdf = "output_highlighted_with_text.pdf"
-sentences_to_highlight = [
-    "Introduction The BRCA1 and BRCA2 BRCA1 and BRCA2 genes are expressed in the ovaries.",
-    "A mutation in BRCA1 or BRCA2 leads to the severe defects of ovarian cancer"
-]
-highlight_color = (255, 165, 0)  # Orange color in RGB format
+    # Parse XML and extract text
+    tree = ET.parse('AI_Detection/PMC13901_plagiated.xml')
+    abstract_text = get_text.extract_abstract(tree)
+    intro_text = get_text.extract_intro(tree)
+    conclusion_text = get_text.extract_conclusion(tree)
 
-highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=highlight_color)
+    # Construct the complete text
+    text = 'ABSTRACT \n'+ abstract_text + '\n\n\n'+'INTRODUCTION \n'+ intro_text + '\n\n\n'+ 'CONCLUSION \n'+ conclusion_text 
+
+    # Split the text into multiple lines
+    lines = []
+    for paragraph in text.split('\n'):
+        words = paragraph.split()
+        line = ""
+        for word in words:
+            if c.stringWidth(line + " " + word, "Helvetica", font_size) < max_width:
+                line += " " + word
+            else:
+                lines.append(line.strip())
+                line = word
+        lines.append(line.strip())
+
+    # Calculate the starting position to center the text vertically
+    start_y = letter[1] - 50
+
+    # Draw text on the canvas
+    c.setFont("Helvetica", font_size)
+    for line in lines:
+        if start_y < 50:
+            # If the remaining space on the page is not enough for the next line, add a new page
+            c.showPage()
+            c.setFont("Helvetica", font_size)
+            start_y = letter[1] - 50
+        c.drawString(100, start_y, line)
+        start_y -= font_size
+
+    # Save the canvas to a PDF file
+    c.save()
+
+# Call the function to create a PDF
+create_pdf("example.pdf")
