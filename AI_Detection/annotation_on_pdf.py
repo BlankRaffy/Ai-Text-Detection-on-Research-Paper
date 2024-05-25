@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 
-def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=(1, 0, 0)):
+def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color):
     # Open the input PDF file
     pdf_document = fitz.open(input_pdf)
     
@@ -18,8 +18,8 @@ def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=(1,
             # Highlight each occurrence of the sentence on the page with the specified color
             for rect in rects:
                 highlight = page.add_highlight_annot(rect)
-                highlight.set_colors(colors=(1,0,0),fill=highlight_color)
-                highlight.set_colors(stroke=[1, 0.8, 0.8]) # light red color (r, g, b)
+                highlight.set_colors(color,fill=highlight_color)
+                highlight.set_colors(stroke=color) # light red color (r, g, b) the one who set the color
                 highlight.update()
     
     # Save the modified PDF to a new file
@@ -30,5 +30,5 @@ def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=(1,
 input_pdf = "example.pdf"
 output_pdf = "output_highlighted.pdf"
 sentences_to_highlight = ["Introduction The BRCA1 and BRCA2 BRCA1 and BRCA2 genes are expressed in the ovaries."," A mutation in BRCA1 or BRCA2 leads to the severe defects of ovarian cancer"]  # Add the sentences you want to highlight
-highlight_color = (1, 0, 0)  # Red color
+highlight_color = (1, 0.8, 0.8)  # light red color
 highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color=highlight_color)
