@@ -20,14 +20,15 @@ def highlight_sentences(input_pdf, output_pdf, sentences_to_highlight, color):
     for page_number in range(len(pdf_document)):
         page = pdf_document[page_number]
         
-        # Initialize start_y for each page
         # Search for sentences to highlight
         for sentence in sentences_to_highlight:
             rects = page.search_for(sentence)
             # Highlight each occurrence of the sentence on the page
             for rect in rects:
-                # Draw filled rectangle
-                page.draw_rect(rect, color=highlight_color)
+                # Draw rectangle annotation for the fill color inside
+                page.draw_rect(rect, fill=highlight_color, color=highlight_color)
+                # Add the text from the sentence inside the rectangle
+                page.insert_text((rect[0], rect[1]), sentence, fontsize=8, fontname="helv", color=(0, 0, 0))
 
     # Save the modified PDF to a new file
     pdf_document.save(output_pdf)
