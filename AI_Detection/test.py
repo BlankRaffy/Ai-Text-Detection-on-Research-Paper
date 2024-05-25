@@ -2,7 +2,7 @@ import pandas as pd
 import io
 
 # Carica il CSV in un DataFrame
-df = pd.read_csv('final_result.csv')
+df = pd.read_csv('AI_Detection/results/Ai_Detection_result.csv')
 
 # Funzione per convertire la stringa di un DataFrame in un vero DataFrame
 def convert_to_dataframe(df_string):

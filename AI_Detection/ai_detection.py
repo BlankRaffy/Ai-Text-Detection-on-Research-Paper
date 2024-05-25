@@ -87,6 +87,6 @@ for i in range(2):
     new_row = {'plagiated_file':df.iloc[i]['input_file'],'abstract_sentence':df_result_abstract,'intro_sentence':df_result_intro,'conclusion_sentence':df_result_conclusion} 
     df_final_result = pd.concat([df_final_result, pd.DataFrame([new_row])], ignore_index=True)
 
-df_final_result.to_csv('AI_Detection/Ai_Detection_result.csv',index=False)
+df_final_result.to_csv('AI_Detection/results/Ai_Detection_result.csv',index=False)
 #NOTE stiamo salvando per ogni file un lista delle frasi di ogni parte con il relativo punteggio e label, durante la creazione del csv questi dataframe è
 #come se venissero persi, si devono riconvertire quando si carica il df
