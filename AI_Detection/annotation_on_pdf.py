@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 
-def highlight_sentences(pdf_dpcument, output_pdf, sentences_to_highlight, color):
+def highlight_sentences(pdf_document, output_pdf, sentences_to_highlight, color):
     # Open the input PDF file
     
     

@@ -1,11 +1,11 @@
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from xml.etree import ElementTree as ET
-import get_text
+import get_text 
 
-def create_pdf(filename):
+def create_pdf(file_path,output_path):
     # Create a canvas object
-    c = canvas.Canvas(filename, pagesize=letter)
+    c = canvas.Canvas(output_path, pagesize=letter)
 
     # Set the font size
     font_size = 12
@@ -14,7 +14,7 @@ def create_pdf(filename):
     max_width = 400
 
     # Parse XML and extract text
-    tree = ET.parse('AI_Detection/PMC13901_plagiated.xml')
+    tree = ET.parse(file_path)
     abstract_text = get_text.extract_abstract(tree)
     intro_text = get_text.extract_intro(tree)
     conclusion_text = get_text.extract_conclusion(tree)
@@ -52,5 +52,3 @@ def create_pdf(filename):
     # Save the canvas to a PDF file
     c.save()
 
-# Call the function to create a PDF
-create_pdf("example.pdf")
