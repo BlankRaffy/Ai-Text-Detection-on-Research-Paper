@@ -22,7 +22,7 @@ def highlight_sentences(pdf_dpcument, output_pdf, sentences_to_highlight, color)
                 highlight.set_colors(stroke=color) # light red color (r, g, b) the one who set the color
                 highlight.update()
     
-    # Save the modified PDF to a new file
+
  
 
 # Example usage:
