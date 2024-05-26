@@ -25,7 +25,6 @@ def highlight_sentences(pdf_document, output_pdf, sentences_to_highlight, color)
 
  
 
-# Example usage:
 input_pdf = "example.pdf"
 output_pdf = "output_highlighted.pdf"
 pdf_document = fitz.open(input_pdf)
