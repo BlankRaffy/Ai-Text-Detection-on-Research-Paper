@@ -61,6 +61,13 @@ original_dataset='Dataset/original_paper'
 absolute_path_abstract = original_dataset+'/'+file_list[0]
     
 abstract_tree = ET.parse(absolute_path_abstract)
+
+absolute_path_intro = original_dataset+'/'+file_list[1]
+    
+intro_tree = ET.parse(absolute_path_intro)
+
+print(file_list)
+
 '''
 tree = multi_plagiated_function.change_abstract(tree)
 tree = plagiated_function.change_intro(tree)

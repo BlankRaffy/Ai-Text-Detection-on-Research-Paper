@@ -17,7 +17,6 @@ df = pd.read_csv('AI_Detection/results/Ai_Detection_result.csv')
 
 #load document 
 
-output_pdf = "output_highlighted.pdf"
 
 pdf_folder='AI_Detection/pdf_plagiated_file'
 i=0 #to iterate over dataset

@@ -18,9 +18,10 @@ def create_pdf(file_path,output_path):
     abstract_text = get_text.extract_abstract(tree)
     intro_text = get_text.extract_intro(tree)
     conclusion_text = get_text.extract_conclusion(tree)
+    title_text = get_text.get_title(tree)
 
     # Construct the complete text
-    text = 'ABSTRACT \n'+ abstract_text + '\n\n\n'+'INTRODUCTION \n'+ intro_text + '\n\n\n'+ 'CONCLUSION \n'+ conclusion_text 
+    text = title_text +'\n\n\n' + 'ABSTRACT \n'+ abstract_text + '\n\n\n'+'INTRODUCTION \n'+ intro_text + '\n\n\n'+ 'CONCLUSION \n'+ conclusion_text 
 
     # Split the text into multiple lines
     lines = []

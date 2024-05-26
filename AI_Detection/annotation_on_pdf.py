@@ -24,7 +24,7 @@ def highlight_sentences(pdf_document, output_pdf, sentences_to_highlight, color)
     
 
  
-
+'''
 input_pdf = "example.pdf"
 output_pdf = "output_highlighted.pdf"
 pdf_document = fitz.open(input_pdf)
@@ -38,3 +38,4 @@ highlight_sentences(pdf_document, output_pdf, sentences_to_highlight, color=high
 
 pdf_document.save(output_pdf)
 pdf_document.close()
+'''
