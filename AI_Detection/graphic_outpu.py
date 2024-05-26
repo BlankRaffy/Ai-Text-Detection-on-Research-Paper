@@ -22,11 +22,11 @@ output_pdf = "output_highlighted.pdf"
 pdf_folder='AI_Detection/pdf_plagiated_file'
 i=0 #to iterate over dataset
 
-for file in os.listdir(pdf_folder):
+for file in tqdm.tqdm(os.listdir(pdf_folder)):
 
     input_pdf = pdf_folder+'/'+file 
     print(input_pdf)
-    output_pdf='AI_Detection/pdf_plagiated_file'+'/'+file.replace('_demo.pdf','_highlight.pdf')
+    output_pdf='AI_Detection/annotation_on_pdf'+'/'+file.replace('_demo.pdf','_highlight.pdf')
     print(output_pdf)
 
 
