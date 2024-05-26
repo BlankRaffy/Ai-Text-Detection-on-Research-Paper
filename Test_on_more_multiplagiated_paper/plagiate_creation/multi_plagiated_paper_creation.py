@@ -2,33 +2,8 @@ import os
 import xml.etree.ElementTree as ET
 import tqdm
 import pandas as pd
+import xml_creation_function
 
-''' TEST ON A SINGLE FILE
-file_path= 'original_paper\PMC13901.xml'
-
-tree = ET.parse(file_path)
-
-tree = plagiated_function.change_abstract(tree)
-tree = plagiated_function.change_intro(tree)
-tree = plagiated_function.change_conclusion(tree)
-
-#save the final xml file with all the modified part:
-plagiated_function.save_tree(file_path,tree)
-
-folder = 'Dataset/original_paper'
-for ele in tqdm.tqdm(os.listdir(folder)):
-
-    absolute_path = folder+'/'+ele
-    
-    tree = ET.parse(absolute_path)
-
-    tree = plagiated_function.change_abstract(tree)
-    tree = plagiated_function.change_intro(tree)
-    tree = plagiated_function.change_conclusion(tree)
-
-    #save the final xml file with all the modified part:
-    plagiated_function.save_tree(absolute_path,tree)
-'''
 
 df = pd.read_csv('Similarity_Compare/top_k_for_similarity/paper_topic_similarity_rank.csv') #ci stiamo basando su quelli che in precedenza avevano il final score più alto
 
@@ -41,42 +16,36 @@ df_sorted = df.sort_values(by=['input_file', 'final_score'], ascending=[True, Fa
 # Prendi i primi 3 per ogni 'input_file'
 df_top3 = df_sorted.groupby('input_file').head(3)
 
+output_folder='Test_on_more_multiplagiated_paper/multi_plagiated_paper'
 
+for i in range(2):
 # Accedi ai primi 3 elementi del primo gruppo
-first_input_file = df_top3['input_file'].unique()[0] #primo elemento 
-df_first_input_file = df_top3[df_top3['input_file'] == first_input_file] #top_3 per il primo elemtno
+    first_input_file = df_top3['input_file'].unique()[i] #primo elemento 
+    df_first_input_file = df_top3[df_top3['input_file'] == first_input_file] #top_3 per il primo elemtno
 
-file_list=[]
+    file_list=[]
 
-for i in range(len(df_first_input_file)): #iteriamo sui primi 3 elementi e ci salviamo i nomi dei file
-    file_list.append(df_first_input_file.iloc[i]['compare_file'])
+    for j in range(len(df_first_input_file)): #iteriamo sui primi 3 elementi e ci salviamo i nomi dei file
+        file_list.append(df_first_input_file.iloc[j]['compare_file'])
 
-new_row = {'input_file':df_first_input_file.iloc[i]['input_file'],'list_of_source_file':file_list}
+    new_row = {'input_file':df_first_input_file.iloc[i]['input_file'],'list_of_source_file':file_list}
 
-df_multi_plagiated_source = pd.concat([df_multi_plagiated_source, pd.DataFrame([new_row])], ignore_index=True)
+    df_multi_plagiated_source = pd.concat([df_multi_plagiated_source, pd.DataFrame([new_row])], ignore_index=True)
 
-original_dataset='Dataset/original_paper'
+    original_dataset='Dataset/original_paper'
 
-absolute_path_abstract = original_dataset+'/'+file_list[0]
-    
-abstract_tree = ET.parse(absolute_path_abstract)
+    absolute_path_abstract = original_dataset+'/'+file_list[0]
+        
+    abstract_tree = ET.parse(absolute_path_abstract)
 
-absolute_path_intro = original_dataset+'/'+file_list[1]
-    
-intro_tree = ET.parse(absolute_path_intro)
+    absolute_path_intro = original_dataset+'/'+file_list[1]
+        
+    absolute_path_conclusion = original_dataset+'/'+file_list[2]
 
-print(file_list)
+    absolute_path_output=output_folder+'/'+df_first_input_file.iloc[i]['input_file'].replace('.xml','_multiplagiated.xml')
 
-'''
-tree = multi_plagiated_function.change_abstract(tree)
-tree = plagiated_function.change_intro(tree)
-tree = plagiated_function.change_conclusion(tree)
-
-#save the final xml file with all the modified part:
-plagiated_function.save_tree(absolute_path,tree)
-
-'''
-
+    xml_creation_function.save_tree(absolute_path_abstract,absolute_path_intro,absolute_path_conclusion,absolute_path_output)
+df_multi_plagiated_source.to_csv('Test_on_more_multiplagiated_paper/multiplagiated_source.csv',index=False)
 
 
 
