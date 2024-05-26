@@ -7,6 +7,7 @@ df = pd.read_csv('AI_Detection/results/Ai_Detection_result.csv')
 abstract_count=0
 intro_count=0
 conclusion_count=0
+complete_count=0
 
 for i  in range(len(df)):
     
@@ -39,12 +40,16 @@ for i  in range(len(df)):
      if ele[1]>0.5 and not conclusion_flag:
             conclusion_count +=1
             conclusion_flag=True 
+    if abstract_flag or conclusion_flag:
+        complete_count +=1
 
 
 print(f'the accuracy of AI detecion for ABSTRACT is {abstract_count/len(df)}')
 print(f'the accuracy of AI detecion for INTRO is {intro_count/len(df)}')
 print(f'the accuracy of AI detecion for CONCLUSION is {conclusion_count/len(df)}')
-
+print(f'Without the intro part the accuracy of AI Detection on all the document is {complete_count/len(df)}')
+#we not include the intro part because it a part of it is completly generated, also for future work test the model on longer abstract or conclusion, because the more the sentence
+#the more the possibility of detection
 #For future work we can use a different model for the AI Detection
 #We have to computate how much the sentence are rephrase and how much they are keep the same
 
