@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Coordinate regulation of RARgamma2, TBP, and TAFII135 by targeted proteolysis during retinoic acid-induced differentiation of F9 embryonal carcinoma cells</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The results suggest that normal F9 cell differentiation requires the appropriately timed proteolysis of TBP and TAFII135, which is necessary for the regulation of genes by transactivators and other basal transcription factors.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Hereditary risk of breast and ovarian cancers can be caused by mutation in the genes responsible for this disease, such as BRCA1 and BRAF2 from the bloodstream.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In this report, we describe how we have found RAR agonists with unique structural properties, thanks to the rapid discovery of new ones using a powerful virtual-ligand screening approach and avoiding the use of existing research strategies. The study presents one of the molecules as an example of these new pathways that could provide more favorable structural characteristics and potentially become valuable in cancer therapy.</text>
+  </passage>
+</root>

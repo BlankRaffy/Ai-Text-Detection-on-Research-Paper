@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>'Gene shaving' as a method for identifying distinct sets of genes with similar expression patterns</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>By using the gene shaving method, it is possible to examine gene expression data and identify relevant gene clusters that require further investigation.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The role of tandem repeats in mammalian genetics and DNA fingerprinting in forensic applications is well-established, with studies emphasizing their importance as markers for identifying pathogenic bacteria.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Using our knowledge of the cloning of mouse (RPTP) cDNA, the genomic structure and alternative splicing techniques of human genes, and of an 8 kb 3'UTR in human(P)-ATP complex, we propose that the largest known non-human RPTM gene, extending over 1 megabase pairs of genomic DNA, is due to expanded introns in the extracellular region; the protein domains of Peptides are encoded by modules that are flanked only by phase 0, and also by other two additional from </text>
+  </passage>
+</root>

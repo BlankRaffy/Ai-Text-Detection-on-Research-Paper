@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Apical accumulation of MARCKS in neural plate cells during neurulation in the chick embryo</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The accumulation of MARCKS at the apical region of neural plate and lens placode cells during bending processes is observed. This symmetric subcellular distribution starts before the beginning of curved neural plates. These results indicate potential downstream regulatory actions of these proteins on specific functions of the actin subacical meshwork.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Astrocytes are the dominant type of cell in central nervous system and play a significant role in modulating neuronal activity. They have also been shown to be involved in several physiopathological brain events, including the synthesis and secretion of neurotrophic growth factors. However, there is no consensus on whether these connections, which involve specific intercellular connections or selective release of chemical signals from mammalian astrocytes, are solely responsible for modulation of intracellular Ca2+ waves.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Research on FMR proteins has revealed that the FXR1 protein is cytoplasmic, but nuclear localization has been observed in undifferentiated cells in various tissues of human foetuses and mouse embryonic stem cells. Our model system of C2C4 myoblasts provides strong evidence that specific isoforms of FYR1, which are sequestered in the nucleus, are controlled by factors such as cell-discrimination or antibodies; we hypothesize that FMRP may play a nuclear role in neuronal processes during</text>
+  </passage>
+</root>

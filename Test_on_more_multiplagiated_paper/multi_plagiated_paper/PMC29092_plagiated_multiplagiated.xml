@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>UAG readthrough in mammalian cells: Effect of upstream and downstream stop codon contexts reveal different signals</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Our findings indicate that mouse cells have different interpretations of readthrough, influenced by both upstream and downstream stop codon contexts. This implies that there are intricate interactions between the mRNA and the translation termination machinery components. When comparing our results to those of plant cells and yeast, we conclude that the recognition of stop codesons in eukaryotes is conserved.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The tight regulation of ribosome function is a consequence of the high energy consumption required for translation.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>While DHBV RNAseH activity was detectable on a set of neo-Nazi (NH2) heteroduplexes produced by cyclic DNA syntheses within DNHC during viral reverse transcription, it was not possible to detect NSDH through NEDH.</text>
+  </passage>
+</root>

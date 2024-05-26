@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Evolution of gene order conservation in prokaryotes</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The conservation of gene order is a genomic measure that can be used to analyze the relationships between prokaryotes and the evolutionary forces shaping their genomes. Gene organization is significantly conserved in some genomic regions, and further studies are required to explain why this is the case.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The RecQ family includes BLM, which is a rare autosomal recessive disorder that causes high levels of genomic instability, immunodeficiency, small stature, and frequent cell death.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>According to the current data, clonal expansion is a prevalent feature of the B-cell repertoire in patients with rheumatoid arthritis. This process involves both resting memory B cells and activated B cell populations, which can be derived from within the bloodstream or synovial compartments, and may involve localized antigens located in the synoptics of joints.</text>
+  </passage>
+</root>

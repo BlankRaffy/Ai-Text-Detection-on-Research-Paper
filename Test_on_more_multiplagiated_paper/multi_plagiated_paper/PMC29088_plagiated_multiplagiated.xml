@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>High affinity binding of proteins HMG1 and HMG2 to semicatenated DNA loops</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Our research has revealed that Form X, which is a DNA loop with semicatenated DNA junction at its base, has the highest affinity among all known DNA structures. This implies that if these structures are present in the cell nucleus, one of their functions may be related to the unique yet reversible property of DNA chaperones, specifically for linking two remote regions of the genome.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>During replication, Hepadnaviruses use reverse transcription of pregenomic RNA molecules. The viral viruses initiate replication by interacting with the viral reverse transcriptase (P) and using a primer to bind to the 5' copy of  before starting DNA synthesis.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Indications The distinct DNA structure called Form X which was previously observed but not yet identified by electrophoresis of DNA fragments containing a tract of the microsatellite polychloride (CA)  poly(acrylamide gel–1) (Fig. 6) has now been discovered as 'a semicatenated DNA junction at the base of whose end does not appear to have originally contained structures of this kind, known as haematenanes', and that their preparation should allow study of their evolution and their possible function when introduced</text>
+  </passage>
+</root>

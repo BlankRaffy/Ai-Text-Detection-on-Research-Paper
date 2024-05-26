@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>B lymphocyte involvement in ankylosing spondylitis: the heavy chain  variable segment gene repertoire of B lymphocytes from germinal center-like  foci in the synovial membrane indicates antigen selection</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>As with RA and reactive arthritis, the selection of VH genes in this repertoire is biased, while the panel of represented genes displays different characteristics and less clonal expansion.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The occurrence of X-linked agammaglobulinemia (reviewed in reference) is caused by Btk mutations. This protein is expressed through a defect in the B cell that blocks the pro-B cell transition and leads to no mature B cells.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Research on the characterization of protein complexes in skeletal muscle and heart, including information regarding genotype-phenotype relationships, will contribute to understanding the pathophysiology of human muscle diseases. We encourage other groups to test for the C598T DMN mutation in their human patient samples affected by muscular and cardiac diseases as well as generate desmuslin null animal models to further understand this important protein.</text>
+  </passage>
+</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Genomic organization and single-nucleotide polymorphism map of desmuslin, a novel intermediate filament protein on chromosome 15q26.3</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The absence of mutations in the desmuslin gene did not impact its function. Nevertheless, the single-nucleotide polymorphisms mapped in this study are highly disequilibrated and can be used for disambiguation studies of this region of chromosome 15q26.3.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>During the last few years, it became increasingly common for bacteria to have two-component systems that were thought to function as independent pathways. However, recent research by Posas et al. has shown that these systems are more than just components of a single enzyme; in fact, most of the time they serve as both forms of signalling and reversal mechanisms.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Using the tree harvest procedure, we will attempt to find additive and interaction structure among clusters of genes that relate to an outcome measure. This method is particularly challenging due to the limited number of available samples for this particular purpose. We will initially use a stepwise strategy using the sum and products of the average gene expression of chosen cluster(s) of trees to learn about gene activity in larger data sets (details here). We believe that models could be constructed from these clustered models, as other methods including tree-based models or boosting techniques.</text>
+  </passage>
+</root>

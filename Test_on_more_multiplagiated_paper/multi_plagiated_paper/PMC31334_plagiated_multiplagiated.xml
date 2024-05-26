@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Thyroxine signal transduction in liver cells involves phospholipase C and phospholipase D activation. Genomic independent action of thyroid hormone</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Recent research has revealed that DAG signaling is activated in liver cells stimulated by thyroid hormone. L-thyroxine triggers a dual phospholipase pathway that is sequentially and synchronized with other pathways. PKC mediates the integration of both pKa and proline during the sustained phase of agonist stimulation, while lysine disrupts the signalling response.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The genetic makeup of T1DM is highly variable, with the major histocompatibility complex (MHC) on the short arm of chromosome 6 being the primary factor. There are also several approaches to pinpointing the exact location of an MHC component, including case-control studies, combined linkage and association searches, and systematic total genome searches.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>It has been suggested that TRPs may function as either regulators of the CSF or as targets of CFTR regulating proteins. However, this is the first report that describes a functional interaction between TFs and cft receptor (CRF) members.</text>
+  </passage>
+</root>

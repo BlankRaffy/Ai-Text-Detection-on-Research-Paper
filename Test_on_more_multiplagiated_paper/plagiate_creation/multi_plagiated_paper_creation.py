@@ -18,7 +18,7 @@ df_top3 = df_sorted.groupby('input_file').head(3)
 
 output_folder='Test_on_more_multiplagiated_paper/multi_plagiated_paper'
 
-for i in range(2):
+for i in tqdm.tqdm(range(int(len(df_top3)/3))): #we divide 3 beacuse there are three occuorance of group
 # Accedi ai primi 3 elementi del primo gruppo
     first_input_file = df_top3['input_file'].unique()[i] #primo elemento 
     df_first_input_file = df_top3[df_top3['input_file'] == first_input_file] #top_3 per il primo elemtno
@@ -28,7 +28,7 @@ for i in range(2):
     for j in range(len(df_first_input_file)): #iteriamo sui primi 3 elementi e ci salviamo i nomi dei file
         file_list.append(df_first_input_file.iloc[j]['compare_file'])
 
-    new_row = {'input_file':df_first_input_file.iloc[i]['input_file'],'list_of_source_file':file_list}
+    new_row = {'input_file':df_first_input_file.iloc[0]['input_file'],'list_of_source_file':file_list}
 
     df_multi_plagiated_source = pd.concat([df_multi_plagiated_source, pd.DataFrame([new_row])], ignore_index=True)
 
@@ -42,9 +42,10 @@ for i in range(2):
         
     absolute_path_conclusion = original_dataset+'/'+file_list[2]
 
-    absolute_path_output=output_folder+'/'+df_first_input_file.iloc[i]['input_file'].replace('.xml','_multiplagiated.xml')
+    absolute_path_output=output_folder+'/'+df_first_input_file.iloc[0]['input_file'].replace('.xml','_multiplagiated.xml')
 
     xml_creation_function.save_tree(absolute_path_abstract,absolute_path_intro,absolute_path_conclusion,absolute_path_output)
+
 df_multi_plagiated_source.to_csv('Test_on_more_multiplagiated_paper/multiplagiated_source.csv',index=False)
 
 

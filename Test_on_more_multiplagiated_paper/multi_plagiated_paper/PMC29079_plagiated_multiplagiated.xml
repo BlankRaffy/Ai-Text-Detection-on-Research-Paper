@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>In vivo labelling of functional ribosomes reveals spatial regulation during starvation in Podospora anserina</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Eukaryotic cells can undergo nuclear sequestration, which is a form of protein regulation that can contribute to the regulation of cell growth and division.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>M II oocytes have been used as the recipient cytoplasm for many animals that were cloned using antibiotics.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>By examining only the differentiated or undifferentiated phenotype of the GL15 cell line, researchers can provide a reliable in vitro model for astrocytes, which can help to understand their essential physiological functions. Furthermore, the proposed model can also investigate the mechanism by which these cells interact with each other, particularly in relation to the human origin of this cell type.</text>
+  </passage>
+</root>

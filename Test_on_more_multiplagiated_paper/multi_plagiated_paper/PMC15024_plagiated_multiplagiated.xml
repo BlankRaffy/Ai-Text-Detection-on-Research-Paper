@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Genomic structure of the gene for mouse germ cell nuclear factor (GCNF)</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>GCNF's protein-coding region is located at 11 exons and the genomic structure of this nuclear receptor gene will be advantageous for future research.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Olfaction is a crucial neurosensory activity in mammals that involves analyzing the chemical environment surrounding them. The first step in identifying scents is the interaction between an odorant and its receptors, which are located at the surface of cilia in the olfactory area. Seven-transmembrane ORs were identified in 1991 as the largest family of G-protein-coupled receptor (OR) proteins, representing classical OR categories from Class I or A. Each molecule recognizes multiple scented or other active motifs.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The experiments demonstrate that the transformation of C. elegans with multiple copies of a specific sequence downstream of mec-3 resulted in cell migration and alterations in axillary guidance, as well as other changes in their structure.</text>
+  </passage>
+</root>

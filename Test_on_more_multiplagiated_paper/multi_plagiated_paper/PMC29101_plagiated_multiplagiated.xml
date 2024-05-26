@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Cholinergic and GABAergic pathways in fly motion vision</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The computation of visual motion responses is dependent on the interaction between excitatory and inhibitory pathways, as outlined in the Reichardt model for motion detection.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>We have recently identified ethylene as a key regulator of plant growth, development and senescence. It is also involved in various stress responses such as activation of the calcium/protein phosphate receptor (PAP) and modulation or even death of cells caused by starvation.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>By examining only the differentiated or undifferentiated phenotype of the GL15 cell line, researchers can provide a reliable in vitro model for astrocytes, which can help to understand their essential physiological functions. Furthermore, the proposed model can also investigate the mechanism by which these cells interact with each other, particularly in relation to the human origin of this cell type.</text>
+  </passage>
+</root>

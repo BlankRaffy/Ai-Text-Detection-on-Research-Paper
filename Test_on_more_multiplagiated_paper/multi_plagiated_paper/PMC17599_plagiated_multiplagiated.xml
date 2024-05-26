@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Supervised harvesting of expression trees</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The use of tree harvesting can enable the analysis of gene expression data and the discovery of intriguing clusters of genes that require further investigation.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>In this study, we use a new statistical method called gene shaving to identify groups of elements (genes) that exhibit coherent expression and are optimal for different properties of the variation in their expression.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>This exploratory study demonstrates &quot;...any association between the polymorphisms in codon 27 of ADRB2 and in [ADRB3] genes that may be associated with increased risk of breast cancer&quot;; however, additional studies across larger samples and/or across different ethnicities are needed to further explore this effect.</text>
+  </passage>
+</root>

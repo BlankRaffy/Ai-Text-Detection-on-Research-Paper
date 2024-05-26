@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Towards understanding the first genome sequence of a crenarchaeon by genome annotation using clusters of orthologous groups of proteins (COGs)</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Special-purpose databases based on phylogenetic analysis and carefully curated with known and predicted protein functions offer a significant improvement in genome annotation. A differential genome display approach is used to investigate common and unique features of gene repertoires, and may reveal unexpected connections that could indicate functional similarities between distant organisms and lateral gene exchange.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The impact of glucocorticoids on various cellular functions is regulated by their interaction with soluble intracellular receptors. In most cells, unliganded GRs are located in the cytoplasm as a heteromeric complex composed mostly of heat shock proteins (hsp90 and hr70) or other proteins. NLSs act as an intermediate site for repressing the formation of primary response genes by binding to greaves. However, there is limited information available on how this mechanism is controlled.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The functional hOR repertoire's identification and cloning provide a framework for addressing many unresolved issues in human olfactory responses. This will be possible by utilizing robust heterologous expression and assay systems, as well as high-throughput screening of odorant libraries, to gain insight into structure-function relationships and small-molecule recognition by this large group of G-protein-coupled receptors. Another exciting area of interest is the impact of genetic polymorphism of ORs on differential omeg</text>
+  </passage>
+</root>

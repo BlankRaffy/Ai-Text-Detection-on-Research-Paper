@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Immunocytochemical evidence for co-expression of Type III IP3 receptor with signaling components of bitter taste transduction</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Our data indicates that IP3R3 is the primary type of taste receptor expressed in taste cells and plays a crucial role in transducing bitter taste.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Astrocytes are the dominant type of cell in central nervous system and play a significant role in modulating neuronal activity. They have also been shown to be involved in several physiopathological brain events, including the synthesis and secretion of neurotrophic growth factors. However, there is no consensus on whether these connections, which involve specific intercellular connections or selective release of chemical signals from mammalian astrocytes, are solely responsible for modulation of intracellular Ca2+ waves.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The 1 subunit has the ability to selectively modulate the pore function of the DHS without affecting the movement of charged electrons or the voltage dependence of Ca2+ transients, unlike other DHPR subsubunits that perform both functions. In all likelihood, the charge movement protocol failed to detect small and relatively small charge movements responsible for opening the Ca 2+ channel, which are only resolved for depolarizations larger than 200 ms (Fig. 4). However, since the protocol is accurate in detecting any variation in immobilization of these charges</text>
+  </passage>
+</root>

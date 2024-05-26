@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Asymmetric interactions in the adenosine-binding pockets of the MS2 coat protein dimer</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>By examining the significance of specific amino acid-nucleotide contacts observed in crystal structure, these experiments provide practical demonstrations of interactions predicted from structural analyses.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The role of dystrophin and its associated proteins in the anchoring of the muscle cell membrane to the extracellular matrix is known from the phylogenetic analysis of muscular dystrophy, with the absence of these proteins leading to this phenotype.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The functional hOR repertoire's identification and cloning provide a framework for addressing many unresolved issues in human olfactory responses. This will be possible by utilizing robust heterologous expression and assay systems, as well as high-throughput screening of odorant libraries, to gain insight into structure-function relationships and small-molecule recognition by this large group of G-protein-coupled receptors. Another exciting area of interest is the impact of genetic polymorphism of ORs on differential omeg</text>
+  </passage>
+</root>

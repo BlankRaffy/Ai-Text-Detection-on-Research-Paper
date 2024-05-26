@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Conservation of the binding site for the arginine repressor in all bacterial lineages</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>We found that the ArgR/AhrC recognition signal is conserved in all genomes of orthologous transcription factors of this family, with all but the M. tuberculosis genome having candidate arginine regulons (which are associated with E. coli's Art system).</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Abstract: Across many disciplines, standardised graphical representations of complex systems have been developed to facilitate communication, analysis and interpretation of knowledge. Although electronic circuit diagrams and architectural plans are widely used in biology, there is no universally agreed-upon standardized visual description language for describing functional systems, with much less ambiguity than traditional cartoon descriptions which often rely on print or online representation (via web 2.0) as a means of communicating and analyzing inter-domain and multidisciplinary biological problems.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In summary, we found that cisapride reduces the risk of gastric contents aspiration in intubated and mechanically ventilated patients who are kept in a semirecumbent position. However, our findings suggest that conventional protective measures such as semicircumstance testing and yearly check-up of cigarette leaking during hand placement do not suffice to prevent gastrial contents from asping in this manner. Further studies are needed to determine whether this drug actually prevents ventilator-associated pneumonia, bronchitis or  asthma attacks.</text>
+  </passage>
+</root>

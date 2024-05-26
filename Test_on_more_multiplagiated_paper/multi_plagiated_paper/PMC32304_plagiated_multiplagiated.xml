@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>In silico discovery of novel Retinoic Acid Receptor agonist structures</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The predicted receptor model produced two novel agonists that were active at 50 nM. One of them showcases unique structural characteristics that could lead to the development of new ligands for cancer treatment.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>During the last few years, it became increasingly common for bacteria to have two-component systems that were thought to function as independent pathways. However, recent research by Posas et al. has shown that these systems are more than just components of a single enzyme; in fact, most of the time they serve as both forms of signalling and reversal mechanisms.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>This study shows that GSK3, but not GPK3, can phosphorylate serine 33 of p53 when seline 37 is already phosphated. GK3+ can also activate transcriptional activity in vivo by increasing the transcription factor dependent on serines 33 and 37 of the underlying protein, which means that it may cleave pathways that do not involve the end-of-memory chain reaction (PGE or equivalent) for regulating PIH in mice.</text>
+  </passage>
+</root>

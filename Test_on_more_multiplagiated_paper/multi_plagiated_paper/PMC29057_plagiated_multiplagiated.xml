@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>DNA loops and semicatenated DNA junctions</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Our findings strongly support the hypothesis of Form X, which involves the formation of a DNA hemicatenane, characterized by the intersection of two DNA duplexes, with one duplication joining the other.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The function and mechanism of HMG1, HMP2, and HPM2, two non histone proteins, have been the focus of various research for over a decade. These studies included investigating their homology with other proteins involved in development or differentiation, as well as their interaction with DNA and its role in circularization.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>While DHBV RNAseH activity was detectable on a set of neo-Nazi (NH2) heteroduplexes produced by cyclic DNA syntheses within DNHC during viral reverse transcription, it was not possible to detect NSDH through NEDH.</text>
+  </passage>
+</root>

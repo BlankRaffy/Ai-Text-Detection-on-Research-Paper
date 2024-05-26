@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Genetic modification of glaucoma associated phenotypes between AKXD-28/Ty and DBA/2J mice</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The ipd and isa mutations have an impact on the AKXD-28/Ty background, where strains that express modifier genes for pigment dispersion and susceptibility to pressure-induced cell death are identified.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>In pharmacological terms, chemoprevention refers to the use of non-infectious nutrient supplements or other drugs that enhance the physiological mechanisms responsible for protecting against the development of mutant clones leading to malignant cancer. A recent landmark trial demonstrated that tamoxifen, an active hormonally active selective estrogen receptor modulator (SERM), decreased the risk of advanced breast cancer by 49% in asymptomatic women. As fewer agents were found effective in these trials, efforts are underway to develop useful tissue biomarker</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Research on the characterization of protein complexes in skeletal muscle and heart, including information regarding genotype-phenotype relationships, will contribute to understanding the pathophysiology of human muscle diseases. We encourage other groups to test for the C598T DMN mutation in their human patient samples affected by muscular and cardiac diseases as well as generate desmuslin null animal models to further understand this important protein.</text>
+  </passage>
+</root>

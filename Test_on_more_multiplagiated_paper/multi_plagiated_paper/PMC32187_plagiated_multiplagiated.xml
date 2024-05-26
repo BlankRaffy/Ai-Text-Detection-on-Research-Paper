@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Identification of candidate downstream genes for the homeodomain transcription factor Labial in Drosophila through oligonucleotide-array transcript imaging</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The discovery of several novel Labial candidate downstream target genes indicates that this homeoprotein regulates a limited but distinct range of embryonally expressed Drosophila genes.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Bacterial and archaeal transcriptional regulators typically form large protein families consisting of many paralogs (like LacI/GntR, AraC and DeoR) whereas the other two clusters of orthologous transcription factors are composed of only three representatives from a broad range of diverse branches of bacteria: the SOS (Lesson) regulator, HrcA, its heat-shock repressor, and DinR's Arginine/AhrC regulatory, but also produce different genes expressed by each</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In the study of gene expression in the murine brain after birth, we have determined that approximately one-fifth of genes transcribed are highly regulated, allowing those interested in such expression to selectively isolate them rather than undergoing a comprehensive screening process. We have presented three broad categories of transcripts (A and B) in order of significance, with changes in expression profiles reflecting changes during brain development and concluding that these changes reflect variations in overall expression levels.</text>
+  </passage>
+</root>

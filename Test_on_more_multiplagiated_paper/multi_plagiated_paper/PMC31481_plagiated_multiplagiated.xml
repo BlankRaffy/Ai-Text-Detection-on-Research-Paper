@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>A basis for a visual language for describing, archiving and analyzing functional models of complex biological systems</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>BioD can be utilized as an extensible, multidisciplinary language with the help of computer and internet technology to store functional systems knowledge and further support qualitative and quantitative functional analysis.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The recognition of RNA-proteins is one of the most well-known by genetic, biochemical, and structural approaches. The primary and secondary structures of operator ARN are illustrated in Figure 1. This enables the formation of contacts with both subunits of coat protein. However, X-ray crystallography fails to identify specific amino acid-nucleotide contacts, leading to non-identical interactions between A-4 and A-10 that play a significant role in regulating repression of DNA.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The report explains how computational methods were used to infer evolutionary relationships and predict the structure of cap MTase. A tertiary model for the Eukaryotic enzyme was also constructed to interpret the available mutation data and guide comparative sequence analysis. We propose that both caps metabolize efficiently and share similar catalytic domains. This alignment is useful for designing specific antivirals as well as other viral enzymes, as it highlights new family members of N-MTabs that may share comparable structural function.</text>
+  </passage>
+</root>

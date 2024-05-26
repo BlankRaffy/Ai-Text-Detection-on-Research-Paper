@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Genetic snapshots of the Rhizobium species NGR234 genome</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>By'skimming' the genome of Rhizobium sp., NGR234 provides new insights into the fine structure and evolution of its replicons, as well as the role of bacterial cilia in integrating biotic functions throughout the entire genome (in contrast to previous generations), such as Bacillus subtilis, which had more transposable elements than most other bacteria.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The role of dystrophin and its associated proteins in the anchoring of the muscle cell membrane to the extracellular matrix is known from the phylogenetic analysis of muscular dystrophy, with the absence of these proteins leading to this phenotype.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Research on FMR proteins has revealed that the FXR1 protein is cytoplasmic, but nuclear localization has been observed in undifferentiated cells in various tissues of human foetuses and mouse embryonic stem cells. Our model system of C2C4 myoblasts provides strong evidence that specific isoforms of FYR1, which are sequestered in the nucleus, are controlled by factors such as cell-discrimination or antibodies; we hypothesize that FMRP may play a nuclear role in neuronal processes during</text>
+  </passage>
+</root>
