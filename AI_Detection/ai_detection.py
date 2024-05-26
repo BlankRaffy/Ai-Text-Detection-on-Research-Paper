@@ -6,6 +6,7 @@ import get_text
 import csv
 from nltk import sent_tokenize
 from transformers import pipeline
+import tqdm
 
 nltk.download('punkt')
 
@@ -63,7 +64,7 @@ df_final_result = pd.DataFrame(columns= columns)
 plagiated_file_directory ='Dataset/plagiated_paper'
 df = pd.read_csv('Ai_Detection/results/most_similar_part_for_file.csv')
 
-for i in range(2):
+for i in tqdm.tqdm(range(len(df))):
     plagiated_file_name= plagiated_file_directory+'/'+df.iloc[i]['input_file']
     print(plagiated_file_name)
     plagiated_tree = ET.parse(plagiated_file_name)
