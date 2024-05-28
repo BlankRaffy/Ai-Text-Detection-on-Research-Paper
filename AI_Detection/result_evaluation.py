@@ -40,8 +40,11 @@ for i  in range(len(df)):
      if ele[1]>0.5 and not conclusion_flag:
             conclusion_count +=1
             conclusion_flag=True 
-    if abstract_flag or conclusion_flag:
+    
+    if abstract_flag or conclusion_flag or intro_flag:
         complete_count +=1
+    else:
+        print(df.iloc[i]['plagiated_file'])
 
 
 print(f'the accuracy of AI detecion for ABSTRACT is {abstract_count/len(df)}')

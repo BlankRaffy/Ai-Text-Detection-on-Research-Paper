@@ -73,14 +73,14 @@ for i in tqdm.tqdm(range(len(df))):
         abstract_text = get_text.extract_abstract(plagiated_tree)
         df_result_abstract = predict_doc(abstract_text)
     else:
-        df_result_abstract= [('NO SIMILAR SENTENCE',0)]
+        df_result_abstract= [('NO SIMILAR SENTENCE FOUND ON SEMANTIC CONTROL',0)]
     
     #INTRO
-    if df.iloc[i]['intro_score'] > 0.4:
+    if df.iloc[i]['intro_score'] > 0.35:
         intro_text = get_text.extract_intro(plagiated_tree)
         df_result_intro = predict_doc(intro_text)
     else:
-        df_result_intro= [('NO SIMILAR SENTENCE',0)]
+        df_result_intro= [('NO SIMILAR SENTENCE FOUND ON SEMANTIC CONTROL',0)]
 
 
     #CONCLUSION
@@ -88,7 +88,7 @@ for i in tqdm.tqdm(range(len(df))):
         conclusion_text = get_text.extract_conclusion(plagiated_tree)
         df_result_conclusion = predict_doc(conclusion_text)
     else:
-        df_result_conclusion=[('NO SIMILAR SENTENCE',0)]
+        df_result_conclusion=[('NO SIMILAR SENTENCE FOUND ON SEMANTIC CONTROL',0)]
 
     new_row = {'plagiated_file':df.iloc[i]['input_file'],'abstract_sentence':df_result_abstract,'intro_sentence':df_result_intro,'conclusion_sentence':df_result_conclusion} 
     df_final_result = pd.concat([df_final_result, pd.DataFrame([new_row])], ignore_index=True)
