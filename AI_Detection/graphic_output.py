@@ -16,16 +16,14 @@ df = pd.read_csv('AI_Detection/results/Ai_Detection_result.csv')
 
 
 #load document 
-
-
 pdf_folder='AI_Detection/pdf_plagiated_file'
 i=0 #to iterate over dataset
 
-for file in tqdm.tqdm(os.listdir(pdf_folder)):
+for i in tqdm.tqdm(range(len(df))):
 
-    input_pdf = pdf_folder+'/'+file 
+    input_pdf = pdf_folder+'/'+df.iloc[i]['plagiated_file'].replace('.xml','_demo.pdf')
     print(input_pdf)
-    output_pdf='AI_Detection/annotation_on_pdf'+'/'+file.replace('_demo.pdf','_highlight.pdf')
+    output_pdf='AI_Detection/annotation_on_pdf'+'/'+df.iloc[i]['plagiated_file'].replace('.xml','_highlight.pdf')
     print(output_pdf)
 
 
@@ -73,4 +71,3 @@ for file in tqdm.tqdm(os.listdir(pdf_folder)):
     pdf_document.save(output_pdf)
     pdf_document.close()  
 
-    i+=1 #increase count to move to next element on dataset to implement a match base on file name

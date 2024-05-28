@@ -55,8 +55,7 @@ def predict_one_sent(sent):
     return prob
 
 # Example usage
-#essay_text = input('insert text here')
-#summary, labeled_result, df_result, csv_filename = predict_doc(essay_text)
+#non abbiamo ancora impostato la soglia per andare a far il confronto
 columns=['plagiated_file','abstract_sentence','intro_sentence','conclusion_sentence']
 df_final_result = pd.DataFrame(columns= columns)
 
@@ -69,18 +68,27 @@ for i in tqdm.tqdm(range(len(df))):
     print(plagiated_file_name)
     plagiated_tree = ET.parse(plagiated_file_name)
 
-    #ABSTRACT
-    abstract_text = get_text.extract_abstract(plagiated_tree)
-    df_result_abstract = predict_doc(abstract_text)
+    #ABSTRACT 
+    if df.iloc[i]['abstract_score'] > 0.4:
+        abstract_text = get_text.extract_abstract(plagiated_tree)
+        df_result_abstract = predict_doc(abstract_text)
+    else:
+        df_result_abstract= [('NO SIMILAR SENTENCE',0)]
+    
     #INTRO
-    intro_text = get_text.extract_intro(plagiated_tree)
-    df_result_intro = predict_doc(intro_text)
+    if df.iloc[i]['intro_score'] > 0.4:
+        intro_text = get_text.extract_intro(plagiated_tree)
+        df_result_intro = predict_doc(intro_text)
+    else:
+        df_result_intro= [('NO SIMILAR SENTENCE',0)]
 
 
     #CONCLUSION
-    conclusion_text = get_text.extract_conclusion(plagiated_tree)
-    df_result_conclusion = predict_doc(conclusion_text)
-
+    if df.iloc[i]['intro_score']>0.4:
+        conclusion_text = get_text.extract_conclusion(plagiated_tree)
+        df_result_conclusion = predict_doc(conclusion_text)
+    else:
+        df_result_conclusion=[('NO SIMILAR SENTENCE',0)]
 
     new_row = {'plagiated_file':df.iloc[i]['input_file'],'abstract_sentence':df_result_abstract,'intro_sentence':df_result_intro,'conclusion_sentence':df_result_conclusion} 
     df_final_result = pd.concat([df_final_result, pd.DataFrame([new_row])], ignore_index=True)
