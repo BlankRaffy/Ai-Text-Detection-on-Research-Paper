@@ -46,7 +46,8 @@ for i  in range(len(df)):
 print(f'the accuracy of AI detecion for ABSTRACT is {abstract_count/len(df)}')
 print(f'the accuracy of AI detecion for INTRO is {intro_count/len(df)}')
 print(f'the accuracy of AI detecion for CONCLUSION is {conclusion_count/len(df)}')
-print(f'Without the intro part the accuracy of AI Detection on all the document is {complete_count/len(df)}')
+print(f'The accuracy of AI Detection on all the document is {round(complete_count/len(df),4)},' + 
+      '\n if we count a document as false negative if all the part evade ai detection')
 #we not include the intro part because it a part of it is completly generated, also for future work test the model on longer abstract or conclusion, because the more the sentence
 #the more the possibility of detection
 #For future work we can use a different model for the AI Detection
