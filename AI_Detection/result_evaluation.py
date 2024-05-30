@@ -21,23 +21,19 @@ for i  in range(len(df)):
     #check if at least one sentence in abstract is AI GENERATED
     abstract_flag=False
     for ele in abstract_data:
-
-     if ele[1]>0.5 and not abstract_flag:
+        if ele[1]>0.5 and not abstract_flag:
             abstract_count +=1
             abstract_flag=True
 
     intro_flag=False
     for ele in intro_data:
-
-
         if ele[1]>0.5 and not intro_flag:
             intro_count +=1
             intro_flag=True    
 
     conclusion_flag=False
     for ele in conclusion_data:
-    
-     if ele[1]>0.5 and not conclusion_flag:
+        if ele[1]>0.5 and not conclusion_flag:
             conclusion_count +=1
             conclusion_flag=True 
     
