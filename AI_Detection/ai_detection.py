@@ -84,7 +84,7 @@ for i in tqdm.tqdm(range(len(df))):
 
 
     #CONCLUSION
-    if df.iloc[i]['intro_score']>0.4:
+    if df.iloc[i]['conclusion_score']>0.4:
         conclusion_text = get_text.extract_conclusion(plagiated_tree)
         df_result_conclusion = predict_doc(conclusion_text)
     else:
