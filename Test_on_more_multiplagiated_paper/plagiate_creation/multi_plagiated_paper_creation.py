@@ -18,7 +18,7 @@ df_top3 = df_sorted.groupby('input_file').head(3)
 
 output_folder='Test_on_more_multiplagiated_paper/multi_plagiated_paper'
 
-for i in tqdm.tqdm(range(int(len(df_top3)/3))): #we divide 3 beacuse there are three occuorance of group
+for i in tqdm.tqdm(range (2)): #we divide 3 beacuse there are three occuorance of group (int(len(df_top3)/3))
 # Accedi ai primi 3 elementi del primo gruppo
     first_input_file = df_top3['input_file'].unique()[i] #primo elemento 
     df_first_input_file = df_top3[df_top3['input_file'] == first_input_file] #top_3 per il primo elemtno
