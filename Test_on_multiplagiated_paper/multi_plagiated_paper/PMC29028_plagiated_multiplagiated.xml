@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Abdominal compartment syndrome: does intra-cystic pressure reflect actual intra-abdominal pressure? A prospective study in surgical patients</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The intra-cystic pressure in the model used in this study was not consistent with the actual intraabdominal pressure. Although the study design was flawed, we believe that additional research is necessary to identify other potential factors that may impact the connection between the urinary bladder and abdominal cavity pressures, resulting in a more accurate diagnosis of abdominal compartment syndrome.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Many disciplines have developed graphical representations of complex systems to communicate, archive and analyze knowledge. Although electronic circuit diagrams and architectural plans are accessible to knowledgeable individuals, there is no universal'real' describing functional systems in biology. Knowledge in specific areas, such as metabolic pathways, gene networks, signaling networks and molecular interactions, is stored and archived in various forms in print or online, but these representations are not standardized to account for cross-disciplinary systems – for example, the interactions between genes and metabolism at the inter- and intra-molecular levels. Inadequate cartoon diagrams are frequently used by biologists to represent multidisciplinary biological problems at various levels, such as intramolecular and disease phenotype, due to their ambiguity and lack of clarity. We propose that a standardized visual biological description language would offer easier and more clear communication, and, with computational resources, provide underlying conditions for distributed searchable archives of functional knowledge, as well as CAD functionality for simulating and analyzing biological systems. Our team is currently developing a prototype biological description language, BioD, to test its conceptual foundation, explore its utility, and identify critical issues surrounding its implementation.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In summary, our findings highlight the significance of combining functional and structural approaches to understand molecular interactions. The x-ray structure of the MS2 RNA-protein complex shows that certain types of contacts have little or no impact on its stability. Figure 4 demonstrates the significance of our results by schematically illustrating the important interactions at A-4 and A-10 within the structure of the entire translational operator. Val29 and Lys61 have significant stabilizing interactions with both A-3, while Thr45, Ser47 and TH59 have highly asymmetric contributions. The interaction between Thr45 and A-4 is the primary factor that affects binding, while both Ser47 and TF59 only affect A-10.</text>
+  </passage>
+</root>

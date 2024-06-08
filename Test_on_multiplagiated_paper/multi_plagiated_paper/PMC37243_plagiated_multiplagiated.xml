@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Delta-Notch signaling and lateral inhibition in zebrafish spinal cord development</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The results suggest that Notch activity in neighboring precursors is mediated by newly specified neurons, which are thought to express zebrafish Delta proteins. This signaling is necessary for maintaining a proliferative precursor population and producing late-born neurons and glia. Diversified vertebrate neural cell fates can be achieved through Delta-Notch signaling, which coordinates cell cycle control and cell specification.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Ethylene, the most basic plant hormone, is a crucial regulatory factor in plant growth, development, and senescence, as it is involved in various stress responses. Recent years have seen significant progress in the identification and classification of genes and proteins that participate in plant-scale ethylene signal transduction. The calcium and protein phosphorylation processes may also be involved in this pathway (refer to the review). Additionally, ethylene is known to be a factor in programmed cell death in plants. We have demonstrated for the first time that certain animal cells, such as those from a marine sponge (Suberites domuncula), are sensitive to ethylene. This gas is present in seawater at varying concentrations, and can be generated from organic carbon by photochemical processes, including ultraviolet light-induced reactions. Ethylene can increase the [Ca2+]i concentration and reduce the rate of starvation-induced cell death in phagocytic sponge cells (domunculus) due to their proliferative nature. Furthermore, there is another explanation for this phenomenon in S. collepsena where bacteria respond more rapidly to erythema than other treatments. Following ethylene exposure, two genes expressed in domuncula primmorphs undergo upregulation, one of which is associated with the methylphenylcellulose (HEVER) and the other encodes the Ca2+/calmodulin-dependent protein kinase II. The SDERR cDNA has been obtained and further characterised. The Porifera, a type of sponge, are thought to make up the first or one of the initial metazoan phyla that diverged from the Urmetazoa. They contain the same protein components as higher animals, including proteins involved in cell recognition and signal transduction pathways (for elucidation, see &quot;synthesis&quot;). Besides sponges, do cells from higher vertebrates also respond to ethylene? We show that several mammalian cell lines display an upregulation of the [Ca2+]i level and an increased expression of Ki-67, the cell cycle-associated antigen, when exposed to this substance, which is produced by ethephon (or cellulose gas).</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Findings These studies suggest that PP5 plays a role in regulating GR nucleocytoplasmic shuttling and that the nuclear accumulation of GG is caused by suppressing DP5 expression without any hormone-mediated response. Hence, the previously reported increase in GR-induced transcriptional activity following ISIS 15534 induced suppression of PP5 expression may be due to the nuclear accumulation of highly bound gre (a type of genetic material) that is capable of binding DNA, but still requires agonist interaction to induce maximum transcriptionally active synthesis. The specific manner in which PP5 hinders the nuclear accumulation of GRs is still unknown, as it remains unclear whether it acts to prevent the nucleus from being expelled.</text>
+  </passage>
+</root>

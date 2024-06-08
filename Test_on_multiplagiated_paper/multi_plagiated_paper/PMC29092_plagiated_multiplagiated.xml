@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>UAG readthrough in mammalian cells: Effect of upstream and downstream stop codon contexts reveal different signals</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Our findings indicate that readthrough in mouse cells is influenced by both upstream and downstream stop codon contexts, leading to intricate interactions between the mRNA and the translation termination machinery components. A comparison of our findings with those carried out in plant cells and yeast suggests that the mechanisms for recognizing stop codons are conserved across all eukaryotes.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Due to the significant amount of energy used in translation, its components are under tight control. Ribosomes are particularly affected as translation is made difficult due to nutrient depletion. In E. coli, ribosomal function is reduced by dimerization by the action of RMF protein into 100S particles that cannot translate natively. In eukaryotes, ribosomal proteins undergo downregulation. This occurs through transcriptional regulation in yeast and translational control in mammals and Dictyostelium. The absence of in vivo observations of a functional ribosomal particle during different growth phases in cells means that so far no studies have reported the involvement of spatial regulation in the regulation of proteins in these cellular subunits. The spatial regulation of a small subunit ribosomal protein occurs when it enters the stationary phase, as described here.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The detection of DHBV's RNAseH activity on RTPCR was possible during viral reverse transcription, but no exogenously provided RN:DNA heteroduplexes were detected. Based on extensive controls, we hypothesize that the RNAseH active site is likely &quot;substrate committed&quot; in a way that is similar to the &quot;template commitment&quot; of reverse transcriptasE activity. Despite not having formal evidence to support this claim, we do acknowledge that the DHBV RNAseH activity cannot degrade exogenous substrates under any circumstances that allow for vigorous activity of the associated DNA polymerase domain.</text>
+  </passage>
+</root>

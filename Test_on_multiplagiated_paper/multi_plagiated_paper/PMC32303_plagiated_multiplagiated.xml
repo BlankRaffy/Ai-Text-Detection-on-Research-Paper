@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Reporting of conflicts of interest in guidelines of preventive and therapeutic interventions</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Clinical guidelines published in influential journals receive minimal reporting of conflicts of interest, despite recent improvements.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The interaction between the MS2 coat protein and its translational operator is a well-established example of RNA-protein recognition, utilizing genetic, biochemical, and structural methods. Figure 1 displays the primary and secondary structures of the recombinant rRNA hairpin that establish contacts with both subunits of each coat proteins dimer. The coat protein complex with its RNA target is highly intricate, as two unpaired adenosines are inserted into equivalent pockets on different subunits of the coat dimer (Figure 2). The interactions between A-4 and A-10 with coat proteins involve non-identical contacts with the same five amino acid residues, Val29, Thr45, Ser47, Finally, and Lys61. The use of X-ray crystallographic analysis indicates specific amino acid-nucleotide interactions, but fails to provide a clear explanation of their respective roles in RNA-binding and translational repression. In the experiments described here, we used amino acid substitutions of A-pocket amino acids in single-chain coat protein heterodimers to determine the significance of each residue's interaction with A-4 and A-10.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>We have developed an algorithm for mapping the positively selected mutations of viral quasispecies using sequence data. This has also been used to map the positive-selected variants (i.e., influenza A HA, HIV-1 RT, and HIV–120) of the human immunodeficiency pathogen hepatitis C virus as well as the FMD virus. The most enlightening application of selection mapping is likely to be in the comparison of viral subpopulations under different selective pressures, such as selection mashing HIV isolates with various cellular tropisms for positive-selected mutations that are positively selected in response to the host cell type. Furthermore, we could use selection mapping to examine HIV breakthrough infections to see if the vaccinations prevented the HIV quasispecies from living in normally favorable regions of the quasiexperimental sequence space. Our proposal is to include the positively selected viral variants in future vaccines that are highly multivalent and designed to compensate for B-cell-selected antigenic drift.</text>
+  </passage>
+</root>

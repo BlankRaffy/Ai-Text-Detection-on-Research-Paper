@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Conservation of the binding site for the arginine repressor in all bacterial lineages</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>We found that the ArgR/AhrC recognition signal is conserved in all genomes of orthologous transcription factors of this family, with all but the M. tuberculosis genome having candidate arginine regulons (which are associated with E. coli's Art system).</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Many disciplines have developed graphical representations of complex systems to communicate, archive and analyze knowledge. Although electronic circuit diagrams and architectural plans are accessible to knowledgeable individuals, there is no universal'real' describing functional systems in biology. Knowledge in specific areas, such as metabolic pathways, gene networks, signaling networks and molecular interactions, is stored and archived in various forms in print or online, but these representations are not standardized to account for cross-disciplinary systems – for example, the interactions between genes and metabolism at the inter- and intra-molecular levels. Inadequate cartoon diagrams are frequently used by biologists to represent multidisciplinary biological problems at various levels, such as intramolecular and disease phenotype, due to their ambiguity and lack of clarity. We propose that a standardized visual biological description language would offer easier and more clear communication, and, with computational resources, provide underlying conditions for distributed searchable archives of functional knowledge, as well as CAD functionality for simulating and analyzing biological systems. Our team is currently developing a prototype biological description language, BioD, to test its conceptual foundation, explore its utility, and identify critical issues surrounding its implementation.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Cisapride reduces the risk of gastric contents being aspirated in patients who are semirecumbent and intubated, according to our research. Cisapride's ability to prevent gastric content aspiration is not fully matched by traditional protective measures such as semirecumbent position and regular checking of cuff leaking. Further studies are needed to determine whether this drug truly prevents ventilator-associated pneumonia, bronchitis, or pulmonary constriction.</text>
+  </passage>
+</root>

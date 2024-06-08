@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Cytochrome P450 2E1 polymorphism and nasopharyngeal carcinoma development in Thailand: a correlative study</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>We found no statistical significance in our findings despite having a moderate sample size. However, our study yielded results similar to the Taiwan study with only slight precision. The higher RR observed in different populations indicated that CYP2E1 is one of several NPC susceptibility genes and that the RsaI minus variant is just one mutation that affects phenotype.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The structural class of a protein may be determined by its amino acid composition, as suggested by Muskal and Kim. Numerous attempts have been made to determine this class using amino acids. Bahar et al. and Chou have also discussed the physical mechanism involved in this connection. A detailed and updated review by Chou and Zhang provides a systematic approach to this topic. We attempt to use Vapnik's Support Vector Machine in this paper to tackle this problem. The data sets constructed by Zhou based on SCOP were used as data, and the reasoning for why these data collections are more reasonable has also been discussed in ref.19. The outcome was the detection of high rates of self-consistency and jackknife test, which has confirmed that the structural class of a protein is significantly related to its amino acid composition.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The percentage change in outcome from baseline during a randomized trial provides clinically relevant information to both patients and clinicians, which is likely why researchers studying hot flashes or the effects of different chemotherapy regimens on quality of life report this statistic. Percentage change from baseline is a form of statistical analysis that is inefficient, as it does not correct for imbalance between groups at baseline and can result in distorted statistics. Trialists should use an alternative method, preferably ANCOVA, to test significance and calculate confidence intervals before converting the results into percentage change using baseline and post-treatment mean scores. ANCOVA is the preferred method for analyzing the outcomes of trials that involve baseline and post-treatment monitoring, as confirmed by previously reported data. CHANGE and POST are both viable options for situations where ANCOVA modeling is not feasible, such as with small samples or the assumptions underlying NOVA models. Neither MAT or CAT can be used, but if baseline variables are similar, including stratification, may be achieved by using a low or high correlation between baseline and post-treatment scores. FRACTION should not be used.</text>
+  </passage>
+</root>

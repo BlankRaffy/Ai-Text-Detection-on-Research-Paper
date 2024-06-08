@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Gene expression changes during murine postnatal brain development</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The expression level of some genes expressed in the postnatal developing brain varies from newborn to adult development, and it is possible that these developmentalally regulated transcripts are molecular markers for the complex developmental process occurring in this area.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>While conscious mice have been subjected to electrocardiograms (ECGs), existing methods necessitate restraint or anesthesia and the surgical implantation of telemetry devices. However, anesthesiology may impair cardiovascular function, and mice require nearly 3 weeks to recover fully after transmitter insertion. We have devised an inherently non-invasive method to obtain electrocardiograms (ECG) monitoring) in fully conscious mice by placing the animal on a platform embedded with paw-sized ECG electrodes connected to an amplifier. This approach is significantly less painful, requires no anesthesia or surgery and allows for rapid screener operation among large numbers of mice. We obtained non-invasive ECG data in conscious mice, which are similar to those published recently using surgically implanted telemetry devices. To test the efficacy of our system, we examined EKGs in mice of different ages, gender, and strains. Furthermore, it was tested whether our current system could detect changes in EEG response to pharmacological challenge by isoproterenol. The non-invasive heart rate data and responses to the -adrenergic agonist isoproterenol in mice are similar to those obtained from published invasive methods. As a result, we created an ECG signal processing, analysis, and database Web portal known as e-MOUSETM, which is open to members of the biotechnology community. Given the expensive breeding, housing, and transportation costs of mice, as well as the need for comprehensive yet widely available phenotyping tests, the ECG recording and analyses paradigm we created has significant benefits.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Cisapride reduces the risk of gastric contents being aspirated in patients who are semirecumbent and intubated, according to our research. Cisapride's ability to prevent gastric content aspiration is not fully matched by traditional protective measures such as semirecumbent position and regular checking of cuff leaking. Further studies are needed to determine whether this drug truly prevents ventilator-associated pneumonia, bronchitis, or pulmonary constriction.</text>
+  </passage>
+</root>

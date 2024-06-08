@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Genomic organization and single-nucleotide polymorphism map of desmuslin, a novel intermediate filament protein on chromosome 15q26.3</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The absence of mutations in the desmuslin gene did not impact its function. Nevertheless, the single-nucleotide polymorphisms mapped in this study are highly disequilibrated and can be used for disambiguation studies of this region of chromosome 15q26.3.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The axial skeleton is the primary target of AS, an inflammatory rheumatic disease. Four in 10 individuals with AS develop periphery mono-/oligoarthritis. The swelling of inflamed peripheral joints (Fig. 1) in AS may be similar to RA with intense mononuclear cell infiltration that forms foci similar enough to germinal centers (GC) that house B and T lymphocytes and plasma cells. Immunhistologic analysis has revealed that five AS SMs were found to have B cell rich infiltrates in two cases, while three other cases had no B cells. The VH germline repertoire comprises 123 (44 functional) VHF segments divided into seven VHH families (see supplementary material). Antibodies are formed by rearranging one VH segment to one or more of 25 heavy chain diversity segments (DHs) and one of six JHs, resulting in antibody encoding. The CDR3 locus is responsible for the rearrangement of B lymphocyte clones. Only those with translatable nucleotide triplets can be rear-ranged with this regulatory structure. Certain VH genes in the VHF repertoire are selectively influenced by germline VHB genes. It is also reported that an excess of VHH4 genes (e.g., negative selection of HNO4) is present in peripheral blood lymphocytes of healthy individuals as a means of avoiding autoimmunity. An antigen-driven immune response, characterized by a ratio of mutations leading to amino acid replacement to silent mutation (R:S ratio) &gt;3 within the CDR, occurs within lymphatic organs' GC. Similar clonal development of antibody VH genes has been observed in both RA patients and ReA patients. In AS joints, the B cell subset has not been identified. To clarify, we investigated the role of B lymphocytes in AS and to compare their similarities with RA.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>The protein-coding region of GCNF, which is located within 11 exons, will need further investigation to define the regulatory/promoter region. The genomic structure of the sixth subfamily of nuclear receptors will be crucial for future research on this specific receptor.</text>
+  </passage>
+</root>

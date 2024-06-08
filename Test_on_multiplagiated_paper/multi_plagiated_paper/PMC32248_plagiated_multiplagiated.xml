@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Site-specific mutations of FtsZ - effects on GTPase and in vitro assembly</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Some mutants whose GTPase was significantly reduced could still complement their ftsZ84, suggesting that the high level of GMPases observed in vitro is not necessary for in vivo function. However, all of the lateral mutant fail to complement FTSF84 (a protein found only on porous supernatants), indicating that these surfaces of our protofilaments are important for cell division. The association of FtsZ protofilaments into pairs or small sheets may be facilitated by the lateral surfaces, but their structure is not the same as that of the sheets assembled in DEAE dextran or calcium.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Epithelial cells contain a Cl-channel with low conductivity, which is well-known as the cystic fibrosis transmembrane conductance regulator (CFTR). It has also been detected in vascular endothelium. Endothelial cells (EC) function as a barrier for blood vessels and regulate other physiological functions, including the secretion of vasoactive compounds like bradykinin and autocoids, which are controlled by Cl channels. Endothelial Cl- channels (including VRAC and CaCC) and CCC modulate EC electrogenesis, serve as mechano-sensors, permeate amino acids and organic osmolytes, and may regulate the driving force of Ca2+ entry. The functionalization of CFTR in human umbilicalical vein endothelium and human lung microvascular endogenous endothermal endomes has been demonstrated in this work, which also extends the functionality of Cl channels to include those in mouse aorta endodermal cells. The MAEC encode various putative ion channel transcripts from genes related to the trp family, such as th1, 2, 3, 4, and 6, which include TRP4 that is involved in the control of the mouse aorta's NO-dependent relaxation. Additionally TRP4 has been shown to interact with the actin (actin) cytoskeleton via members of the ezrin/radixin–moesin family via a VTTRL motif in the C-terminal region of its own Na+-H+exchanger NHERF's first PDZ domain protein which also interacts with PLC. The C terminus of CFTR is known to possess a PDZ-interacting domain (QDTRL for the last five C-terminal amino acids), which is necessary for polarization of the central nervous system to the APEC, and also for binding to NHERF, an enzyme that specifically targets TRP4 and its corresponding protein. Our investigation focuses on the functional significance of CFTR in trp4 wild type and cftp deficient MAEC cells. We demonstrate that TFTR is expressed in both cell types, but not in endothelial cells fusing with TCFR. These findings may indicate a novel regulatory mechanism for CRFR and its role in regulation of other ion channels.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In vivo experiments have revealed an osmotic stress-dependent serine phosphorylation of the eukaryotic histidine kinase homologue DokA. The phosphatation is not dependent on the conserved histoidine residue, which is crucial for two-component systems and is unlikely to occur through autophosphorousion. This supports the notion that eukaryotic homologues of bacterial signal transduction systems could be involved in serine/threonine kinases-related signaling pathways.</text>
+  </passage>
+</root>

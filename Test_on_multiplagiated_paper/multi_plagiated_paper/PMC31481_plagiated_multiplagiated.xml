@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>A basis for a visual language for describing, archiving and analyzing functional models of complex biological systems</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>BioD can be utilized as an extensible, multidisciplinary language with the help of computer and internet technology to store functional systems knowledge and further support qualitative and quantitative functional analysis.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The interaction between the MS2 coat protein and its translational operator is a well-established example of RNA-protein recognition, utilizing genetic, biochemical, and structural methods. Figure 1 displays the primary and secondary structures of the recombinant rRNA hairpin that establish contacts with both subunits of each coat proteins dimer. The coat protein complex with its RNA target is highly intricate, as two unpaired adenosines are inserted into equivalent pockets on different subunits of the coat dimer (Figure 2). The interactions between A-4 and A-10 with coat proteins involve non-identical contacts with the same five amino acid residues, Val29, Thr45, Ser47, Finally, and Lys61. The use of X-ray crystallographic analysis indicates specific amino acid-nucleotide interactions, but fails to provide a clear explanation of their respective roles in RNA-binding and translational repression. In the experiments described here, we used amino acid substitutions of A-pocket amino acids in single-chain coat protein heterodimers to determine the significance of each residue's interaction with A-4 and A-10.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In this report, we used computational methods to infer evolutionary relationships and predict the structure of cap MTase. Furthermore, a tertiary model for the Eukaryotic enzyme has been constructed to interpret the available mutation data and guide the comparative sequence analysis. Our proposal suggests that cap MTases share the same catalytic domain and the &quot;S&quot; domain as glycine N-MTabs, suggesting that these two families of N–Tabs may be relatively closely related. Furthermore, we have identified a novel family of putative motolases that are specific to green plants and share structure and mechanism with cap TATAses. Consequently, the alignment provided will serve as a foundation for studying other N-MTase subfamilies that may also possess the &quot;molecular basket&quot; structure. Our examination of the AdoMet-binding site in cap MTains, along with evolutionary considerations, demonstrated interdisciplinary evidence of correlated mutation in viral enzymes that could be useful in designing targeted antivirals. The model was also employed to predict the guanine binding site and identify conserved residues that may serve catalytic or structural function, which can be tested by site-directed mutagenesis. Additionally, a hypothetical non-specific mRNA binding patch was proposed. Having previously described structures of cap MTase already solved experimentally, our model will be useful in designing new experiments to understand the molecular function of these enzymes and their metabolic pathways; while discovering genes of interest in a new family of genes will help identify candidates for cloning and biochemical characterization. The structural and functional properties that are predicted in this paper are of great significance for us, and we hope that it will contribute to the advancement of these studies.</text>
+  </passage>
+</root>

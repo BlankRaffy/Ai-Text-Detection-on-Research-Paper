@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>An algorithm for mapping positively selected members of quasispecies-type viruses</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>By using selection mapping, we can better understand the mutational landscapes of influenza A H3 hemagglutinin, HIV-1 reverse transcriptase, and HIV-gp120, which are not directly associated with the identification of amino acids at these codons but are considered positive selection in previous methods (e.g., dN/dS).</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The interaction between the MS2 coat protein and its translational operator is a well-established example of RNA-protein recognition, utilizing genetic, biochemical, and structural methods. Figure 1 displays the primary and secondary structures of the recombinant rRNA hairpin that establish contacts with both subunits of each coat proteins dimer. The coat protein complex with its RNA target is highly intricate, as two unpaired adenosines are inserted into equivalent pockets on different subunits of the coat dimer (Figure 2). The interactions between A-4 and A-10 with coat proteins involve non-identical contacts with the same five amino acid residues, Val29, Thr45, Ser47, Finally, and Lys61. The use of X-ray crystallographic analysis indicates specific amino acid-nucleotide interactions, but fails to provide a clear explanation of their respective roles in RNA-binding and translational repression. In the experiments described here, we used amino acid substitutions of A-pocket amino acids in single-chain coat protein heterodimers to determine the significance of each residue's interaction with A-4 and A-10.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In summary, the data presented demonstrates that the GL15 cell line is a reliable in vitro model for astrocytes, which should help researchers understand their unique physiological features, and ultimately contribute to understanding the intricate role of this cell type in the brain. It should be noted that the purely differentiated or undifferentiated form of this cell line can be used to investigate how these cells interact with each other, either through gjs and/or membrane receptors. The model proposed here becomes even more intriguing when the human origin of such cell lines is taken into account. This fresh model of astrocytes provides a foundation for the effective analysis and interpretation of issues related to their involvement in the nervous system's modulation and remodelling, as well its contribution to the electro-physiological activity of neurons and other relevant mechanisms.</text>
+  </passage>
+</root>

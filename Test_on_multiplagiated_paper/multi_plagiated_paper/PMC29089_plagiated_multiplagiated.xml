@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>A simple method for generating full length cDNA from low abundance partial genomic clones</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>We have developed a simple, fast and easy way of generating cDNA clone from genomic sequences. The full-length HOXD13 recombination (1.1 kb) produced using this method was confirmed by sequence analysis. This simple approach can be used to generate full–length copies of available partial genomic sequencing.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Due to the significant amount of energy used in translation, its components are under tight control. Ribosomes are particularly affected as translation is made difficult due to nutrient depletion. In E. coli, ribosomal function is reduced by dimerization by the action of RMF protein into 100S particles that cannot translate natively. In eukaryotes, ribosomal proteins undergo downregulation. This occurs through transcriptional regulation in yeast and translational control in mammals and Dictyostelium. The absence of in vivo observations of a functional ribosomal particle during different growth phases in cells means that so far no studies have reported the involvement of spatial regulation in the regulation of proteins in these cellular subunits. The spatial regulation of a small subunit ribosomal protein occurs when it enters the stationary phase, as described here.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>All-in-all, our research indicates that different signals are involved in the interaction between the translational machinery and the upstream and downstream stop codon contexts. Furthermore, they propose that the readthrough mechanisms are exclusive to eukaryotes, suggesting either an ancient origin of the translation termination machinery or strong structural constraints at the ribosomal level. One possible consequence of these observations is that the readthrough sequence observed here, which was initially described in plant viruses, could also serve as a recoding signal in mammals and yeast. Analyzing DNA sequence data bases may be useful in pinpointing physiological encoding events.</text>
+  </passage>
+</root>

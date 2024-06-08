@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>B lymphocyte involvement in ankylosing spondylitis: the heavy chain  variable segment gene repertoire of B lymphocytes from germinal center-like  foci in the synovial membrane indicates antigen selection</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>As with RA and reactive arthritis, the selection of VH genes in this repertoire is biased, while the panel of represented genes displays different characteristics and less clonal expansion.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>A severe B cell transition block is observed in X-linked agammaglobulinemia (reviewed in reference) caused by mutations in the Btk kinase, leading to a human disease with this condition. The Tec family of non-receptor protein tyrosine kinases (PTKs), which include Bmx, Itk, tec and Txk includes Btk. However, the mutated Bzk and the knockout mouse share similar phenotypes, although the latter two are not as severe. Besides a domain that is either COOH-terminal PTK or has an NH2-terminAL pleckstrin homology (PH) and Tec homologies, Btk also has overlapping Src-homology 3 (SH3) and SH2 domains. Although it was initially identified in B cells, it is now known to be expressed in most leukocytes except for T cells and the NK cells. The activation of Btk during BCR cross-linking is thought to be a two-step process that involves PI 3-kinase and the Src family PTK Lyn. PK3 generates phosphatidylinositol 3,4,5-trisphosphate (PIP3), which Buckker membrane targeting can be achieved by the PH domain of BrtK. Btk is activated within the activation loop of the kinase domain by Lyn, which autophosphorylates the SH3 domain and complete activtion of Btons. Inositol phosphatases (SHIP) downregulate Bpt0 by dephosphoryating PIP3. Btk is a crucial enzyme in the biological regulation of B cells, as demonstrated by biochemical studies and clinical trials. Typically, these signaling events are not completely abrogated, and kinetic analyses have shown that the prolonged phases are particularly impaired in the absence of Btk. Conversely, cessation of these pathways is completely inhibited in non-coding of the Syk/ZAP-70 family tyrosine kinase Sykla. Btk and Syk are believed to cooperate in PLC2-dependent BCR signaling, as evidenced by the data, and Btons serve as a signal duration modulator (refer to references). However, it remains unclear whether Bckck can accurately replicate certain downstream signals or remain dependent on PLTk. Recently, there have been suggestions that Btk has supplementary functions, including PI 3-kinase activation, cytoskeletal reorganization and DNA transcription. To overcome these limitations, we have created a modified form of Bctky by combining the full-length Bfk protein with the hormone-binding domain of the estrogen receptor (Btker:ER). Our findings indicate that Btk:ER activation alone can trigger multiple downstream signaling pathways in B cells, including calcium mobilization, ERK and JNK MAPK, and apoptosis. Furthermore, our analysis of Blc function in PLC2-deficient cells confirms that PLD2 is essential for Bfk's ability to transmit these signals.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>By describing the building blocks of protein complexes in skeletal muscle and heart, with emphasis on information about genotype-phenotype relationships, we can better understand the pathophysiology of human muscle diseases. Our recommendation is for other groups to test for the C598T DMN mutation in their human patient samples affected by muscular and cardiac diseases. The generation of desmuslin null animal models will also help us comprehend the role of this protein in muscle and cardiovascular disease.</text>
+  </passage>
+</root>

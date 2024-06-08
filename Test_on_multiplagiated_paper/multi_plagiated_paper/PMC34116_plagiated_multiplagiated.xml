@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Genomic organization and single-nucleotide polymorphism map of desmuslin, a novel intermediate filament protein on chromosome 15q26.3</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The absence of mutations in the desmuslin gene did not impact its function. Nevertheless, the single-nucleotide polymorphisms mapped in this study are highly disequilibrated and can be used for disambiguation studies of this region of chromosome 15q26.3.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Research conducted in various labs has revealed that the transmembrane (TM) proteins of several RNA viruses share essential structural and functional elements for virus entry. The categories consist of a hydrophobic zone identified as forming 'a fusion peptide', usually at or near the amino-terminus formed by the cleavage of an initial protein, with fibrous structure defined by two antiparallel alpha helices.Given these general principles appear to apply to Orthomyxoviruses, ParamyXoViruse[n]virus and Lentivirus(r)virus Ebola and Rous sarcoma viruses exhibit significant sequence similarities, which can help to compare two specific viruses. However, structural modeling and more limited sequence similarity within the Retroviridae family are necessary to identify the relationship. Recently, recent biophysical studies of entry protein structure have reaffirmed the concept that virus families are now more than just copies of identical viruses, leading scientists to believe that a viral TM superfamily may share common structural and functional motifs. Based on the study of LCMV, a general model of the Arenavirus glycoproteins has been established, which is based on their functional organization closely resembling that of influenza and other enveloped viruses. GP-1 and TM-2 are two forms of the complex, with each containing receptor-binding sites and capable of facilitating virus entry through acid-dependent membrane fusion. Here, we present a detailed model of GP-2 for Lassa fever virus, an Arenavirus associated with multiple epidemics of hemorrhagic fever and death in West Africa, as well as the related lymphocytic choriomeningitis virus (LCMV) linked to sporadic outbreaks occasionally humanising in Europe and North America. According to this model, the Arenaviruses exhibit a number of unique sequence and structural characteristics characteristic of other RNA viruses in the TM superfamily (arealvirus GP-2 regions are directly related to the respective regions of Ebola, African hemorrhagic fever, and HIV-1). The examination of similar regions of TM proteins in various virus families indicates that they diverge from their common ancestor.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In conclusion: Our study shows that the structure of GCNF is conserved (serifaciency)[Note 1] It also allows for the confirmation and systematic review of all splice variants, and it may be the starting point for understanding CGNF better. Human GGNF contains at least 10 exons. The intron-exon boundaries are preserved, which is consistent with the high level of amino-acid conservation between the human and mouse proteins. This can explain the generation of hGCNF-1, pGHNF-2a and gcnf-2b proteins through alternative splicing of the RNA. Although the sequence of the third coding mouse exon, including its splice sites, is highly conserved, no human cDNA has been isolated with this putative exontality at present. Alternative spiking presents a plausible way to generate diversity and could potentially improve the instructive complexity of human (GCNF) gene expression.</text>
+  </passage>
+</root>

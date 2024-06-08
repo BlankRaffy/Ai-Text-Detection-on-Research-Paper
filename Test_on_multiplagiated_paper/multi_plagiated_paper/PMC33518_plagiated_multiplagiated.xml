@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Estimates of complications of medical care in the adult US population</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Morbidity is more elevated due to complications of medical care, and there is some evidence that socio-demographic factors play a role in modifying injury risk.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The aspiration of gastric contents can trigger or intensify bronchoconstriction, which is the most well-known pathogenic factor for pneumonia, particularly in patients with ventilator-associated pneumonia (VAP). Intensive care unit (ICU) patients experience frequent aspiration of gastric contents, while those who are intubated and mechanically ventilated often experience it more frequently. Critically ill patients may also develop gastrointestinal tract dysmotility, which is linked to aspartamous discharge of gases from the gut. Enteral feeding through a nasogastric tube may lead to an increase in gastric volume, reflux, and Gram-negative bacterial overgrowth in the stomach. It is likely that the wide bore nasogastric tubes interfere with the lower esophageal sphincter, leading to aspiration and bacterial contamination of the tracheobronchial tree. Additionally, the position of one or more of these tubes at the same time may be a major risk factor for the aspying of gastric contents. Aspiration of gastric contents into airways may be prevented by placing them in semirecumbent positions on mechanically ventilated patients, but this issue persists. Despite this, Orozco-Levi and colleagues found evidence that radioactivity count increased significantly after Tc99m isotope instillation through nasogastric tube. The presence of gastroesophageal reflux was not influenced by the position of the body. Conversely, the supine position had a greater impact on the radioactivity count values in bronchial secretions compared to semirecumbency, suggesting that semiresting can help prevent part gastric content aspiration. In addition to their position-related effects, erythromycin and cisapride agents may enhance gastric motility, expedite gastrishes, and prevent gastral aspiration. Cisapride is a potent prokinetic medication that enhances the release of acetylcholine from the postganglionic nerve endings of the myenteric plexus without any dopamine antagonism. The effectiveness of cisapride in preventing gastric contents from aspirating through the lungs in patients on mechanical ventilators while still maintaining their semi-recumbent position was evaluated in this study.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Despite the fact that early hyperglycaemia is not the only risk factor for allograft rejection, it is highly prevalent and susceptible to intervention. This finding aligns with our research and our previous studies on this topic. The importance of tightly controlling sugars after transplantation in patients with diabetes is justified by several reasons. Moreover, we believe that early hyperglycaemia prevention and insulin resistance may be effective in reducing allograft injury and decreasing rejection episodes in non-diabetic patients. Additional research is required to determine if such interventions can enhance transplant outcomes.</text>
+  </passage>
+</root>

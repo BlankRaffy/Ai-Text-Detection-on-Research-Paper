@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Differential expression of Aquaporin 8 in human colonic epithelial cells and colorectal tumors</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Our investigation reveals that the expression of AQP8 is indicative of normal colonic epithelial cells, which may indicate their involvement in fluid transport within the colon.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Primary lymphoid organs (Synthesia: Primary T cell-presenting cells) participate in efficient interactions with T, B and antigen-presenting cells in T-dependent immune responses; T cells are mainly located in the paracortical zone, including the interfollicular areas, while B cells appear in small primary fojicle(s) in or around the cortex, which become secondary folicles or germinal centres (GCs), after antigenic stimulation. Recent research on the GC reaction identified B cells, centroblasts and centrocytes, or follicular dentritic cells as targets for investigation. It is understood that T cells play a significant role in the development of the process, which is mediated by both cellular contacts and humoral factors such as interleukins. Specifically, GI T cell-derived cells express cytokines called CD40L (CD154), which facilitates interactions with CD4+ B-lymphocyte(s). High-affinity B cells, which are selected by antigen retained in the surface of follicular dendritic cells (FDCs), are then transformed into antibody producing plasma cells or memory B cell. The differentiation between these two types is determined by the signals of the CD40/CD40L interaction and the type of interleukins secreted by T cells. Non-selected B lymphocytes, on the other hand, die by apoptosis. The activation and production of memory T cells in secondary lymphoid tissues are still a mystery, although much is known about these processes in B cells. Some authors have shown that T cell migration to follicles can promote the proliferation of T-cells in mice. The GC reaction in T cells concentrates at and near the junction of the follicular mantle with the light zone. After some cells remain at this junction, but the origin, migration, and role of intra-GC T cell migration in human fetal heads is not accurately understood. Through the use of multiple markers and membrane antigens, the identification and distribution of cells in control lymph nodes are determined by comparing them with human tonsils or tumour reactive lymphnodes from patients with head and neck's carcinomas. CD69, a very early activation antigen, CD45RA (associated mostly to virgin cells) and CD44OG (association of memory cells), markers.In addition to the differences between control and reactive lymph nodes, an interesting layering pattern of B and T cells was observed when sections of tissue were performed. A speculative model of the cellular traffic into the general capillary chain reaction (GC) is presented, and these results suggest that T cells play a key role in regulation of this chemical cycle.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>We have demonstrated that polyclonal anti-MCM2 antibodies offer dependable staining results consistent with fixed tissues without the need to search for specific antigens. The interpretation of the results is simple because there is a significant difference between normal bronchoepithelium and premalignant lesions. MCM2 is a simple marker that can be used to assess the progression and regression of morphologically abnormal lesions in primary lung cancer prevention studies and early detection of lung carcinoma in screening studies.</text>
+  </passage>
+</root>

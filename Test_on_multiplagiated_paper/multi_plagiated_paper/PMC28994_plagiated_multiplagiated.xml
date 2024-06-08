@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Impact of renal dysfunction on weaning from prolonged mechanical ventilation</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The prognosis for patients who require PMV and RRT is very poor. The small number of patients with renal insufficiency not requiring RMT had a better hospital outcome and mortality, but their long-term survival was still poorer.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The first helium-oxygen gas mixtures (usually called 'heliox') was proposed by Barach in 1935 to treat airway obstruction, and since then it has been shown to be effective in narrowing airways and other disease entities. Its safety has also been demonstrated in spontaneously breathing and mechanically ventilated patients. When 70% helium and 30% oxygen are combined, the gas has a density that is much lower than that of nitrogen-oxygen gas mixtures (nitrox) and has almost the same viscosity. The therapeutic benefits of combining helix and oxygen in these gases are thought to be due to their ability to deliver oxygen and gas flow with less turbulence and resistance through narrowed airways. Due to the relationship between airway resistance and gas density, heliox treatment is expected to improve ventilation by decreasing resistance, alleviating turbulence, or stimulating laminar gas flow. Despite progress in treating asthma since Barach's initial study in 1935, mortality remains high. Bronchodilators and anti-inflammatory agents are now the primary treatment for asthma and reactive airway disease, but some patients require mechanical ventilation to avoid resistance to aggressive therapy. The occurrence of turbulent gas flow at high speeds during mechanical ventilation can complicate the achievement of adequate ventilation. Heliox can be most effectively used in intubated patients with severe bronchospasm and small diameter airways by decreasing turbulent flow, improving ventilation, and limiting barotrauma. Several animal and human studies have investigated the effects of heliox on pulmonary function. While the results are promising, the wide variation in patient biological responses to bronchospasm makes these findings difficult to interpret. A model of independent lung ventilation in pediatric porcines with severe bronchospasm has been developed, which utilizes one of the animal's lungs as a contralateral lung control. Through the use of this unique model, subjects can function independently as bronchospastic agents during different events in the same animal, leading to a decrease in systemic variation in biological responses to acute stress. Our hypothesis suggests that the use of a low-density heliox gas mixture during mechanical ventilation may enhance the pulmonary mechanics of the lung and reduce congestion in contiguous air passages.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>After a prolonged storage period of 28 days at 4°C and 24 hours at room temperature, all six ternary unsupplemented controlled mixtures were stable enough for normal therapeutic use. The choice of triglyceride mixture used was determined solely by the clinical and metabolic requirements of each regimen, as all other stability tests confirmed their stability.</text>
+  </passage>
+</root>

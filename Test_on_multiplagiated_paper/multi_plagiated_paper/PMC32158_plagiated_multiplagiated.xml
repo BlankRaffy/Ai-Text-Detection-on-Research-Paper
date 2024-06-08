@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Phylogenetic analysis of methanogens from the bovine rumen</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Methanogenic Archaeans are not well-represented in the current 16S rRNA hybridization probes targeting their own species, and this lack of diversity means that new probe (and quantitative PCR assay) is needed to better characterize the distribution of newly identified methanogen clusters within rumen microbial communities.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>Many disciplines have developed graphical representations of complex systems to communicate, archive and analyze knowledge. Although electronic circuit diagrams and architectural plans are accessible to knowledgeable individuals, there is no universal'real' describing functional systems in biology. Knowledge in specific areas, such as metabolic pathways, gene networks, signaling networks and molecular interactions, is stored and archived in various forms in print or online, but these representations are not standardized to account for cross-disciplinary systems – for example, the interactions between genes and metabolism at the inter- and intra-molecular levels. Inadequate cartoon diagrams are frequently used by biologists to represent multidisciplinary biological problems at various levels, such as intramolecular and disease phenotype, due to their ambiguity and lack of clarity. We propose that a standardized visual biological description language would offer easier and more clear communication, and, with computational resources, provide underlying conditions for distributed searchable archives of functional knowledge, as well as CAD functionality for simulating and analyzing biological systems. Our team is currently developing a prototype biological description language, BioD, to test its conceptual foundation, explore its utility, and identify critical issues surrounding its implementation.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>In summary, the data presented demonstrates that the GL15 cell line is a reliable in vitro model for astrocytes, which should help researchers understand their unique physiological features, and ultimately contribute to understanding the intricate role of this cell type in the brain. It should be noted that the purely differentiated or undifferentiated form of this cell line can be used to investigate how these cells interact with each other, either through gjs and/or membrane receptors. The model proposed here becomes even more intriguing when the human origin of such cell lines is taken into account. This fresh model of astrocytes provides a foundation for the effective analysis and interpretation of issues related to their involvement in the nervous system's modulation and remodelling, as well its contribution to the electro-physiological activity of neurons and other relevant mechanisms.</text>
+  </passage>
+</root>

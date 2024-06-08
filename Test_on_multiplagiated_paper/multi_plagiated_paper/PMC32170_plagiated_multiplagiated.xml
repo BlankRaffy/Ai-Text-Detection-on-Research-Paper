@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Human papillomavirus DNA in plasma of patients with cervical cancer</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>Plasma HPV DNA, which was generated from the CC and associated with metastasis, can be used as a marker to identify free circulating CDC DNA.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>HMG1 and HMC2, two of the most prevalent non histone proteins, have been identified for over 25 years (see review), and their function has been the focus of various studies, particularly since it was discovered that they share a homology with many other proteins involved in regulating development or differentiation. Recent research has uncovered evidence of HMG1 or its domain binding to Oct and Hox proteins, nuclear hormone receptors, or p53, as well as their impact on the circularization of short DNA fragments. Recently, HMG1 has been implicated as a factor in the lethal effects of endotoxins. The identification of molecular partners has been a crucial approach in investigating the function and mechanism of HMG1/2 proteins, with extensive research conducted on the interaction between chromatin proteins and DNA. Specific binding sequences have been identified for certain HMG-domain proteins, but none have ever been found for HMP2 and HPM1, whose weak interactions with double-stranded DNA remain undiscovered. HMG1/2 has been shown to form complexes with non-classical DNA structures, such as supercoiled circles, platinated DNA, UV-modified DNA (UV-modifying), bulge loops, and four-way junctions. As a result, specific studies have been conducted on these interactions. The prevailing image of HMG1, therefore, is of &quot;an all-purpose DNA-bending, -wrapping, and –looping factor that can be recruited for transcription, DNA repair, as well as recombination&quot;. In our research using CA microsatellites, we observed that a protein found in nuclear extracts of cultured monkey cells formed specific delayed complexes with DNA fragments containing essentially any tract of poly(CA) poly (TG) sequence; this was followed by purification of the DNA-binding activity and the identification of two proteins as HMG1 andHGM2 (Fig. 1A). &quot;Form X&quot; was the new form of DNA found in the complexes, but its mobility was lower than that of the typical double-stranded fragment, which was bound by purified HMG1 and HGM2 (Fig. 1C) and has been identified as the semicatenated DNA loop, as depicteD. A double-stranded DNA loop serves as the foundation for two duplexes that form a knot. The interactions between HMG1/2 and Form X were investigated, and it was discovered that these proteins bind more strongly to semicatenated DNA junctions than any other known DNA substrate.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>A DNA loop with its base maintained by a semicatenated DNA junction has been identified as Form X, which was previously observed through polyacrylamide gel electrophoresis of DNA fragments containing traces of the CA microsatellite poly (CA) poly(TG) but had not been characterised. Hemicenanes, which are structures that contain DNA, had not been previously suggested to exist in the cell. The ability to prepare these structures, along with their remarkable stability, should allow for studying their evolution and potential function when introduced to living cells.</text>
+  </passage>
+</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <passage>
+    <infon key="section_type">TITLE</infon>
+    <text>Genomic organization and single-nucleotide polymorphism map of desmuslin, a novel intermediate filament protein on chromosome 15q26.3</text>
+  </passage>
+  <passage>
+    <infon key="section_type">ABSTRACT</infon>
+    <text>The absence of mutations in the desmuslin gene did not impact its function. Nevertheless, the single-nucleotide polymorphisms mapped in this study are highly disequilibrated and can be used for disambiguation studies of this region of chromosome 15q26.3.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">INTRO</infon>
+    <text>The nuclear receptor superfamily includes the germ cell nuclear factor (GCNF), also known as NR6A1. It was initially identified from mouse cDNA libraries, but homologs have been identified in humans, frogs and fish. As there is no recognized ligand, it is classified as an orphan receptor. The only recognized member of a sixth subfamily of nuclear receptors is GCNF, also known as RTR or NCNF in evolutionary terms. The mouse Gcnf gene is extensively expressed in the developing nervous system, in placenta, and in developing germ cells. The size of the difference between two transcripts in testis is approximately 7.5 kb and 2.4 mb, while the larger transcript is found exclusively in somatic cells. This size discrepancy can be partially explained by hybridization experiments that use different polyadenylation sites. Retining embryonal carcinoma cells triggers retinoic acid-mediated differentiation, leading to transient up-regulation of GCNF expression.</text>
+  </passage>
+  <passage>
+    <infon key="section_type">CONCL</infon>
+    <text>Results showed that intracellular calcium level ([Ca2+]i) measured in mouse NIH-3T3 and human HeLa and SaOS-2 cells were significantly upregulated by ethylene, which is produced by the same plant, after being exposed to ethylene gas. The data supports earlier research that revealed an upregulation of [Ca2+]i and a marked increase in the expression of an ethylene-responsive gene, SDERR, in invertebrate cells (primmorphs of the marine sponge S. domuncula). These findings suggest that ethylene may play a role in both plant biological processes and animal one by modulating intracellular signaling pathways.</text>
+  </passage>
+</root>
