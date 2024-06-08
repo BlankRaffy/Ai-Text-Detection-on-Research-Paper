@@ -1,3 +1,0 @@
-input_file,list_of_source_file
-PMC13901_plagiated.xml,"['PMC13901.xml', 'PMC29080.xml', 'PMC32247.xml']"
-PMC13902_plagiated.xml,"['PMC13902.xml', 'PMC13901.xml', 'PMC32304.xml']"
