@@ -69,7 +69,7 @@ for i in tqdm.tqdm(range(len(df))):
     plagiated_tree = ET.parse(plagiated_file_name)
 
     #ABSTRACT 
-    if df.iloc[i]['abstract_score'] > 0.4:
+    if df.iloc[i]['abstract_score'] > 0.4: #Default value 0.4 for evaluate all file use a negative value 
         abstract_text = get_text.extract_abstract(plagiated_tree)
         df_result_abstract = predict_doc(abstract_text)
     else:
@@ -77,14 +77,14 @@ for i in tqdm.tqdm(range(len(df))):
     
     #INTRO
     if df.iloc[i]['intro_score'] > 0.35:
-        intro_text = get_text.extract_intro(plagiated_tree)
+        intro_text = get_text.extract_intro(plagiated_tree) #Default value 0.35 for evaluate all file use a negative value 
         df_result_intro = predict_doc(intro_text)
     else:
         df_result_intro= [('NO SIMILAR SENTENCE FOUND ON SEMANTIC CONTROL',0)]
 
 
     #CONCLUSION
-    if df.iloc[i]['conclusion_score']>0.4:
+    if df.iloc[i]['conclusion_score']>0.4: #Default value 0.4 for evaluate all file use a negative value 
         conclusion_text = get_text.extract_conclusion(plagiated_tree)
         df_result_conclusion = predict_doc(conclusion_text)
     else:

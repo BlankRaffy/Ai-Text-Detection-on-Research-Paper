@@ -1,7 +1,7 @@
 import pandas as pd
 import ast
 
-df = pd.read_csv('AI_Detection/results/Ai_Detection_result.csv')
+df = pd.read_csv('AI_Detection/results/Ai_Detection_result_NO_semantic_filter.csv')
 
 #check if in every part there is at least one plagiated sentence
 abstract_count=0

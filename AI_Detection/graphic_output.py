@@ -12,7 +12,7 @@ pastel_red_orange = (1, 0.65, 0.55)
 pastel_red = (1, 0.6, 0.6)
 
 # Load the CSV into a DataFrame
-df = pd.read_csv('AI_Detection/results/Ai_Detection_result.csv')
+df = pd.read_csv('AI_Detection/results/Ai_Detection_result_semantic_filter.csv')
 
 
 #load document 
