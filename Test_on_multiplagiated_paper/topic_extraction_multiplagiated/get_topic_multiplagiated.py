@@ -16,7 +16,7 @@ original_paper = 'Test_on_multiplagiated_paper\multi_plagiated_paper'
 # Estrai tutte le parole chiave da ciascun file
 for file in tqdm.tqdm(os.listdir(original_paper)):
     path = os.path.join(original_paper, file)
-    abstract, intro, conclusion = topic_extraction.LSA_extraction(path)
+    abstract, intro, conclusion = topic_extraction.NMF_extraction(path)
     
     # Trasforma le liste di parole chiave in stringhe separate da virgole
     abstract_str = ', '.join(abstract)
@@ -30,7 +30,7 @@ for file in tqdm.tqdm(os.listdir(original_paper)):
     df_lsa = pd.concat([df_lsa, pd.DataFrame([new_row])], ignore_index=True)
 
 # Percorso per il file CSV di output
-csv_file_path = 'Test_on_multiplagiated_paper/topic_extraction_multiplagiated/topic_extracted_for_multiplagiated_LSA.csv'
+csv_file_path = 'Test_on_multiplagiated_paper/topic_extraction_multiplagiated/topic_extracted_for_multiplagiated_NMF.csv'
 
 # Salva il DataFrame nel file CSV
 df_lsa.to_csv(csv_file_path, index=False)
