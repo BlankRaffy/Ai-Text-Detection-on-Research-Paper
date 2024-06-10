@@ -21,8 +21,8 @@ i=0
 intro_result=0
 for ele in df_intro:
     for item in ele[1]['compare_file']:
-        test=df_source.iloc[i]['list_of_source_file'][1]
-        print(f'source file is : {test} the file on the group is {item}' )
+        #test=df_source.iloc[i]['list_of_source_file'][1]
+        #print(f'source file is : {test} the file on the group is {item}' )
         if (df_source.iloc[i]['list_of_source_file'][1]) == item: #the second one is the one from we get the intro
             intro_result +=1
     i+=1
