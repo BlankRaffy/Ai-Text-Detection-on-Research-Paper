@@ -15,8 +15,8 @@ def convert_to_list(string):
 
 
 # Carica il DataFrame dal file CSV, specificando la funzione di conversione per le colonne desiderate
-df_original = pd.read_csv('Topic_Extraction/topic/original_topic_lda.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
-df_plagiated= pd.read_csv('Test_on_multiplagiated_paper/topic_extraction_multiplagiated/topic_extracted_for_multiplagiated_LDA.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
+df_original = pd.read_csv('Topic_Extraction/topic/original_topic_lsa.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
+df_plagiated= pd.read_csv('Test_on_multiplagiated_paper/topic_extraction_multiplagiated/topic_extracted_for_multiplagiated_LSA.csv', converters={'abstract': convert_to_list, 'introduction': convert_to_list, 'conclusion': convert_to_list})
 
 
 
@@ -85,7 +85,7 @@ for i in tqdm.tqdm(range(len(df_plagiated))):
         df_result = pd.concat([df_result, pd.DataFrame([new_row])], ignore_index=True)
 
 
-csv_file_path = 'Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/dataset_topic_compare_multiplagiated_LDA.csv'
+csv_file_path = 'Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/dataset_topic_compare_multiplagiated_LSA.csv'
 
 df_result.to_csv(csv_file_path, index=False)
 
