@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read the CSV file
-df = pd.read_csv('Test_on_multiplagiated_paper\Similarity_compare_multiplagiated\dataset_topic_compare_multiplagiated_YAKE.csv')
+df = pd.read_csv('Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/topic_extracted_comparedataset_topic_compare_multiplagiated_YAKE.csv')
 
 # Function to get top 5 entries for a given score
 def get_top_n(df, score_column, n=5):
