@@ -1,7 +1,7 @@
 import pandas as pd
 import ast
-
-df = pd.read_csv('AI_Detection/results/Ai_Detection_result_NO_semantic_filter.csv')
+ 
+df = pd.read_csv('AI_Detection/results/Ai_Detection_result_on_original.csv')
 
 #check if in every part there is at least one plagiated sentence
 abstract_count=0
@@ -40,7 +40,7 @@ for i  in range(len(df)):
     if abstract_flag or conclusion_flag or intro_flag:
         complete_count +=1
     else:
-        print(df.iloc[i]['plagiated_file'])
+        print(df.iloc[i]['original_file']) #value to set on original_file if evaluation the original paper
 
 
 print(f'the accuracy of AI detecion for ABSTRACT is {abstract_count/len(df)}')
