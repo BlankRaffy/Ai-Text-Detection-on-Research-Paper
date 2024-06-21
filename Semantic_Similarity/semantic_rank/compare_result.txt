@@ -1,0 +1,50 @@
+Topic and semantic similarity:
+topic top-k(3): 0.8908
+semantic top-k(3): 0.8908
+time for semantic: 40 seconds 174*3
+
+topic top-k(5): 0.91379
+semantic top-k(5): 0.91379
+time for semantic: 1 minute 174*5
+
+topic top-k(7): 0.92528
+semantic top-k(7): 0.92528
+time for semantic: 1 minute and 18 seconds 174*7
+
+topic top-k(10): 0.9425
+semantic top-k(10): 0.9425
+time for semantic: 1 minute and 51 seconds 174*10
+
+topic top-k(15): 0.9540
+semantic top-k(15): 0.9540
+time for semantic: 2 minute and 48 seconds 174*15
+
+topic top-k(20): 0.9597
+semantic top-k(20): 0.9597
+time for semantic: 3 minute and 45 seconds 174*20
+
+topic top-k(25): 0.96551
+semantic top-k(20): 0.96551
+time for semantic: 4 minute and 40 seconds 174*25
+
+topic top-k (30) : 0.9712
+semantic top-k (30) : 0.9712
+time for semantic:  5 minutes and 28 seconds 174*30
+
+topic top-k (50) : 0.9712
+semantic top-k (50) : 0.9712
+time for semantic:  9 minutes and  3 seconds 174*50
+
+topic top-k (70) : 0.9827
+semantic top-k (70) : 0.9827
+time for semantic:  12 minutes and  44 seconds 174*70
+
+topic top-k (100) : 1
+semantic top-k (100) : 1
+time for semantic:  18  minutes and   7 seconds 174*100
+
+Semantic similarity on all file: different weight for different part
+top-k (1) : 1
+top-k (3) : 1
+top-k (5) : 1
+time for all compare: 30 minutes and 28 seconds
