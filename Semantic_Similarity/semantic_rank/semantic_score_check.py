@@ -2,7 +2,7 @@ import csv
 from collections import defaultdict
 
 # Input filename
-input_filename = 'Semantic_Similarity/semantic_rank/semantic_rank.csv'
+input_filename = 'Semantic_Similarity/semantic_rank/semantic_final_score_top_1.csv'
 count=0
 # Read input CSV file
 rows = []

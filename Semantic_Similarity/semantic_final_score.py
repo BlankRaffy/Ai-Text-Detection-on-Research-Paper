@@ -12,8 +12,8 @@ def computed_final_score(row):
     return final_score
 
 # Input and output filenames
-input_filename = 'Semantic_Similarity/semantic_rank/semantic_no_final_score.csv'
-output_filename = 'Semantic_Similarity/semantic_rank/semantic_rank.csv'
+input_filename = 'Semantic_Similarity/semantic_rank/semantic_on_all_file.csv'
+output_filename = 'Semantic_Similarity/semantic_rank/semantic_rank_all.csv'
 
 # Read input CSV file and compute final scores
 rows = []
