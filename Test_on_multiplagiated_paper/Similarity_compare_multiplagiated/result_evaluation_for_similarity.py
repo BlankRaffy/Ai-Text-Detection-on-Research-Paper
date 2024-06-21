@@ -1,9 +1,9 @@
 import pandas as pd
 import ast
 
-df_abstract = pd.read_csv('Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/top-k_rank/top_abstract_scores_NMF.csv').groupby('input_file')
-df_intro = pd.read_csv('Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/top-k_rank/top_intro_scores_NMF.csv').groupby('input_file')
-df_conclusion = pd.read_csv('Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/top-k_rank/top_conclusion_scores_NMF.csv').groupby('input_file')
+df_abstract = pd.read_csv('Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/top_k_for_yake/top_abstract_scores.csv').groupby('input_file')
+df_intro = pd.read_csv('Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/top_k_for_yake/top_intro_scores.csv').groupby('input_file')
+df_conclusion = pd.read_csv('Test_on_multiplagiated_paper/Similarity_compare_multiplagiated/top_k_for_yake/top_conclusion_scores.csv').groupby('input_file')
 df_source= pd.read_csv('Test_on_multiplagiated_paper\multiplagiated_source.csv')
 df_source['list_of_source_file'] = df_source['list_of_source_file'].apply(ast.literal_eval)
 
