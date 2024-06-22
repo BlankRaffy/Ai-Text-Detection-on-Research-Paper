@@ -1,7 +1,7 @@
 import pandas as pd
 import ast
 
-df = pd.read_csv('Test_on_multiplagiated_paper\TEST_Ai_Detection_result.csv') # to define
+df = pd.read_csv('Test_on_multiplagiated_paper/Ai_Detection/Ai_Detection_result_multiplagiated.csv') # to define
 
 #check if in every part there is at least one plagiated sentence
 abstract_count=0
