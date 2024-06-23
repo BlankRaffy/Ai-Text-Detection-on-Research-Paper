@@ -6,6 +6,7 @@ from transformers import pipeline
 import os
 import xml.etree.ElementTree as ET
 import get_text
+import tqdm
 
 nltk.download('punkt')
 
@@ -30,7 +31,7 @@ def predict_doc(doc):
         res.append((sent, prob))
 
     df = pd.DataFrame(data)
-    df.to_csv('result.csv')
+    #df.to_csv('result.csv')
     overall_score = df.score.mean()
     if overall_score <= 0.5:
         overall_label = 'Human'
@@ -54,7 +55,7 @@ def predict_one_sent(sent):
         prob = 1 - prob
     return prob
 
-for ele in os.listdir('Dataset/plagiated_paper'):
+for ele in tqdm.tqdm(os.listdir('Dataset/original_paper')):
     original_file_name= 'Dataset/plagiated_paper'+'/'+ele
     original_tree = ET.parse(original_file_name)
 
@@ -74,6 +75,6 @@ for ele in os.listdir('Dataset/plagiated_paper'):
     
 
 csv_filename='Ai_detection_using_mean/ai_detection_mean_for_part.csv'
-df_result.to_csv('Ai_detection_using_mean/ai_detection_mean_for_part_plagiated.csv',index=None)
+df_result.to_csv('Ai_detection_using_mean/ai_detection_mean_for_part_original.csv',index=None)
 
 print(f"CSV file '{csv_filename}' containing the result has been saved.")

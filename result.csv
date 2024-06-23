@@ -1,3 +1,4 @@
 ,sentence,label,score
-0,"We found that relying on the patients' pH, pCO2, and phosphate concentration in life-threatening situations provides more objective information about oxygenation, carbon dioxide, and acid-base regulation than on pulse oximetry and/or capnometry.",Human,0.3505
-1,"Furthermore, it allows physicians to correct severe hypokalemia or hypocalcemia in cases of cardiac failure or malignant arrhythmia.",Machine,0.7133
+0,"  Remarkable conclusions According to our findings, the control of Ned8p's cullin modification by the S. pombe CSN complex is generalized.",Human,0.003
+1,"Although not specific in any particular way, CSP may regulate the activity of various culling-related ubiquitin ligases by counterbalancing their stimulatory Neldelsäure (Ned8) modification pathways.",Human,0.0111
+2,Future research will determine whether some of the other functions of CSO involve post-translational modification of regulatory proteins by corresponding ukulium-like modifiers.,Human,0.0892
