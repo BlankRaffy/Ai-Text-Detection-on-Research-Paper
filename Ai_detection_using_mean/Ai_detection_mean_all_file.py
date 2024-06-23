@@ -55,8 +55,8 @@ def predict_one_sent(sent):
         prob = 1 - prob
     return prob
 
-for ele in tqdm.tqdm(os.listdir('Dataset/original_paper')):
-    original_file_name= 'Dataset/plagiated_paper'+'/'+ele
+for ele in tqdm.tqdm(os.listdir('Test_on_multiplagiated_paper/multi_plagiated_paper')):
+    original_file_name= 'Test_on_multiplagiated_paper/multi_plagiated_paper'+'/'+ele
     original_tree = ET.parse(original_file_name)
 
     abstract_text = get_text.extract_abstract(original_tree)
@@ -75,6 +75,6 @@ for ele in tqdm.tqdm(os.listdir('Dataset/original_paper')):
     
 
 csv_filename='Ai_detection_using_mean/ai_detection_mean_for_part.csv'
-df_result.to_csv('Ai_detection_using_mean/ai_detection_mean_for_part_original.csv',index=None)
+df_result.to_csv('Ai_detection_using_mean/ai_detection_mean_for_part_multiplagiated.csv',index=None)
 
 print(f"CSV file '{csv_filename}' containing the result has been saved.")
