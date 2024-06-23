@@ -1,0 +1,3 @@
+,sentence,label,score
+0,"We found that relying on the patients' pH, pCO2, and phosphate concentration in life-threatening situations provides more objective information about oxygenation, carbon dioxide, and acid-base regulation than on pulse oximetry and/or capnometry.",Human,0.3505
+1,"Furthermore, it allows physicians to correct severe hypokalemia or hypocalcemia in cases of cardiac failure or malignant arrhythmia.",Machine,0.7133
