@@ -6,7 +6,7 @@ file_path = 'Similarity_Compare/graph/dataframe_for_graphic.csv'
 data = pd.read_csv(file_path)
 
 # Select the first 10 elements (1st to 10th)
-data = data.iloc[1:25] #with 25 we got 7, 20 we got and with 15 we got 12
+data = data.iloc[1:20] #with 25 we got 7, 20 we got and with 15 we got 12
 
 # Calculate the heights for each section of the bar
 data['abstract_section'] = data['abstract_score'] * 0.4
