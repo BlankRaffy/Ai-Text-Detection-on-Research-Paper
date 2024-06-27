@@ -95,4 +95,4 @@ for i  in tqdm.tqdm(range(len(df))):
 df_result.to_csv('AI_Detection/support_and_confidence/support_and_confidence_plagiated_no_semantic_filter.csv', index=None)
 print('number of not detected abstract is', abstract_zero)
 print('number of not detected intro is', intro_zero)
-print('number of not detected intro is', conclusion_zero)
+print('number of not detected conclusion is', conclusion_zero)
