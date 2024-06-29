@@ -13,21 +13,27 @@ def fix_json_string(json_str):
     return json_str.replace("'", '"')
 
 # Read the CSV file
-with open('AI_Detection/support_and_confidence/support_and_confidence_on_multiplagiated.csv', mode='r', newline='') as file:
+with open('AI_Detection/support_and_confidence/support_and_confidence_plagiated_semantic_filter.csv', mode='r', newline='') as file:
     reader = csv.DictReader(file)
     for row in reader:
         for section in sections:
             result = json.loads(fix_json_string(row[f'{section}_result']))
-            sections[section]['total_support'] += result['support']
-            sections[section]['total_confidence'] += result['confidence']
-            sections[section]['count'] += 1
+            support = result['support']
+            confidence = result['confidence']
+            if support != 0:  # Only consider non-zero support values
+                sections[section]['total_support'] += support
+                sections[section]['total_confidence'] += confidence
+                sections[section]['count'] += 1
 
 # Calculate average values for each section
 averages = {}
 for section, values in sections.items():
-    avg_support = values['total_support'] / values['count']
-    avg_confidence = values['total_confidence'] / values['count']
-    averages[section] = {'average_support': avg_support, 'average_confidence': avg_confidence}
+    if values['count'] > 0:  # Ensure there are entries before calculating averages
+        avg_support = values['total_support'] / values['count']
+        avg_confidence = values['total_confidence'] / values['count']
+        averages[section] = {'average_support': avg_support, 'average_confidence': avg_confidence}
+    else:
+        averages[section] = {'average_support': 0, 'average_confidence': 0}  # Handle case where count is 0
 
 # Print the results
 for section, avg in averages.items():
