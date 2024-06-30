@@ -1,6 +1,6 @@
 import pandas as pd
 
-df=pd.read_csv('AI_Detection/support_and_confidence/support_and_confidence_plagiated_no_semantic_filter.csv')
+df=pd.read_csv('AI_Detection/support_and_confidence/support_and_confidence_plagiated_semantic_filter.csv')
 threshold_result_abstract=0
 abstract_zero=0
 threshold_result_intro=0
@@ -26,7 +26,7 @@ for ele in df.iterrows():
 
     dic_intro=eval(ele[1]['intro_result'])
     #print(dic_intro)
-    if(dic_intro['support'])>0.45 and (dic_intro['confidence'])>0.6 :
+    if(dic_intro['support'])>0.45 and (dic_intro['confidence'])>0.6:
         threshold_result_intro+=1
         intro=True
     if(dic_intro['support'])==0:
@@ -34,7 +34,7 @@ for ele in df.iterrows():
 
     dic_conclusion=eval(ele[1]['conclusion_result'])
     #print(dic_intro)
-    if(dic_conclusion['support'])>0.4 and (dic_conclusion['confidence'])>0.6 :
+    if(dic_conclusion['support'])>0.45 and (dic_conclusion['confidence'])>0.6:
         threshold_result_conclusion+=1
         conclusion=True
     if(dic_conclusion['support'])==0:
