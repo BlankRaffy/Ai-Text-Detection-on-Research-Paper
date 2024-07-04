@@ -3,10 +3,10 @@ import seaborn as sns
 import numpy as np
 
 # Define the values for TP, TN, FP, FN
-TP = 157
-FN = 17
-TN = 101
-FP = 73
+TP = 122
+FN = 52
+TN = 97
+FP = 77
 
 # Create the confusion matrix
 confusion_matrix = np.array([[TP, FN], [FP, TN]])
