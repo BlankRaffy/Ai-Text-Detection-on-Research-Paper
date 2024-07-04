@@ -1,6 +1,6 @@
 import pandas as pd
 
-df=pd.read_csv('AI_Detection/support_and_confidence/support_and_confidence_on_multiplagiated.csv')
+df=pd.read_csv('AI_Detection/support_and_confidence/support_and_confidence_on_original.csv')
 threshold_result_abstract=0
 abstract_zero=0
 threshold_result_intro=0
@@ -17,7 +17,7 @@ for ele in df.iterrows():
     conclusion=False
 
     dic_abstract=eval(ele[1]['abstract_result'])
-    #print(dic_abstract)
+    print(dic_abstract)
     if(dic_abstract['support'])>0.5 and (dic_abstract['confidence'])>0.6 :
         threshold_result_abstract+=1
         abstract=True
@@ -25,8 +25,8 @@ for ele in df.iterrows():
         abstract_zero+=1
 
     dic_intro=eval(ele[1]['intro_result'])
-    print(dic_intro)
-    if(dic_intro['support'])>0.35 and (dic_intro['confidence'])>0.6:
+    #print(dic_intro)
+    if(dic_intro['support'])>0.275 and (dic_intro['confidence'])>0.8:
         threshold_result_intro+=1
         intro=True
     if(dic_intro['support'])==0:
