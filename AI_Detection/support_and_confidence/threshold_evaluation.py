@@ -8,3 +8,4 @@ for i in range(len(df)):
         result+=1
 
 print('number of file with at least one section plagiated',result/174)
+print('number of detected paper',result)
