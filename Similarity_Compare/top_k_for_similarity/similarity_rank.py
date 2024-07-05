@@ -20,7 +20,7 @@ for index, row in data_sorted.iterrows():
 # Seleziona solo le prime 5 righe per ciascun input_file
 result_rows = []
 for input_file, rows in top_5_rows_per_input_file.items():
-    result_rows.extend(rows[:5])
+    result_rows.extend(rows[3])
 
 # Crea un nuovo DataFrame con le righe selezionate
 result_df = pd.DataFrame(result_rows)
