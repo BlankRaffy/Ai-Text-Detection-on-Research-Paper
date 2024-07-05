@@ -19,9 +19,9 @@ new_df = pd.concat(filtered_groups)
 
 # Output the new DataFrame
 #print(new_df)
-print(f'the number of detected file is {len(new_df)/5}')
 precision =[]
 grouped_df=new_df.groupby('input_file')
+print(f'the number of detected file is {len(grouped_df)}')
 
 for ele in new_df.groupby('input_file'):
     i=0
