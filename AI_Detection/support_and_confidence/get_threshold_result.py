@@ -1,6 +1,6 @@
 import pandas as pd
 
-df=pd.read_csv('AI_Detection/support_and_confidence/support_and_confidence_on_original.csv')
+df=pd.read_csv('AI_Detection/support_and_confidence/support_and_confidence_on_multiplagiated.csv')
 threshold_result_abstract=0
 abstract_zero=0
 threshold_result_intro=0

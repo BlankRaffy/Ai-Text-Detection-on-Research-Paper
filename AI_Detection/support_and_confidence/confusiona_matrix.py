@@ -3,8 +3,8 @@ import seaborn as sns
 import numpy as np
 
 # Define the values for TP, TN, FP, FN
-TP = 156
-FN = 18
+TP = 140
+FN = 34
 TN = 105 
 FP = 69
 
@@ -14,7 +14,7 @@ confusion_matrix = np.array([[TP, FN], [FP, TN]])
 # Plot the confusion matrix
 plt.figure(figsize=(8, 6))
 sns.heatmap(confusion_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=['Predicted Positive', 'Predicted Negative'], yticklabels=['Actual Positive', 'Actual Negative'])
-plt.title('Confusion Matrix')
+plt.title('Original and Plagiated Filtered')
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
 plt.show()
